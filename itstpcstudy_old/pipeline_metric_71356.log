@@ -1,0 +1,1 @@
+2023-04-16 12:50:00,482 INFO {'cpu_limit': '128', 'mem_limit': 231770.619140625, 'workflow_file': '/storage1/daviddc/k0gun/workflow_mod.json', 'target_task': ['aod'], 'rerun_from': None, 'target_labels': []}

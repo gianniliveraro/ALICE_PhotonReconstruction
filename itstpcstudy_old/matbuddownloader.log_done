@@ -1,0 +1,3 @@
+Command "[ -f matbud.root ] || ${O2_ROOT}/bin/o2-ccdb-downloadccdbfile --host http://alice-ccdb.cern.ch/ -p GLO/Param/MatLUT -o matbud.root --no-preserve-path --timestamp 1546300800000 --created-not-after 3385078236000" successfully finished.
+The presence of this file can be used to skip this command in future runs
+of the pipeline by setting the JOBUTILS_SKIPDONE environment variable.

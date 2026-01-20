@@ -1,0 +1,3 @@
+Command "o2-grp-simgrp-tool createGRPs --run 300000 --publishto ${ALICEO2_CCDB_LOCALCACHE:-.ccdb} -o grp --hbfpertf 128 --field -5 --readoutDets all --print " successfully finished.
+The presence of this file can be used to skip this command in future runs
+of the pipeline by setting the JOBUTILS_SKIPDONE environment variable.

@@ -1,0 +1,118 @@
+2023-04-06 11:33:03,527 INFO {'cpu_limit': '64', 'mem_limit': 231770.619140625, 'workflow_file': '/storage1/daviddc/k0gun/workflow_mod.json', 'target_task': ['aod'], 'rerun_from': None, 'target_labels': []}
+2023-04-06 11:33:20,091 INFO {'iter': 1, 'name': 'sgnsim_1', 'cpu': 0.0, 'uss': 702.12890625, 'pss': 896.900390625, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:33:20,200 INFO {'iter': 1, 'name': 'sgnsim_2', 'cpu': 0.0, 'uss': 705.56640625, 'pss': 899.765625, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:33:25,342 INFO {'iter': 2, 'name': 'sgnsim_1', 'cpu': 121.7, 'uss': 785.0, 'pss': 981.4052734375, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:33:25,453 INFO {'iter': 2, 'name': 'sgnsim_2', 'cpu': 139.39999999999998, 'uss': 785.3203125, 'pss': 981.1298828125, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:33:30,589 INFO {'iter': 3, 'name': 'sgnsim_1', 'cpu': 47.300000000000004, 'uss': 828.953125, 'pss': 1016.140625, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:33:30,705 INFO {'iter': 3, 'name': 'sgnsim_2', 'cpu': 43.0, 'uss': 880.265625, 'pss': 1085.609375, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:33:35,842 INFO {'iter': 4, 'name': 'sgnsim_1', 'cpu': 34.5, 'uss': 973.94140625, 'pss': 1171.76171875, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:33:35,957 INFO {'iter': 4, 'name': 'sgnsim_2', 'cpu': 33.1, 'uss': 994.67578125, 'pss': 1192.5458984375, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:33:41,112 INFO {'iter': 5, 'name': 'sgnsim_1', 'cpu': 4.4, 'uss': 983.1484375, 'pss': 1181.123046875, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:33:41,234 INFO {'iter': 5, 'name': 'sgnsim_2', 'cpu': 0.9, 'uss': 996.1328125, 'pss': 1193.97265625, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:33:46,374 INFO {'iter': 6, 'name': 'sgnsim_1', 'cpu': 0.0, 'uss': 983.1484375, 'pss': 1181.1171875, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:33:46,491 INFO {'iter': 6, 'name': 'sgnsim_2', 'cpu': 0.8, 'uss': 996.16015625, 'pss': 1193.990234375, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:33:51,632 INFO {'iter': 7, 'name': 'sgnsim_1', 'cpu': 0.2, 'uss': 983.1484375, 'pss': 1181.125, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:33:51,752 INFO {'iter': 7, 'name': 'sgnsim_2', 'cpu': 0.8, 'uss': 996.1640625, 'pss': 1194.001953125, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:33:56,894 INFO {'iter': 8, 'name': 'sgnsim_1', 'cpu': 0.2, 'uss': 983.1484375, 'pss': 1181.12890625, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:33:57,015 INFO {'iter': 8, 'name': 'sgnsim_2', 'cpu': 0.4, 'uss': 996.16796875, 'pss': 1194.01171875, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:34:02,153 INFO {'iter': 9, 'name': 'sgnsim_1', 'cpu': 0.2, 'uss': 983.1484375, 'pss': 1181.134765625, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:34:02,264 INFO {'iter': 9, 'name': 'sgnsim_2', 'cpu': 0.6000000000000001, 'uss': 996.17578125, 'pss': 1194.0234375, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:34:09,851 INFO {'iter': 10, 'name': 'sgnsim_1', 'cpu': 66.0, 'uss': 1081.25390625, 'pss': 1649.12109375, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:34:13,871 INFO {'iter': 10, 'name': 'sgnsim_2', 'cpu': 70.19999999999999, 'uss': 1883.3984375, 'pss': 2560.9658203125, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:34:22,536 INFO {'iter': 11, 'name': 'sgnsim_1', 'cpu': 5007.500000000001, 'uss': 3278.234375, 'pss': 4394.1484375, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:34:23,910 INFO {'iter': 11, 'name': 'sgnsim_2', 'cpu': 6012.100000000002, 'uss': 3084.6640625, 'pss': 4280.1025390625, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:34:29,835 INFO {'iter': 12, 'name': 'sgnsim_1', 'cpu': 1094.5, 'uss': 3126.90625, 'pss': 4423.2001953125, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:34:30,923 INFO {'iter': 12, 'name': 'sgnsim_2', 'cpu': 521.7000000000004, 'uss': 3240.99609375, 'pss': 4567.37890625, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:34:37,015 INFO {'iter': 13, 'name': 'sgnsim_1', 'cpu': 104.09999999999982, 'uss': 3107.23828125, 'pss': 4394.017578125, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:34:38,140 INFO {'iter': 13, 'name': 'sgnsim_2', 'cpu': 105.19999999999978, 'uss': 3217.44140625, 'pss': 4534.5732421875, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:34:44,280 INFO {'iter': 14, 'name': 'sgnsim_1', 'cpu': 84.59999999999982, 'uss': 3110.69921875, 'pss': 4397.478515625, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:34:45,451 INFO {'iter': 14, 'name': 'sgnsim_2', 'cpu': 94.99999999999977, 'uss': 3218.44921875, 'pss': 4536.3193359375, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:34:50,897 INFO {'iter': 15, 'name': 'sgnsim_2', 'cpu': 18.9, 'uss': 389.578125, 'pss': 419.8203125, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:34:50,937 INFO {'iter': 15, 'name': 'sgnsim_3', 'cpu': 0.0, 'uss': 15.0546875, 'pss': 54.63671875, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:34:50,970 INFO {'iter': 15, 'name': 'digicontext_1', 'cpu': 0.0, 'uss': 5.16796875, 'pss': 7.06640625, 'nice': 0, 'swap': 0.0, 'label': ['DIGI']}
+2023-04-06 11:34:56,909 INFO {'iter': 16, 'name': 'sgnsim_3', 'cpu': 0.2, 'uss': 766.53515625, 'pss': 944.10546875, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:34:57,022 INFO {'iter': 16, 'name': 'sgnsim_4', 'cpu': 0.0, 'uss': 702.7265625, 'pss': 867.4052734375, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:34:57,076 INFO {'iter': 16, 'name': 'restdigi_1', 'cpu': 0.0, 'uss': 113.0078125, 'pss': 157.751953125, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:34:57,129 INFO {'iter': 16, 'name': 'ft0fv0ctp_digi_1', 'cpu': 0.0, 'uss': 79.8984375, 'pss': 121.55859375, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:34:57,178 INFO {'iter': 16, 'name': 'restdigi_2', 'cpu': 0.0, 'uss': 46.39453125, 'pss': 69.1982421875, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:34:57,229 INFO {'iter': 16, 'name': 'ft0fv0ctp_digi_2', 'cpu': 0.0, 'uss': 75.08984375, 'pss': 103.8818359375, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:02,366 INFO {'iter': 17, 'name': 'sgnsim_3', 'cpu': 102.5, 'uss': 784.72265625, 'pss': 825.259765625, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:35:02,476 INFO {'iter': 17, 'name': 'sgnsim_4', 'cpu': 122.3, 'uss': 784.80078125, 'pss': 825.291015625, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:35:02,667 INFO {'iter': 17, 'name': 'restdigi_1', 'cpu': 11.0, 'uss': 1584.27734375, 'pss': 1646.650390625, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:02,945 INFO {'iter': 17, 'name': 'ft0fv0ctp_digi_1', 'cpu': 12.5, 'uss': 2263.671875, 'pss': 2380.8798828125, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:03,137 INFO {'iter': 17, 'name': 'restdigi_2', 'cpu': 17.5, 'uss': 1582.55078125, 'pss': 1645.224609375, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:03,365 INFO {'iter': 17, 'name': 'ft0fv0ctp_digi_2', 'cpu': 13.2, 'uss': 2307.0234375, 'pss': 2413.6201171875, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:08,561 INFO {'iter': 18, 'name': 'sgnsim_3', 'cpu': 92.4, 'uss': 544.71875, 'pss': 667.6298828125, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:35:08,679 INFO {'iter': 18, 'name': 'sgnsim_4', 'cpu': 96.7, 'uss': 1032.47265625, 'pss': 1074.7080078125, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:35:08,891 INFO {'iter': 18, 'name': 'restdigi_1', 'cpu': 17.499999999999996, 'uss': 1654.5546875, 'pss': 1721.57421875, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:09,178 INFO {'iter': 18, 'name': 'ft0fv0ctp_digi_1', 'cpu': 37.60000000000001, 'uss': 2474.2578125, 'pss': 2581.841796875, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:09,381 INFO {'iter': 18, 'name': 'restdigi_2', 'cpu': 2.4000000000000004, 'uss': 1585.98046875, 'pss': 1645.8662109375, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:09,668 INFO {'iter': 18, 'name': 'ft0fv0ctp_digi_2', 'cpu': 24.7, 'uss': 2403.5703125, 'pss': 2502.8505859375, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:17,657 INFO {'iter': 19, 'name': 'sgnsim_3', 'cpu': 130.29999999999998, 'uss': 2806.59375, 'pss': 3544.7880859375, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:35:20,521 INFO {'iter': 19, 'name': 'sgnsim_4', 'cpu': 108.89999999999999, 'uss': 2580.09765625, 'pss': 3232.6630859375, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:35:21,006 INFO {'iter': 19, 'name': 'restdigi_1', 'cpu': 1.1, 'uss': 1655.20703125, 'pss': 1720.796875, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:21,685 INFO {'iter': 19, 'name': 'ft0fv0ctp_digi_1', 'cpu': 27.399999999999995, 'uss': 2485.90234375, 'pss': 2591.1220703125, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:22,141 INFO {'iter': 19, 'name': 'restdigi_2', 'cpu': 0.7999999999999999, 'uss': 1586.71875, 'pss': 1651.6123046875, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:22,809 INFO {'iter': 19, 'name': 'ft0fv0ctp_digi_2', 'cpu': 27.9, 'uss': 2120.09765625, 'pss': 2229.595703125, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:29,178 INFO {'iter': 20, 'name': 'sgnsim_3', 'cpu': 3934.6999999999994, 'uss': 3218.16796875, 'pss': 4396.9482421875, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:35:30,057 INFO {'iter': 20, 'name': 'sgnsim_4', 'cpu': 3419.7, 'uss': 2985.91015625, 'pss': 4098.3525390625, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:35:30,221 INFO {'iter': 20, 'name': 'restdigi_1', 'cpu': 0.9, 'uss': 1655.71875, 'pss': 1731.888671875, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:30,382 INFO {'iter': 20, 'name': 'restdigi_2', 'cpu': 0.4, 'uss': 1586.9296875, 'pss': 1653.8056640625, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:30,521 INFO {'iter': 20, 'name': 'ft0reco_1', 'cpu': 0.0, 'uss': 993.80859375, 'pss': 1049.5849609375, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:35:30,650 INFO {'iter': 20, 'name': 'fv0reco_1', 'cpu': 0.0, 'uss': 1079.51953125, 'pss': 1131.4931640625, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:35:30,781 INFO {'iter': 20, 'name': 'ft0reco_2', 'cpu': 0.0, 'uss': 927.7734375, 'pss': 973.72265625, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:35:30,895 INFO {'iter': 20, 'name': 'fv0reco_2', 'cpu': 0.0, 'uss': 1080.54296875, 'pss': 1133.1474609375, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:35:36,985 INFO {'iter': 21, 'name': 'sgnsim_3', 'cpu': 104.2999999999998, 'uss': 3197.74609375, 'pss': 4398.302734375, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:35:38,037 INFO {'iter': 21, 'name': 'sgnsim_4', 'cpu': 105.29999999999978, 'uss': 2972.04296875, 'pss': 4107.205078125, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:35:38,189 INFO {'iter': 21, 'name': 'restdigi_1', 'cpu': 0.7, 'uss': 1659.93359375, 'pss': 1805.49609375, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:38,322 INFO {'iter': 21, 'name': 'restdigi_2', 'cpu': 17.600000000000005, 'uss': 1587.66015625, 'pss': 1719.1083984375, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:44,306 INFO {'iter': 22, 'name': 'sgnsim_3', 'cpu': 104.49999999999979, 'uss': 3201.15625, 'pss': 4401.72265625, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:35:45,121 INFO {'iter': 22, 'name': 'sgnsim_4', 'cpu': 100.79999999999977, 'uss': 2975.31640625, 'pss': 4110.4873046875, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:35:45,273 INFO {'iter': 22, 'name': 'restdigi_1', 'cpu': 0.7, 'uss': 1660.14453125, 'pss': 1805.833984375, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:45,407 INFO {'iter': 22, 'name': 'restdigi_2', 'cpu': 0.0, 'uss': 1587.6640625, 'pss': 1719.130859375, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:51,667 INFO {'iter': 23, 'name': 'sgnsim_3', 'cpu': 36.20000000000006, 'uss': 2887.4140625, 'pss': 3973.5771484375, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:35:51,709 INFO {'iter': 23, 'name': 'sgnsim_4', 'cpu': 8.5, 'uss': 13.7890625, 'pss': 19.19921875, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
+2023-04-06 11:35:51,915 INFO {'iter': 23, 'name': 'restdigi_1', 'cpu': 1.0999999999999999, 'uss': 1694.0, 'pss': 1871.77734375, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:52,113 INFO {'iter': 23, 'name': 'restdigi_2', 'cpu': 3.4, 'uss': 1590.046875, 'pss': 1759.5986328125, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:57,915 INFO {'iter': 24, 'name': 'restdigi_1', 'cpu': 99.80000000000001, 'uss': 1900.58984375, 'pss': 2070.7470703125, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:58,097 INFO {'iter': 24, 'name': 'restdigi_2', 'cpu': 101.0, 'uss': 1830.17578125, 'pss': 1984.181640625, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:35:58,148 INFO {'iter': 24, 'name': 'tpcdigi_1', 'cpu': 0.0, 'uss': 163.0, 'pss': 179.2451171875, 'nice': 0, 'swap': 0.0, 'label': ['DIGI']}
+2023-04-06 11:35:58,258 INFO {'iter': 24, 'name': 'digicontext_3', 'cpu': 0.0, 'uss': 699.27734375, 'pss': 760.4794921875, 'nice': 19, 'swap': 0.0, 'label': ['DIGI']}
+2023-04-06 11:35:58,371 INFO {'iter': 24, 'name': 'digicontext_4', 'cpu': 0.0, 'uss': 699.4609375, 'pss': 760.5751953125, 'nice': 19, 'swap': 0.0, 'label': ['DIGI']}
+2023-04-06 11:36:03,945 INFO {'iter': 25, 'name': 'restdigi_1', 'cpu': 79.1, 'uss': 598.72265625, 'pss': 613.1533203125, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:36:04,052 INFO {'iter': 25, 'name': 'restdigi_2', 'cpu': 75.2, 'uss': 598.7421875, 'pss': 612.6396484375, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:36:05,125 INFO {'iter': 25, 'name': 'tpcdigi_1', 'cpu': 75.5, 'uss': 9059.7578125, 'pss': 9239.353515625, 'nice': 0, 'swap': 0.0, 'label': ['DIGI']}
+2023-04-06 11:36:05,288 INFO {'iter': 25, 'name': 'restdigi_3', 'cpu': 0.0, 'uss': 1378.546875, 'pss': 1408.177734375, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:36:05,519 INFO {'iter': 25, 'name': 'ft0fv0ctp_digi_3', 'cpu': 0.0, 'uss': 1945.60546875, 'pss': 2015.5751953125, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:36:05,684 INFO {'iter': 25, 'name': 'restdigi_4', 'cpu': 0.0, 'uss': 1316.7109375, 'pss': 1346.609375, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:36:05,916 INFO {'iter': 25, 'name': 'ft0fv0ctp_digi_4', 'cpu': 0.0, 'uss': 2040.7265625, 'pss': 2111.1865234375, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:36:13,695 INFO {'iter': 26, 'name': 'tpcdigi_1', 'cpu': 1242.3999999999999, 'uss': 12786.79296875, 'pss': 12914.1103515625, 'nice': 0, 'swap': 0.0, 'label': ['DIGI']}
+2023-04-06 11:36:13,879 INFO {'iter': 26, 'name': 'restdigi_3', 'cpu': 86.69999999999999, 'uss': 1821.72265625, 'pss': 1866.9833984375, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:36:13,908 INFO {'iter': 26, 'name': 'ft0fv0ctp_digi_3', 'cpu': 0.0, 'uss': 1.40625, 'pss': 1.443359375, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:36:14,077 INFO {'iter': 26, 'name': 'restdigi_4', 'cpu': 102.19999999999999, 'uss': 1825.625, 'pss': 1873.255859375, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:36:14,138 INFO {'iter': 26, 'name': 'ft0fv0ctp_digi_4', 'cpu': 40.1, 'uss': 647.5390625, 'pss': 654.1875, 'nice': 19, 'swap': 0.0, 'label': ['DIGI', 'SMALLDIGI']}
+2023-04-06 11:36:14,308 INFO {'iter': 26, 'name': 'itsreco_1', 'cpu': 0.0, 'uss': 1509.078125, 'pss': 1537.0185546875, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:14,452 INFO {'iter': 26, 'name': 'mftreco_1', 'cpu': 0.0, 'uss': 1252.328125, 'pss': 1277.2998046875, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:14,682 INFO {'iter': 26, 'name': 'mchreco_1', 'cpu': 0.0, 'uss': 2240.98828125, 'pss': 2279.412109375, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:14,828 INFO {'iter': 26, 'name': 'midreco_1', 'cpu': 0.0, 'uss': 1264.078125, 'pss': 1292.3701171875, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:14,854 INFO {'iter': 26, 'name': 'phsreco_1', 'cpu': 0.0, 'uss': 0.0, 'pss': 0.0, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:15,021 INFO {'iter': 26, 'name': 'itsreco_2', 'cpu': 0.0, 'uss': 1446.28515625, 'pss': 1470.08984375, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:15,147 INFO {'iter': 26, 'name': 'mftreco_2', 'cpu': 0.0, 'uss': 1186.7734375, 'pss': 1207.830078125, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:15,340 INFO {'iter': 26, 'name': 'mchreco_2', 'cpu': 0.0, 'uss': 2173.0859375, 'pss': 2207.958984375, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:15,471 INFO {'iter': 26, 'name': 'midreco_2', 'cpu': 0.0, 'uss': 1239.640625, 'pss': 1264.75390625, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:15,495 INFO {'iter': 26, 'name': 'phsreco_2', 'cpu': 0.0, 'uss': 0.0, 'pss': 0.0, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:26,802 INFO {'iter': 27, 'name': 'tpcdigi_1', 'cpu': 391.40000000000003, 'uss': 17363.39453125, 'pss': 17534.744140625, 'nice': 0, 'swap': 0.0, 'label': ['DIGI']}
+2023-04-06 11:36:27,156 INFO {'iter': 27, 'name': 'itsreco_1', 'cpu': 44.9, 'uss': 763.3203125, 'pss': 775.10546875, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:27,462 INFO {'iter': 27, 'name': 'itsreco_2', 'cpu': 59.6, 'uss': 765.375, 'pss': 777.3251953125, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:27,556 INFO {'iter': 27, 'name': 'ft0reco_3', 'cpu': 0.0, 'uss': 0.0, 'pss': 0.0, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:27,635 INFO {'iter': 27, 'name': 'fv0reco_3', 'cpu': 0.0, 'uss': 0.0, 'pss': 0.0, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:27,908 INFO {'iter': 27, 'name': 'itsreco_4', 'cpu': 0.0, 'uss': 763.125, 'pss': 775.4130859375, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:27,983 INFO {'iter': 27, 'name': 'midreco_4', 'cpu': 0.0, 'uss': 0.0, 'pss': 0.0, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:28,163 INFO {'iter': 27, 'name': 'ft0reco_4', 'cpu': 0.0, 'uss': 433.015625, 'pss': 439.755859375, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:28,590 INFO {'iter': 27, 'name': 'fv0reco_4', 'cpu': 0.0, 'uss': 1083.79296875, 'pss': 1112.1953125, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:29,156 INFO {'iter': 27, 'name': 'itsreco_3', 'cpu': 0.0, 'uss': 1613.14453125, 'pss': 1669.7880859375, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:29,341 INFO {'iter': 27, 'name': 'mftreco_3', 'cpu': 0.0, 'uss': 499.81640625, 'pss': 506.4501953125, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:30,067 INFO {'iter': 27, 'name': 'mchreco_3', 'cpu': 0.0, 'uss': 2228.7578125, 'pss': 2272.8662109375, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:30,570 INFO {'iter': 27, 'name': 'midreco_3', 'cpu': 0.0, 'uss': 1367.83203125, 'pss': 1410.1396484375, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:30,645 INFO {'iter': 27, 'name': 'phsreco_3', 'cpu': 0.0, 'uss': 0.0, 'pss': 0.0, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}
+2023-04-06 11:36:31,276 INFO {'iter': 27, 'name': 'mftmchMatch_1', 'cpu': 0.0, 'uss': 1201.25390625, 'pss': 1236.4296875, 'nice': 19, 'swap': 0.0, 'label': ['RECO']}

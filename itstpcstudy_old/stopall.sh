@@ -1,0 +1,2 @@
+kill -9 `ps aux | grep micro | cut -b 10-18`
+kill -9 `pidof o2-ft0-reco-workflow` `pidof o2_dpg_workflow_runner.py` `pidof o2-tpc-reco-workflow` `pidof o2-tpc-chunkeddigit-merger` `pidof o2-sim-digitizer-workflow` `pidof o2-aod-producer-workflow` `pidof o2-secondary-vertexing-workflow` `pidof o2-sim-device-runner` `pidof o2-fv0-reco-workflow ` `pidof o2-tpc-reco-workflow` `pidof o2-tpc-chunkeddigit-merger` `pidof  o2-sim-primary-server-device-runner` `pidof o2-mft-reco-workflow` `pidof o2-its-reco-workflow` `pidof o2-mch-reco-workflow`
