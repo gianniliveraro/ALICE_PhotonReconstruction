@@ -26,6 +26,7 @@ https://github.com/sawenzel/MCReleasePrototype/blob/main/releases/release-notes/
 │
 └── DEPRECATED/                            <- Old scripts / backup
 
+~~~
 
 ## Extras:
 
