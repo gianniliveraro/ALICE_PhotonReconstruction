@@ -25,7 +25,7 @@ do
     echo "Processing started: ${startdate}, currently ${currentdate}..."
     sleep 5
     let COUNTER=COUNTER+5
-    if [ "$COUNTER" -gt "18000" ]; then
+    if [ "$COUNTER" -gt "36000" ]; then
       echo "This is taking too long and should be finished by now, breaking"
       break
       rm -rf tf*

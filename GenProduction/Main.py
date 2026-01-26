@@ -24,11 +24,6 @@ Test_params = {
     "askMinTPCRow": [15, 25, 35, 50, 100],
 }
 
-# Test_params = {
-#     "cutMatchingChi2": [30],
-#     "askMinTPCRow": [15, 25],
-# }
-
 # ------------------ JSON MODIFICATION ------------------
 # TODO: Generalize to include other stages/parameters if needed (e.g, svertexer, etc)
 def apply_cuts_to_json(json_path: Path, combination: dict):
