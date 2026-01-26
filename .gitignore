@@ -1,0 +1,17 @@
+*.parquet
+*.pem
+*.onnx
+*.pdf
+*.pcm
+*.d
+*.so
+*.png
+*.csv
+*.root
+*.txt
+*.log
+*.log_done
+*.log_time
+GenProduction/*/
+OutputData/*/
+Analysis/*/

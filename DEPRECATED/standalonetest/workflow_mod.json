@@ -1,0 +1,3507 @@
+{
+    "stages": [
+        {
+            "name": "__global_init_task__",
+            "cmd": "o2-ccdb-cleansemaphores -p ${ALICEO2_CCDB_LOCALCACHE}",
+            "needs": [],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": -1,
+            "labels": [],
+            "cwd": "./",
+            "env": {
+                "ALICEO2_CCDB_LOCALCACHE": "/storage3/liveraro/ALICE_PhotonReconstruction/standalonetest/ccdb",
+                "IGNORE_VALIDITYCHECK_OF_CCDB_LOCALCACHE": "${ALICEO2_CCDB_LOCALCACHE:+\"ON\"}",
+                "ALICEO2_CCDB_CONDITION_NOT_AFTER": 3385078236000
+            }
+        },
+        {
+            "name": "geomprefetch",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper geomprefetch.log 'chmod +x ${PWD}/geomprefetcher_script.sh; ${PWD}/geomprefetcher_script.sh'",
+            "needs": [],
+            "resources": {
+                "cpu": "0",
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": -1,
+            "labels": [],
+            "cwd": "./"
+        },
+        {
+            "name": "grpcreate",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper grpcreate.log 'o2-grp-simgrp-tool createGRPs --timestamp 1546300800000 --run 300000 --publishto ${ALICEO2_CCDB_LOCALCACHE:-.ccdb} -o grp --hbfpertf 32 --field -5 --detectorList ALICE2 --readoutDets all --print --vertex Diamond --configKeyValues \"Diamond.width[2]=6.\"'",
+            "needs": [
+                "geomprefetch"
+            ],
+            "resources": {
+                "cpu": "0",
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": -1,
+            "labels": [],
+            "cwd": "./"
+        },
+        {
+            "name": "precollcontext",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper precollcontext.log '${O2_ROOT}/bin/o2-steer-colcontexttool -i sgn,500000,1000000:1000000 --show-context --timeframeID 0 --orbitsPerTF 32 --orbits 160 --seed 1234 --noEmptyTF --first-orbit 256 --extract-per-timeframe tf:sgn --with-vertices kCCDB --maxCollsPerTF 500 --orbitsEarly 1 --timestamp 1546300800000 --bcPatternFile ccdb'",
+            "needs": [
+                "grpcreate"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": -1,
+            "labels": [],
+            "cwd": "./"
+        },
+        {
+            "name": "sim_alignment",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper sim_alignment.log '${O2_ROOT}/bin/o2-ccdb-downloadccdbfile --host http://alice-ccdb.cern.ch -p MID/MisCalib/Align --timestamp 1546300800000 --created-not-after 3385078236000 -d ${ALICEO2_CCDB_LOCALCACHE}/MID/Calib/Align --no-preserve-path ; ${O2_ROOT}/bin/o2-ccdb-downloadccdbfile --host http://alice-ccdb.cern.ch -p MCH/MisCalib/Align --timestamp 1546300800000 --created-not-after 3385078236000 -d ${ALICEO2_CCDB_LOCALCACHE}/MCH/Calib/Align --no-preserve-path '",
+            "needs": [],
+            "resources": {
+                "cpu": "0",
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": -1,
+            "labels": [],
+            "cwd": "./"
+        },
+        {
+            "name": "gensgnconf_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper gensgnconf_1.log 'echo \"placeholder / dummy task\"'",
+            "needs": [],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": 1,
+            "labels": [],
+            "cwd": "tf1"
+        },
+        {
+            "name": "sgngen_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper sgngen_1.log '${O2_ROOT}/bin/o2-sim --noGeant -j 1 --field ccdb --vertexMode kCollContext --run 300000 --configKeyValues \"MFTBase.buildAlignment=true;Diamond.width[2]=6.;\" -g external --configFile /storage3/liveraro/ALICE_PhotonReconstruction/itstpcstudy_new/configK0gun.ini -o genevents --timestamp 1546300800000 --seed 266679459 -n 500 --detectorList ALICE2 --fromCollContext collisioncontext.root:sgn'",
+            "needs": [
+                "gensgnconf_1",
+                "grpcreate",
+                "precollcontext"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": 1000
+            },
+            "timeframe": 1,
+            "labels": [
+                "GEN"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "sgnsim_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper sgnsim_1.log '${O2_ROOT}/bin/o2-sim -e TGeant3 --skipModules ZDC -n 500 --seed 266679459 --field ccdb -j 4 --configKeyValues \"MFTBase.buildAlignment=true;Diamond.width[2]=6.;\" --configFile /storage3/liveraro/ALICE_PhotonReconstruction/itstpcstudy_new/configK0gun.ini -o sgn --detectorList ALICE2 --timestamp 1546300800000 --run 300000 -g extkinO2 --extKinFile genevents_Kine.root --vertexMode kNoVertex --fromCollContext collisioncontext.root'",
+            "needs": [
+                "gensgnconf_1",
+                "grpcreate",
+                "precollcontext",
+                "sgngen_1"
+            ],
+            "resources": {
+                "cpu": 3.5,
+                "relative_cpu": 0.875,
+                "mem": "4000"
+            },
+            "timeframe": 1,
+            "labels": [
+                "GEANT"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "linkGRP_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper linkGRP_1.log 'ln -nsf sgn_grp.root o2sim_grp.root ; ln -nsf sgn_geometry.root o2sim_geometry.root; ln -nsf sgn_geometry-aligned.root o2sim_geometry-aligned.root'",
+            "needs": [
+                "sgnsim_1"
+            ],
+            "resources": {
+                "cpu": "0",
+                "relative_cpu": null,
+                "mem": "0"
+            },
+            "timeframe": 1,
+            "labels": [],
+            "cwd": "tf1"
+        },
+        {
+            "name": "digicontext_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper digicontext_1.log '${O2_ROOT}/bin/o2-sim-digitizer-workflow --only-context --interactionRate 500000 -b --run -n 500 --sims sgn --seed 266679459 --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;DigiParams.passName=${ALIEN_JDL_LPMANCHORPASSNAME:-unanchored}\" --incontext collisioncontext.root --bcPatternFile ccdb'",
+            "needs": [
+                "linkGRP_1",
+                "sgnsim_1"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": 1,
+            "labels": [
+                "DIGI"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "tpcdigi_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcdigi_1.log '${O2_ROOT}/bin/o2-ccdb-downloadccdbfile --host http://alice-ccdb.cern.ch -p TPC/Config/RunInfoV2 --timestamp 1546300800000 --created-not-after 3385078236000 -d ${ALICEO2_CCDB_LOCALCACHE} ; ${O2_ROOT}/bin/o2-sim-digitizer-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} -n 500 --sims sgn --onlyDet TPC --TPCuseCCDB --interactionRate 500000 --tpc-lanes 4 --incontext collisioncontext.root --disable-write-ini --early-forward-policy always --forceSelectedDets --tpc-distortion-type 0 --n-threads-distortions 1 --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;DigiParams.maxOrbitsToDigitize=32;DigiParams.seed=266679459;TPCEleParam.DigiMode=2\" --tpc-chunked-writer'",
+            "needs": [
+                "digicontext_1",
+                "linkGRP_1"
+            ],
+            "resources": {
+                "cpu": 4,
+                "relative_cpu": null,
+                "mem": "9000"
+            },
+            "timeframe": 1,
+            "labels": [
+                "DIGI"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "trddigi_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper trddigi_1.log '${O2_ROOT}/bin/o2-sim-digitizer-workflow -b --run --condition-not-after 3385078236000 -n 500 --sims sgn --onlyDet TRD --interactionRate 500000 --incontext collisioncontext.root --disable-write-ini --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;TRDSimParams.digithreads=4;DigiParams.seed=266679459\" --forceSelectedDets'",
+            "needs": [
+                "digicontext_1"
+            ],
+            "resources": {
+                "cpu": 4,
+                "relative_cpu": null,
+                "mem": "8000"
+            },
+            "timeframe": 1,
+            "labels": [
+                "DIGI"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "restdigi_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper restdigi_1.log '${O2_ROOT}/bin/o2-sim-digitizer-workflow -b --run --condition-not-after 3385078236000 -n 500 --sims sgn --interactionRate 500000 --incontext collisioncontext.root --disable-write-ini --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;MFTAlpideParam.roFrameLengthInBC=198;DigiParams.seed=266679459;MCHDigitizer.seed=266679459\" --onlyDet ITS,TOF,FDD,MCH,MID,MFT,HMP,PHS,CPV --ccdb-tof-sa --forceSelectedDets --combine-devices '",
+            "needs": [
+                "digicontext_1"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": 1,
+            "labels": [
+                "DIGI",
+                "SMALLDIGI"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "ft0fv0emcctp_digi_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper ft0fv0emcctp_digi_1.log '${O2_ROOT}/bin/o2-sim-digitizer-workflow -b --run --condition-not-after 3385078236000 -n 500 --sims sgn --onlyDet FT0,FV0,EMC,CTP --interactionRate 500000 --incontext collisioncontext.root --store-ctp-lumi 0 --disable-write-ini --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;DigiParams.seed=266679459\" --combine-devices --forceSelectedDets'",
+            "needs": [
+                "digicontext_1"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": 1,
+            "labels": [
+                "DIGI",
+                "SMALLDIGI"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "tpcclusterpart0_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcclusterpart0_1.log '${O2_ROOT}/bin/o2-tpc-chunkeddigit-merger --tpc-sectors 0-17 --tpc-lanes 4 | ${O2_ROOT}/bin/o2-tpc-reco-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --input-type digitizer --output-type clusters,send-clusters-per-sector --tpc-native-cluster-writer \" --outfile tpc-native-clusters-part0.root\" --tpc-sectors 0-17 --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;GPU_proc.ompThreads=4\"'",
+            "needs": [
+                "tpcdigi_1",
+                "ft0fv0emcctp_digi_1"
+            ],
+            "resources": {
+                "cpu": "2",
+                "relative_cpu": null,
+                "mem": "8000"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1",
+            "env": {
+                "OMP_NUM_THREADS": "4",
+                "TBB_NUM_THREADS": "4"
+            },
+            "semaphore": "tpctriggers.root",
+            "retry_count": 2
+        },
+        {
+            "name": "tpcclusterpart1_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcclusterpart1_1.log '${O2_ROOT}/bin/o2-tpc-chunkeddigit-merger --tpc-sectors 18-35 --tpc-lanes 4 | ${O2_ROOT}/bin/o2-tpc-reco-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --input-type digitizer --output-type clusters,send-clusters-per-sector --tpc-native-cluster-writer \" --outfile tpc-native-clusters-part1.root\" --tpc-sectors 18-35 --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;GPU_proc.ompThreads=4\"'",
+            "needs": [
+                "tpcdigi_1",
+                "ft0fv0emcctp_digi_1"
+            ],
+            "resources": {
+                "cpu": "2",
+                "relative_cpu": null,
+                "mem": "8000"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1",
+            "env": {
+                "OMP_NUM_THREADS": "4",
+                "TBB_NUM_THREADS": "4"
+            },
+            "semaphore": "tpctriggers.root",
+            "retry_count": 2
+        },
+        {
+            "name": "tpcclustermerge_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcclustermerge_1.log '${O2_ROOT}/bin/o2-commonutils-treemergertool -i tpc-native-clusters-part*.root -o tpc-native-clusters.root -t tpcrec'",
+            "needs": [
+                "tpcclusterpart0_1",
+                "tpcclusterpart1_1"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "10000"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "tpcreco_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcreco_1.log '${O2_ROOT}/bin/o2-tpc-reco-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --input-type clusters --output-type tracks,send-clusters-per-sector --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;GPU_proc.ompThreads=4;TPCCorrMap.lumiMean=-1\" --corrmap-lumi-mode 0 --tpc-mc-time-gain'",
+            "needs": [
+                "ft0fv0emcctp_digi_1",
+                "tpcclustermerge_1"
+            ],
+            "resources": {
+                "cpu": 3.0,
+                "relative_cpu": 0.375,
+                "mem": "16000"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "itsreco_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper itsreco_1.log '${O2_ROOT}/bin/o2-its-reco-workflow -b --run --condition-not-after 3385078236000 --trackerCA --tracking-mode async --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;ITSVertexerParam.phiCut=0.5;ITSVertexerParam.clusterContributorsCut=3;ITSVertexerParam.tanLambdaCut=0.2;NameConf.mDirMatLUT=..\"'",
+            "needs": [
+                "restdigi_1"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "2000"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "ft0reco_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper ft0reco_1.log '${O2_ROOT}/bin/o2-ft0-reco-workflow -b --run --disable-time-offset-calib --disable-slewing-calib --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "ft0fv0emcctp_digi_1"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1000"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "itstpcMatch_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper itstpcMatch_1.log '${O2_ROOT}/bin/o2-tpcits-match-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --tpc-track-reader tpctracks.root --tpc-native-cluster-reader \"--infile tpc-native-clusters.root\" --use-ft0 --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;NameConf.mDirMatLUT=..;TPCCorrMap.lumiMean=-1;tpcitsMatch.cutMatchingChi2=30;tpcitsMatch.askMinTPCRow[0]=10;tpcitsMatch.askMinTPCRow[1]=10;tpcitsMatch.askMinTPCRow[2]=10;tpcitsMatch.askMinTPCRow[3]=10;tpcitsMatch.askMinTPCRow[4]=10;tpcitsMatch.askMinTPCRow[5]=10;tpcitsMatch.askMinTPCRow[6]=10;tpcitsMatch.askMinTPCRow[7]=10;tpcitsMatch.askMinTPCRow[8]=10;tpcitsMatch.askMinTPCRow[9]=10;tpcitsMatch.askMinTPCRow[10]=10;tpcitsMatch.askMinTPCRow[11]=10;tpcitsMatch.askMinTPCRow[12]=10;tpcitsMatch.askMinTPCRow[13]=10;tpcitsMatch.askMinTPCRow[14]=10;tpcitsMatch.askMinTPCRow[15]=10;tpcitsMatch.askMinTPCRow[16]=10;tpcitsMatch.askMinTPCRow[17]=10;tpcitsMatch.askMinTPCRow[18]=10;tpcitsMatch.askMinTPCRow[19]=10;tpcitsMatch.askMinTPCRow[20]=10;tpcitsMatch.askMinTPCRow[21]=10;tpcitsMatch.askMinTPCRow[22]=10;tpcitsMatch.askMinTPCRow[23]=10;tpcitsMatch.askMinTPCRow[24]=10;tpcitsMatch.askMinTPCRow[25]=10;tpcitsMatch.askMinTPCRow[26]=10;tpcitsMatch.askMinTPCRow[27]=10;tpcitsMatch.askMinTPCRow[28]=10;tpcitsMatch.askMinTPCRow[29]=10;tpcitsMatch.askMinTPCRow[30]=10;tpcitsMatch.askMinTPCRow[31]=10;tpcitsMatch.askMinTPCRow[32]=10;tpcitsMatch.askMinTPCRow[33]=10;tpcitsMatch.askMinTPCRow[34]=10;tpcitsMatch.askMinTPCRow[35]=10\" --corrmap-lumi-mode 0 '",
+            "needs": [
+                "tpcreco_1",
+                "itsreco_1",
+                "ft0reco_1"
+            ],
+            "resources": {
+                "cpu": 3.0,
+                "relative_cpu": 0.375,
+                "mem": "8000"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "trdreco_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper trdreco_1.log '${O2_ROOT}/bin/o2-trd-tracklet-transformer -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "trddigi_1",
+                "itstpcMatch_1",
+                "tpcreco_1",
+                "itsreco_1"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "2000"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "trdreco2_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper trdreco2_1.log '${O2_ROOT}/bin/o2-trd-global-tracking -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;NameConf.mDirMatLUT=..;TPCCorrMap.lumiMean=-1\" --track-sources TPC,ITS-TPC --corrmap-lumi-mode 0 '",
+            "needs": [
+                "trdreco_1"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "2000"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "tofmatch_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tofmatch_1.log '${O2_ROOT}/bin/o2-tof-reco-workflow -b --run --condition-not-after 3385078236000 --use-ccdb --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "itstpcMatch_1",
+                "restdigi_1"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "toftpcmatch_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper toftpcmatch_1.log '${O2_ROOT}/bin/o2-tof-matcher-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;TPCCorrMap.lumiMean=-1\" --track-sources TPC,ITS-TPC,TPC-TRD,ITS-TPC-TRD --combine-devices --use-fit --corrmap-lumi-mode 0 '",
+            "needs": [
+                "tofmatch_1",
+                "tpcreco_1",
+                "itstpcMatch_1",
+                "trdreco2_1"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1000"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "mftreco_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper mftreco_1.log '${O2_ROOT}/bin/o2-mft-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;MFTAlpideParam.roFrameLengthInBC=198\"'",
+            "needs": [
+                "restdigi_1"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "mchreco_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper mchreco_1.log '${O2_ROOT}/bin/o2-mch-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\" --enable-clusters-root-output'",
+            "needs": [
+                "restdigi_1"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "midreco_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper midreco_1.log '${O2_ROOT}/bin/o2-mid-digits-reader-workflow | ${O2_ROOT}/bin/o2-mid-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_1"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "fddreco_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper fddreco_1.log '${O2_ROOT}/bin/o2-fdd-reco-workflow -b --run --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_1"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "fv0reco_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper fv0reco_1.log '${O2_ROOT}/bin/o2-fv0-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "ft0fv0emcctp_digi_1"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "emcalreco_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper emcalreco_1.log '${O2_ROOT}/bin/o2-emcal-reco-workflow --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\" --input-type digits --output-type cells --infile emcaldigits.root --disable-root-output --subspecificationOut 1 | ${O2_ROOT}/bin/o2-emcal-cell-recalibrator-workflow --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\" --input-subspec 1 --output-subspec 0 --no-timecalib --no-gaincalib --isMC | ${O2_ROOT}/bin/o2-emcal-cell-writer-workflow -b --run --condition-not-after 3385078236000 --subspec 0'",
+            "needs": [
+                "ft0fv0emcctp_digi_1"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "phsreco_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper phsreco_1.log '${O2_ROOT}/bin/o2-phos-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_1"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "cpvreco_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper cpvreco_1.log '${O2_ROOT}/bin/o2-cpv-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_1"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "mchmidMatch_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper mchmidMatch_1.log '${O2_ROOT}/bin/o2-muon-tracks-matcher-workflow -b --run --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "mchreco_1",
+                "midreco_1"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "mftmchMatch_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper mftmchMatch_1.log '${O2_ROOT}/bin/o2-globalfwd-matcher-workflow --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;FwdMatching.useMIDMatch=true\"'",
+            "needs": [
+                "mchreco_1",
+                "mftreco_1",
+                "mchmidMatch_1"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "hmpreco_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper hmpreco_1.log '${O2_ROOT}/bin/o2-hmpid-digits-to-clusters-workflow -b --run --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_1"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1000"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "hmpmatch_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper hmpmatch_1.log '${O2_ROOT}/bin/o2-hmpid-matcher-workflow --track-sources ITS-TPC,ITS-TPC-TRD,TPC-TRD -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "hmpreco_1",
+                "itstpcMatch_1",
+                "toftpcmatch_1",
+                "trdreco2_1"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1000"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "pvfinder_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper pvfinder_1.log '${O2_ROOT}/bin/o2-primary-vertexing-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;MFTAlpideParam.roFrameLengthInBC=198;pvertexer.acceptableScale2=9;pvertexer.dbscanMaxDist2=36;pvertexer.dbscanDeltaT=24;pvertexer.maxChi2TZDebris=100;pvertexer.maxMultRatDebris=1.0;pvertexer.dbscanAdaptCoef=20.0;NameConf.mDirMatLUT=..\" --vertexing-sources ITS-TPC,TPC-TRD,ITS-TPC-TRD,TPC-TOF,ITS-TPC-TOF,TPC-TRD-TOF,ITS-TPC-TRD-TOF,MFT-MCH,MCH-MID,ITS,MFT,TPC,TOF,FT0,MID,EMC,PHS,CPV,FDD,HMP,FV0,TRD,MCH,CTP --vertex-track-matching-sources ITS-TPC,TPC-TRD,ITS-TPC-TRD,TPC-TOF,ITS-TPC-TOF,TPC-TRD-TOF,ITS-TPC-TRD-TOF,MFT-MCH,MCH-MID,ITS,MFT,TPC,TOF,FT0,MID,EMC,PHS,CPV,FDD,HMP,FV0,TRD,MCH,CTP --combine-source-devices'",
+            "needs": [
+                "trdreco2_1",
+                "ft0reco_1",
+                "fv0reco_1",
+                "emcalreco_1",
+                "phsreco_1",
+                "cpvreco_1",
+                "fddreco_1",
+                "hmpmatch_1",
+                "itstpcMatch_1",
+                "toftpcmatch_1",
+                "mftmchMatch_1",
+                "mchmidMatch_1"
+            ],
+            "resources": {
+                "cpu": 4,
+                "relative_cpu": null,
+                "mem": "4000"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "svfinder_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper svfinder_1.log '${O2_ROOT}/bin/o2-secondary-vertexing-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --threads 1 --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;NameConf.mDirMatLUT=..;TPCCorrMap.lumiMean=-1\" --corrmap-lumi-mode 0 --vertexing-sources ITS-TPC,TPC-TRD,ITS-TPC-TRD,TPC-TOF,ITS-TPC-TOF,TPC-TRD-TOF,ITS-TPC-TRD-TOF,MFT-MCH,MCH-MID,ITS,MFT,TPC,TOF,FT0,MID,EMC,PHS,CPV,FDD,HMP,FV0,TRD,MCH,CTP --combine-source-devices'",
+            "needs": [
+                "pvfinder_1",
+                "ft0fv0emcctp_digi_1"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "5000"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "aod_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper aod_1.log '[ -f AO2D.root ] && rm AO2D.root; ${O2_ROOT}/bin/o2-aod-producer-workflow --reco-mctracks-only 1 --aod-writer-keep dangling --aod-writer-resfile AO2D --aod-writer-resmode \"UPDATE\" --run-number 300000 -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --info-sources ITS-TPC,TPC-TRD,ITS-TPC-TRD,TPC-TOF,ITS-TPC-TOF,TPC-TRD-TOF,ITS-TPC-TRD-TOF,MFT-MCH,MCH-MID,ITS,MFT,TPC,TOF,FT0,MID,EMC,PHS,CPV,FDD,HMP,FV0,TRD,MCH,CTP --lpmp-prod-tag unknown --anchor-pass ${ALIEN_JDL_LPMANCHORPASSNAME:-unknown} --anchor-prod ${ALIEN_JDL_LPMANCHORPRODUCTION:-unknown} --created-by gsetouel --combine-source-devices --aod-timeframe-id ${ALIEN_PROC_ID}001'",
+            "needs": [
+                "pvfinder_1",
+                "svfinder_1"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "4000"
+            },
+            "timeframe": 1,
+            "labels": [
+                "AOD"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "tpctimeseries_1",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpctimeseries_1.log 'o2-global-track-cluster-reader --disable-mc --cluster-types \"FT0,TOF,TPC\" --track-types \"ITS,TPC,ITS-TPC,ITS-TPC-TOF,ITS-TPC-TRD-TOF\" --primary-vertices | o2-tpc-time-series-workflow --enable-unbinned-root-output --sample-unbinned-tsallis --sampling-factor 0.01 --configKeyValues \"HBFUtils.orbitFirstSampled=256;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\" -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} '",
+            "needs": [
+                "tpcreco_1",
+                "itstpcMatch_1",
+                "toftpcmatch_1",
+                "ft0reco_1",
+                "pvfinder_1",
+                "trdreco2_1"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "2000"
+            },
+            "timeframe": 1,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf1"
+        },
+        {
+            "name": "gensgnconf_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper gensgnconf_2.log 'echo \"placeholder / dummy task\"'",
+            "needs": [],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": 2,
+            "labels": [],
+            "cwd": "tf2"
+        },
+        {
+            "name": "sgngen_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper sgngen_2.log '${O2_ROOT}/bin/o2-sim --noGeant -j 1 --field ccdb --vertexMode kCollContext --run 300000 --configKeyValues \"MFTBase.buildAlignment=true;Diamond.width[2]=6.;\" -g external --configFile /storage3/liveraro/ALICE_PhotonReconstruction/itstpcstudy_new/configK0gun.ini -o genevents --timestamp 1546300800000 --seed 266679460 -n 500 --detectorList ALICE2 --fromCollContext collisioncontext.root:sgn'",
+            "needs": [
+                "gensgnconf_2",
+                "grpcreate",
+                "precollcontext"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": 1000
+            },
+            "timeframe": 2,
+            "labels": [
+                "GEN"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "sgnsim_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper sgnsim_2.log '${O2_ROOT}/bin/o2-sim -e TGeant3 --skipModules ZDC -n 500 --seed 266679460 --field ccdb -j 4 --configKeyValues \"MFTBase.buildAlignment=true;Diamond.width[2]=6.;\" --configFile /storage3/liveraro/ALICE_PhotonReconstruction/itstpcstudy_new/configK0gun.ini -o sgn --detectorList ALICE2 --timestamp 1546300800000 --run 300000 -g extkinO2 --extKinFile genevents_Kine.root --vertexMode kNoVertex --fromCollContext collisioncontext.root'",
+            "needs": [
+                "gensgnconf_2",
+                "grpcreate",
+                "precollcontext",
+                "sgngen_2"
+            ],
+            "resources": {
+                "cpu": 3.5,
+                "relative_cpu": 0.875,
+                "mem": "4000"
+            },
+            "timeframe": 2,
+            "labels": [
+                "GEANT"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "linkGRP_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper linkGRP_2.log 'ln -nsf sgn_grp.root o2sim_grp.root ; ln -nsf sgn_geometry.root o2sim_geometry.root; ln -nsf sgn_geometry-aligned.root o2sim_geometry-aligned.root'",
+            "needs": [
+                "sgnsim_2"
+            ],
+            "resources": {
+                "cpu": "0",
+                "relative_cpu": null,
+                "mem": "0"
+            },
+            "timeframe": 2,
+            "labels": [],
+            "cwd": "tf2"
+        },
+        {
+            "name": "digicontext_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper digicontext_2.log '${O2_ROOT}/bin/o2-sim-digitizer-workflow --only-context --interactionRate 500000 -b --run -n 500 --sims sgn --seed 266679460 --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;DigiParams.passName=${ALIEN_JDL_LPMANCHORPASSNAME:-unanchored}\" --incontext collisioncontext.root --bcPatternFile ccdb'",
+            "needs": [
+                "linkGRP_2",
+                "sgnsim_2"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": 2,
+            "labels": [
+                "DIGI"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "tpcdigi_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcdigi_2.log '${O2_ROOT}/bin/o2-ccdb-downloadccdbfile --host http://alice-ccdb.cern.ch -p TPC/Config/RunInfoV2 --timestamp 1546300800000 --created-not-after 3385078236000 -d ${ALICEO2_CCDB_LOCALCACHE} ; ${O2_ROOT}/bin/o2-sim-digitizer-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} -n 500 --sims sgn --onlyDet TPC --TPCuseCCDB --interactionRate 500000 --tpc-lanes 4 --incontext collisioncontext.root --disable-write-ini --early-forward-policy always --forceSelectedDets --tpc-distortion-type 0 --n-threads-distortions 1 --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;DigiParams.maxOrbitsToDigitize=32;DigiParams.seed=266679460;TPCEleParam.DigiMode=2\" --tpc-chunked-writer'",
+            "needs": [
+                "digicontext_2",
+                "linkGRP_2"
+            ],
+            "resources": {
+                "cpu": 4,
+                "relative_cpu": null,
+                "mem": "9000"
+            },
+            "timeframe": 2,
+            "labels": [
+                "DIGI"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "trddigi_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper trddigi_2.log '${O2_ROOT}/bin/o2-sim-digitizer-workflow -b --run --condition-not-after 3385078236000 -n 500 --sims sgn --onlyDet TRD --interactionRate 500000 --incontext collisioncontext.root --disable-write-ini --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;TRDSimParams.digithreads=4;DigiParams.seed=266679460\" --forceSelectedDets'",
+            "needs": [
+                "digicontext_2"
+            ],
+            "resources": {
+                "cpu": 4,
+                "relative_cpu": null,
+                "mem": "8000"
+            },
+            "timeframe": 2,
+            "labels": [
+                "DIGI"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "restdigi_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper restdigi_2.log '${O2_ROOT}/bin/o2-sim-digitizer-workflow -b --run --condition-not-after 3385078236000 -n 500 --sims sgn --interactionRate 500000 --incontext collisioncontext.root --disable-write-ini --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;MFTAlpideParam.roFrameLengthInBC=198;DigiParams.seed=266679460;MCHDigitizer.seed=266679460\" --onlyDet ITS,TOF,FDD,MCH,MID,MFT,HMP,PHS,CPV --ccdb-tof-sa --forceSelectedDets --combine-devices '",
+            "needs": [
+                "digicontext_2"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": 2,
+            "labels": [
+                "DIGI",
+                "SMALLDIGI"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "ft0fv0emcctp_digi_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper ft0fv0emcctp_digi_2.log '${O2_ROOT}/bin/o2-sim-digitizer-workflow -b --run --condition-not-after 3385078236000 -n 500 --sims sgn --onlyDet FT0,FV0,EMC,CTP --interactionRate 500000 --incontext collisioncontext.root --store-ctp-lumi 0 --disable-write-ini --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;DigiParams.seed=266679460\" --combine-devices --forceSelectedDets'",
+            "needs": [
+                "digicontext_2"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": 2,
+            "labels": [
+                "DIGI",
+                "SMALLDIGI"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "tpcclusterpart0_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcclusterpart0_2.log '${O2_ROOT}/bin/o2-tpc-chunkeddigit-merger --tpc-sectors 0-17 --tpc-lanes 4 | ${O2_ROOT}/bin/o2-tpc-reco-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --input-type digitizer --output-type clusters,send-clusters-per-sector --tpc-native-cluster-writer \" --outfile tpc-native-clusters-part0.root\" --tpc-sectors 0-17 --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;GPU_proc.ompThreads=4\"'",
+            "needs": [
+                "tpcdigi_2",
+                "ft0fv0emcctp_digi_2"
+            ],
+            "resources": {
+                "cpu": "2",
+                "relative_cpu": null,
+                "mem": "8000"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2",
+            "env": {
+                "OMP_NUM_THREADS": "4",
+                "TBB_NUM_THREADS": "4"
+            },
+            "semaphore": "tpctriggers.root",
+            "retry_count": 2
+        },
+        {
+            "name": "tpcclusterpart1_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcclusterpart1_2.log '${O2_ROOT}/bin/o2-tpc-chunkeddigit-merger --tpc-sectors 18-35 --tpc-lanes 4 | ${O2_ROOT}/bin/o2-tpc-reco-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --input-type digitizer --output-type clusters,send-clusters-per-sector --tpc-native-cluster-writer \" --outfile tpc-native-clusters-part1.root\" --tpc-sectors 18-35 --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;GPU_proc.ompThreads=4\"'",
+            "needs": [
+                "tpcdigi_2",
+                "ft0fv0emcctp_digi_2"
+            ],
+            "resources": {
+                "cpu": "2",
+                "relative_cpu": null,
+                "mem": "8000"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2",
+            "env": {
+                "OMP_NUM_THREADS": "4",
+                "TBB_NUM_THREADS": "4"
+            },
+            "semaphore": "tpctriggers.root",
+            "retry_count": 2
+        },
+        {
+            "name": "tpcclustermerge_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcclustermerge_2.log '${O2_ROOT}/bin/o2-commonutils-treemergertool -i tpc-native-clusters-part*.root -o tpc-native-clusters.root -t tpcrec'",
+            "needs": [
+                "tpcclusterpart0_2",
+                "tpcclusterpart1_2"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "10000"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "tpcreco_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcreco_2.log '${O2_ROOT}/bin/o2-tpc-reco-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --input-type clusters --output-type tracks,send-clusters-per-sector --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;GPU_proc.ompThreads=4;TPCCorrMap.lumiMean=-1\" --corrmap-lumi-mode 0 --tpc-mc-time-gain'",
+            "needs": [
+                "ft0fv0emcctp_digi_2",
+                "tpcclustermerge_2"
+            ],
+            "resources": {
+                "cpu": 3.0,
+                "relative_cpu": 0.375,
+                "mem": "16000"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "itsreco_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper itsreco_2.log '${O2_ROOT}/bin/o2-its-reco-workflow -b --run --condition-not-after 3385078236000 --trackerCA --tracking-mode async --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;ITSVertexerParam.phiCut=0.5;ITSVertexerParam.clusterContributorsCut=3;ITSVertexerParam.tanLambdaCut=0.2;NameConf.mDirMatLUT=..\"'",
+            "needs": [
+                "restdigi_2"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "2000"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "ft0reco_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper ft0reco_2.log '${O2_ROOT}/bin/o2-ft0-reco-workflow -b --run --disable-time-offset-calib --disable-slewing-calib --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "ft0fv0emcctp_digi_2"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1000"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "itstpcMatch_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper itstpcMatch_2.log '${O2_ROOT}/bin/o2-tpcits-match-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --tpc-track-reader tpctracks.root --tpc-native-cluster-reader \"--infile tpc-native-clusters.root\" --use-ft0 --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;NameConf.mDirMatLUT=..;TPCCorrMap.lumiMean=-1;tpcitsMatch.cutMatchingChi2=30;tpcitsMatch.askMinTPCRow[0]=10;tpcitsMatch.askMinTPCRow[1]=10;tpcitsMatch.askMinTPCRow[2]=10;tpcitsMatch.askMinTPCRow[3]=10;tpcitsMatch.askMinTPCRow[4]=10;tpcitsMatch.askMinTPCRow[5]=10;tpcitsMatch.askMinTPCRow[6]=10;tpcitsMatch.askMinTPCRow[7]=10;tpcitsMatch.askMinTPCRow[8]=10;tpcitsMatch.askMinTPCRow[9]=10;tpcitsMatch.askMinTPCRow[10]=10;tpcitsMatch.askMinTPCRow[11]=10;tpcitsMatch.askMinTPCRow[12]=10;tpcitsMatch.askMinTPCRow[13]=10;tpcitsMatch.askMinTPCRow[14]=10;tpcitsMatch.askMinTPCRow[15]=10;tpcitsMatch.askMinTPCRow[16]=10;tpcitsMatch.askMinTPCRow[17]=10;tpcitsMatch.askMinTPCRow[18]=10;tpcitsMatch.askMinTPCRow[19]=10;tpcitsMatch.askMinTPCRow[20]=10;tpcitsMatch.askMinTPCRow[21]=10;tpcitsMatch.askMinTPCRow[22]=10;tpcitsMatch.askMinTPCRow[23]=10;tpcitsMatch.askMinTPCRow[24]=10;tpcitsMatch.askMinTPCRow[25]=10;tpcitsMatch.askMinTPCRow[26]=10;tpcitsMatch.askMinTPCRow[27]=10;tpcitsMatch.askMinTPCRow[28]=10;tpcitsMatch.askMinTPCRow[29]=10;tpcitsMatch.askMinTPCRow[30]=10;tpcitsMatch.askMinTPCRow[31]=10;tpcitsMatch.askMinTPCRow[32]=10;tpcitsMatch.askMinTPCRow[33]=10;tpcitsMatch.askMinTPCRow[34]=10;tpcitsMatch.askMinTPCRow[35]=10\" --corrmap-lumi-mode 0 '",
+            "needs": [
+                "tpcreco_2",
+                "itsreco_2",
+                "ft0reco_2"
+            ],
+            "resources": {
+                "cpu": 3.0,
+                "relative_cpu": 0.375,
+                "mem": "8000"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "trdreco_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper trdreco_2.log '${O2_ROOT}/bin/o2-trd-tracklet-transformer -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "trddigi_2",
+                "itstpcMatch_2",
+                "tpcreco_2",
+                "itsreco_2"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "2000"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "trdreco2_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper trdreco2_2.log '${O2_ROOT}/bin/o2-trd-global-tracking -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;NameConf.mDirMatLUT=..;TPCCorrMap.lumiMean=-1\" --track-sources TPC,ITS-TPC --corrmap-lumi-mode 0 '",
+            "needs": [
+                "trdreco_2"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "2000"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "tofmatch_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tofmatch_2.log '${O2_ROOT}/bin/o2-tof-reco-workflow -b --run --condition-not-after 3385078236000 --use-ccdb --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "itstpcMatch_2",
+                "restdigi_2"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "toftpcmatch_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper toftpcmatch_2.log '${O2_ROOT}/bin/o2-tof-matcher-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;TPCCorrMap.lumiMean=-1\" --track-sources TPC,ITS-TPC,TPC-TRD,ITS-TPC-TRD --combine-devices --use-fit --corrmap-lumi-mode 0 '",
+            "needs": [
+                "tofmatch_2",
+                "tpcreco_2",
+                "itstpcMatch_2",
+                "trdreco2_2"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1000"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "mftreco_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper mftreco_2.log '${O2_ROOT}/bin/o2-mft-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;MFTAlpideParam.roFrameLengthInBC=198\"'",
+            "needs": [
+                "restdigi_2"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "mchreco_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper mchreco_2.log '${O2_ROOT}/bin/o2-mch-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\" --enable-clusters-root-output'",
+            "needs": [
+                "restdigi_2"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "midreco_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper midreco_2.log '${O2_ROOT}/bin/o2-mid-digits-reader-workflow | ${O2_ROOT}/bin/o2-mid-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_2"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "fddreco_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper fddreco_2.log '${O2_ROOT}/bin/o2-fdd-reco-workflow -b --run --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_2"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "fv0reco_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper fv0reco_2.log '${O2_ROOT}/bin/o2-fv0-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "ft0fv0emcctp_digi_2"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "emcalreco_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper emcalreco_2.log '${O2_ROOT}/bin/o2-emcal-reco-workflow --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\" --input-type digits --output-type cells --infile emcaldigits.root --disable-root-output --subspecificationOut 1 | ${O2_ROOT}/bin/o2-emcal-cell-recalibrator-workflow --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\" --input-subspec 1 --output-subspec 0 --no-timecalib --no-gaincalib --isMC | ${O2_ROOT}/bin/o2-emcal-cell-writer-workflow -b --run --condition-not-after 3385078236000 --subspec 0'",
+            "needs": [
+                "ft0fv0emcctp_digi_2"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "phsreco_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper phsreco_2.log '${O2_ROOT}/bin/o2-phos-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_2"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "cpvreco_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper cpvreco_2.log '${O2_ROOT}/bin/o2-cpv-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_2"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "mchmidMatch_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper mchmidMatch_2.log '${O2_ROOT}/bin/o2-muon-tracks-matcher-workflow -b --run --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "mchreco_2",
+                "midreco_2"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "mftmchMatch_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper mftmchMatch_2.log '${O2_ROOT}/bin/o2-globalfwd-matcher-workflow --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;FwdMatching.useMIDMatch=true\"'",
+            "needs": [
+                "mchreco_2",
+                "mftreco_2",
+                "mchmidMatch_2"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "hmpreco_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper hmpreco_2.log '${O2_ROOT}/bin/o2-hmpid-digits-to-clusters-workflow -b --run --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_2"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1000"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "hmpmatch_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper hmpmatch_2.log '${O2_ROOT}/bin/o2-hmpid-matcher-workflow --track-sources ITS-TPC,ITS-TPC-TRD,TPC-TRD -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "hmpreco_2",
+                "itstpcMatch_2",
+                "toftpcmatch_2",
+                "trdreco2_2"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1000"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "pvfinder_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper pvfinder_2.log '${O2_ROOT}/bin/o2-primary-vertexing-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;MFTAlpideParam.roFrameLengthInBC=198;pvertexer.acceptableScale2=9;pvertexer.dbscanMaxDist2=36;pvertexer.dbscanDeltaT=24;pvertexer.maxChi2TZDebris=100;pvertexer.maxMultRatDebris=1.0;pvertexer.dbscanAdaptCoef=20.0;NameConf.mDirMatLUT=..\" --vertexing-sources ITS-TPC,TPC-TRD,ITS-TPC-TRD,TPC-TOF,ITS-TPC-TOF,TPC-TRD-TOF,ITS-TPC-TRD-TOF,MFT-MCH,MCH-MID,ITS,MFT,TPC,TOF,FT0,MID,EMC,PHS,CPV,FDD,HMP,FV0,TRD,MCH,CTP --vertex-track-matching-sources ITS-TPC,TPC-TRD,ITS-TPC-TRD,TPC-TOF,ITS-TPC-TOF,TPC-TRD-TOF,ITS-TPC-TRD-TOF,MFT-MCH,MCH-MID,ITS,MFT,TPC,TOF,FT0,MID,EMC,PHS,CPV,FDD,HMP,FV0,TRD,MCH,CTP --combine-source-devices'",
+            "needs": [
+                "trdreco2_2",
+                "ft0reco_2",
+                "fv0reco_2",
+                "emcalreco_2",
+                "phsreco_2",
+                "cpvreco_2",
+                "fddreco_2",
+                "hmpmatch_2",
+                "itstpcMatch_2",
+                "toftpcmatch_2",
+                "mftmchMatch_2",
+                "mchmidMatch_2"
+            ],
+            "resources": {
+                "cpu": 4,
+                "relative_cpu": null,
+                "mem": "4000"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "svfinder_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper svfinder_2.log '${O2_ROOT}/bin/o2-secondary-vertexing-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --threads 1 --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;NameConf.mDirMatLUT=..;TPCCorrMap.lumiMean=-1\" --corrmap-lumi-mode 0 --vertexing-sources ITS-TPC,TPC-TRD,ITS-TPC-TRD,TPC-TOF,ITS-TPC-TOF,TPC-TRD-TOF,ITS-TPC-TRD-TOF,MFT-MCH,MCH-MID,ITS,MFT,TPC,TOF,FT0,MID,EMC,PHS,CPV,FDD,HMP,FV0,TRD,MCH,CTP --combine-source-devices'",
+            "needs": [
+                "pvfinder_2",
+                "ft0fv0emcctp_digi_2"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "5000"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "aod_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper aod_2.log '[ -f AO2D.root ] && rm AO2D.root; ${O2_ROOT}/bin/o2-aod-producer-workflow --reco-mctracks-only 1 --aod-writer-keep dangling --aod-writer-resfile AO2D --aod-writer-resmode \"UPDATE\" --run-number 300000 -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --info-sources ITS-TPC,TPC-TRD,ITS-TPC-TRD,TPC-TOF,ITS-TPC-TOF,TPC-TRD-TOF,ITS-TPC-TRD-TOF,MFT-MCH,MCH-MID,ITS,MFT,TPC,TOF,FT0,MID,EMC,PHS,CPV,FDD,HMP,FV0,TRD,MCH,CTP --lpmp-prod-tag unknown --anchor-pass ${ALIEN_JDL_LPMANCHORPASSNAME:-unknown} --anchor-prod ${ALIEN_JDL_LPMANCHORPRODUCTION:-unknown} --created-by gsetouel --combine-source-devices --aod-timeframe-id ${ALIEN_PROC_ID}002'",
+            "needs": [
+                "pvfinder_2",
+                "svfinder_2"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "4000"
+            },
+            "timeframe": 2,
+            "labels": [
+                "AOD"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "tpctimeseries_2",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpctimeseries_2.log 'o2-global-track-cluster-reader --disable-mc --cluster-types \"FT0,TOF,TPC\" --track-types \"ITS,TPC,ITS-TPC,ITS-TPC-TOF,ITS-TPC-TRD-TOF\" --primary-vertices | o2-tpc-time-series-workflow --enable-unbinned-root-output --sample-unbinned-tsallis --sampling-factor 0.01 --configKeyValues \"HBFUtils.orbitFirstSampled=288;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\" -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} '",
+            "needs": [
+                "tpcreco_2",
+                "itstpcMatch_2",
+                "toftpcmatch_2",
+                "ft0reco_2",
+                "pvfinder_2",
+                "trdreco2_2"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "2000"
+            },
+            "timeframe": 2,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf2"
+        },
+        {
+            "name": "gensgnconf_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper gensgnconf_3.log 'echo \"placeholder / dummy task\"'",
+            "needs": [],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": 3,
+            "labels": [],
+            "cwd": "tf3"
+        },
+        {
+            "name": "sgngen_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper sgngen_3.log '${O2_ROOT}/bin/o2-sim --noGeant -j 1 --field ccdb --vertexMode kCollContext --run 300000 --configKeyValues \"MFTBase.buildAlignment=true;Diamond.width[2]=6.;\" -g external --configFile /storage3/liveraro/ALICE_PhotonReconstruction/itstpcstudy_new/configK0gun.ini -o genevents --timestamp 1546300800000 --seed 266679461 -n 500 --detectorList ALICE2 --fromCollContext collisioncontext.root:sgn'",
+            "needs": [
+                "gensgnconf_3",
+                "grpcreate",
+                "precollcontext"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": 1000
+            },
+            "timeframe": 3,
+            "labels": [
+                "GEN"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "sgnsim_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper sgnsim_3.log '${O2_ROOT}/bin/o2-sim -e TGeant3 --skipModules ZDC -n 500 --seed 266679461 --field ccdb -j 4 --configKeyValues \"MFTBase.buildAlignment=true;Diamond.width[2]=6.;\" --configFile /storage3/liveraro/ALICE_PhotonReconstruction/itstpcstudy_new/configK0gun.ini -o sgn --detectorList ALICE2 --timestamp 1546300800000 --run 300000 -g extkinO2 --extKinFile genevents_Kine.root --vertexMode kNoVertex --fromCollContext collisioncontext.root'",
+            "needs": [
+                "gensgnconf_3",
+                "grpcreate",
+                "precollcontext",
+                "sgngen_3"
+            ],
+            "resources": {
+                "cpu": 3.5,
+                "relative_cpu": 0.875,
+                "mem": "4000"
+            },
+            "timeframe": 3,
+            "labels": [
+                "GEANT"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "linkGRP_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper linkGRP_3.log 'ln -nsf sgn_grp.root o2sim_grp.root ; ln -nsf sgn_geometry.root o2sim_geometry.root; ln -nsf sgn_geometry-aligned.root o2sim_geometry-aligned.root'",
+            "needs": [
+                "sgnsim_3"
+            ],
+            "resources": {
+                "cpu": "0",
+                "relative_cpu": null,
+                "mem": "0"
+            },
+            "timeframe": 3,
+            "labels": [],
+            "cwd": "tf3"
+        },
+        {
+            "name": "digicontext_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper digicontext_3.log '${O2_ROOT}/bin/o2-sim-digitizer-workflow --only-context --interactionRate 500000 -b --run -n 500 --sims sgn --seed 266679461 --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;DigiParams.passName=${ALIEN_JDL_LPMANCHORPASSNAME:-unanchored}\" --incontext collisioncontext.root --bcPatternFile ccdb'",
+            "needs": [
+                "linkGRP_3",
+                "sgnsim_3"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": 3,
+            "labels": [
+                "DIGI"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "tpcdigi_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcdigi_3.log '${O2_ROOT}/bin/o2-ccdb-downloadccdbfile --host http://alice-ccdb.cern.ch -p TPC/Config/RunInfoV2 --timestamp 1546300800000 --created-not-after 3385078236000 -d ${ALICEO2_CCDB_LOCALCACHE} ; ${O2_ROOT}/bin/o2-sim-digitizer-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} -n 500 --sims sgn --onlyDet TPC --TPCuseCCDB --interactionRate 500000 --tpc-lanes 4 --incontext collisioncontext.root --disable-write-ini --early-forward-policy always --forceSelectedDets --tpc-distortion-type 0 --n-threads-distortions 1 --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;DigiParams.maxOrbitsToDigitize=32;DigiParams.seed=266679461;TPCEleParam.DigiMode=2\" --tpc-chunked-writer'",
+            "needs": [
+                "digicontext_3",
+                "linkGRP_3"
+            ],
+            "resources": {
+                "cpu": 4,
+                "relative_cpu": null,
+                "mem": "9000"
+            },
+            "timeframe": 3,
+            "labels": [
+                "DIGI"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "trddigi_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper trddigi_3.log '${O2_ROOT}/bin/o2-sim-digitizer-workflow -b --run --condition-not-after 3385078236000 -n 500 --sims sgn --onlyDet TRD --interactionRate 500000 --incontext collisioncontext.root --disable-write-ini --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;TRDSimParams.digithreads=4;DigiParams.seed=266679461\" --forceSelectedDets'",
+            "needs": [
+                "digicontext_3"
+            ],
+            "resources": {
+                "cpu": 4,
+                "relative_cpu": null,
+                "mem": "8000"
+            },
+            "timeframe": 3,
+            "labels": [
+                "DIGI"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "restdigi_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper restdigi_3.log '${O2_ROOT}/bin/o2-sim-digitizer-workflow -b --run --condition-not-after 3385078236000 -n 500 --sims sgn --interactionRate 500000 --incontext collisioncontext.root --disable-write-ini --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;MFTAlpideParam.roFrameLengthInBC=198;DigiParams.seed=266679461;MCHDigitizer.seed=266679461\" --onlyDet ITS,TOF,FDD,MCH,MID,MFT,HMP,PHS,CPV --ccdb-tof-sa --forceSelectedDets --combine-devices '",
+            "needs": [
+                "digicontext_3"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": 3,
+            "labels": [
+                "DIGI",
+                "SMALLDIGI"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "ft0fv0emcctp_digi_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper ft0fv0emcctp_digi_3.log '${O2_ROOT}/bin/o2-sim-digitizer-workflow -b --run --condition-not-after 3385078236000 -n 500 --sims sgn --onlyDet FT0,FV0,EMC,CTP --interactionRate 500000 --incontext collisioncontext.root --store-ctp-lumi 0 --disable-write-ini --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;DigiParams.seed=266679461\" --combine-devices --forceSelectedDets'",
+            "needs": [
+                "digicontext_3"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": 3,
+            "labels": [
+                "DIGI",
+                "SMALLDIGI"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "tpcclusterpart0_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcclusterpart0_3.log '${O2_ROOT}/bin/o2-tpc-chunkeddigit-merger --tpc-sectors 0-17 --tpc-lanes 4 | ${O2_ROOT}/bin/o2-tpc-reco-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --input-type digitizer --output-type clusters,send-clusters-per-sector --tpc-native-cluster-writer \" --outfile tpc-native-clusters-part0.root\" --tpc-sectors 0-17 --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;GPU_proc.ompThreads=4\"'",
+            "needs": [
+                "tpcdigi_3",
+                "ft0fv0emcctp_digi_3"
+            ],
+            "resources": {
+                "cpu": "2",
+                "relative_cpu": null,
+                "mem": "8000"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3",
+            "env": {
+                "OMP_NUM_THREADS": "4",
+                "TBB_NUM_THREADS": "4"
+            },
+            "semaphore": "tpctriggers.root",
+            "retry_count": 2
+        },
+        {
+            "name": "tpcclusterpart1_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcclusterpart1_3.log '${O2_ROOT}/bin/o2-tpc-chunkeddigit-merger --tpc-sectors 18-35 --tpc-lanes 4 | ${O2_ROOT}/bin/o2-tpc-reco-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --input-type digitizer --output-type clusters,send-clusters-per-sector --tpc-native-cluster-writer \" --outfile tpc-native-clusters-part1.root\" --tpc-sectors 18-35 --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;GPU_proc.ompThreads=4\"'",
+            "needs": [
+                "tpcdigi_3",
+                "ft0fv0emcctp_digi_3"
+            ],
+            "resources": {
+                "cpu": "2",
+                "relative_cpu": null,
+                "mem": "8000"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3",
+            "env": {
+                "OMP_NUM_THREADS": "4",
+                "TBB_NUM_THREADS": "4"
+            },
+            "semaphore": "tpctriggers.root",
+            "retry_count": 2
+        },
+        {
+            "name": "tpcclustermerge_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcclustermerge_3.log '${O2_ROOT}/bin/o2-commonutils-treemergertool -i tpc-native-clusters-part*.root -o tpc-native-clusters.root -t tpcrec'",
+            "needs": [
+                "tpcclusterpart0_3",
+                "tpcclusterpart1_3"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "10000"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "tpcreco_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcreco_3.log '${O2_ROOT}/bin/o2-tpc-reco-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --input-type clusters --output-type tracks,send-clusters-per-sector --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;GPU_proc.ompThreads=4;TPCCorrMap.lumiMean=-1\" --corrmap-lumi-mode 0 --tpc-mc-time-gain'",
+            "needs": [
+                "ft0fv0emcctp_digi_3",
+                "tpcclustermerge_3"
+            ],
+            "resources": {
+                "cpu": 3.0,
+                "relative_cpu": 0.375,
+                "mem": "16000"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "itsreco_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper itsreco_3.log '${O2_ROOT}/bin/o2-its-reco-workflow -b --run --condition-not-after 3385078236000 --trackerCA --tracking-mode async --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;ITSVertexerParam.phiCut=0.5;ITSVertexerParam.clusterContributorsCut=3;ITSVertexerParam.tanLambdaCut=0.2;NameConf.mDirMatLUT=..\"'",
+            "needs": [
+                "restdigi_3"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "2000"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "ft0reco_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper ft0reco_3.log '${O2_ROOT}/bin/o2-ft0-reco-workflow -b --run --disable-time-offset-calib --disable-slewing-calib --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "ft0fv0emcctp_digi_3"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1000"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "itstpcMatch_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper itstpcMatch_3.log '${O2_ROOT}/bin/o2-tpcits-match-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --tpc-track-reader tpctracks.root --tpc-native-cluster-reader \"--infile tpc-native-clusters.root\" --use-ft0 --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;NameConf.mDirMatLUT=..;TPCCorrMap.lumiMean=-1;tpcitsMatch.cutMatchingChi2=30;tpcitsMatch.askMinTPCRow[0]=10;tpcitsMatch.askMinTPCRow[1]=10;tpcitsMatch.askMinTPCRow[2]=10;tpcitsMatch.askMinTPCRow[3]=10;tpcitsMatch.askMinTPCRow[4]=10;tpcitsMatch.askMinTPCRow[5]=10;tpcitsMatch.askMinTPCRow[6]=10;tpcitsMatch.askMinTPCRow[7]=10;tpcitsMatch.askMinTPCRow[8]=10;tpcitsMatch.askMinTPCRow[9]=10;tpcitsMatch.askMinTPCRow[10]=10;tpcitsMatch.askMinTPCRow[11]=10;tpcitsMatch.askMinTPCRow[12]=10;tpcitsMatch.askMinTPCRow[13]=10;tpcitsMatch.askMinTPCRow[14]=10;tpcitsMatch.askMinTPCRow[15]=10;tpcitsMatch.askMinTPCRow[16]=10;tpcitsMatch.askMinTPCRow[17]=10;tpcitsMatch.askMinTPCRow[18]=10;tpcitsMatch.askMinTPCRow[19]=10;tpcitsMatch.askMinTPCRow[20]=10;tpcitsMatch.askMinTPCRow[21]=10;tpcitsMatch.askMinTPCRow[22]=10;tpcitsMatch.askMinTPCRow[23]=10;tpcitsMatch.askMinTPCRow[24]=10;tpcitsMatch.askMinTPCRow[25]=10;tpcitsMatch.askMinTPCRow[26]=10;tpcitsMatch.askMinTPCRow[27]=10;tpcitsMatch.askMinTPCRow[28]=10;tpcitsMatch.askMinTPCRow[29]=10;tpcitsMatch.askMinTPCRow[30]=10;tpcitsMatch.askMinTPCRow[31]=10;tpcitsMatch.askMinTPCRow[32]=10;tpcitsMatch.askMinTPCRow[33]=10;tpcitsMatch.askMinTPCRow[34]=10;tpcitsMatch.askMinTPCRow[35]=10\" --corrmap-lumi-mode 0 '",
+            "needs": [
+                "tpcreco_3",
+                "itsreco_3",
+                "ft0reco_3"
+            ],
+            "resources": {
+                "cpu": 3.0,
+                "relative_cpu": 0.375,
+                "mem": "8000"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "trdreco_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper trdreco_3.log '${O2_ROOT}/bin/o2-trd-tracklet-transformer -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "trddigi_3",
+                "itstpcMatch_3",
+                "tpcreco_3",
+                "itsreco_3"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "2000"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "trdreco2_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper trdreco2_3.log '${O2_ROOT}/bin/o2-trd-global-tracking -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;NameConf.mDirMatLUT=..;TPCCorrMap.lumiMean=-1\" --track-sources TPC,ITS-TPC --corrmap-lumi-mode 0 '",
+            "needs": [
+                "trdreco_3"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "2000"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "tofmatch_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tofmatch_3.log '${O2_ROOT}/bin/o2-tof-reco-workflow -b --run --condition-not-after 3385078236000 --use-ccdb --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "itstpcMatch_3",
+                "restdigi_3"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "toftpcmatch_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper toftpcmatch_3.log '${O2_ROOT}/bin/o2-tof-matcher-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;TPCCorrMap.lumiMean=-1\" --track-sources TPC,ITS-TPC,TPC-TRD,ITS-TPC-TRD --combine-devices --use-fit --corrmap-lumi-mode 0 '",
+            "needs": [
+                "tofmatch_3",
+                "tpcreco_3",
+                "itstpcMatch_3",
+                "trdreco2_3"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1000"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "mftreco_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper mftreco_3.log '${O2_ROOT}/bin/o2-mft-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;MFTAlpideParam.roFrameLengthInBC=198\"'",
+            "needs": [
+                "restdigi_3"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "mchreco_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper mchreco_3.log '${O2_ROOT}/bin/o2-mch-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\" --enable-clusters-root-output'",
+            "needs": [
+                "restdigi_3"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "midreco_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper midreco_3.log '${O2_ROOT}/bin/o2-mid-digits-reader-workflow | ${O2_ROOT}/bin/o2-mid-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_3"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "fddreco_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper fddreco_3.log '${O2_ROOT}/bin/o2-fdd-reco-workflow -b --run --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_3"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "fv0reco_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper fv0reco_3.log '${O2_ROOT}/bin/o2-fv0-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "ft0fv0emcctp_digi_3"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "emcalreco_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper emcalreco_3.log '${O2_ROOT}/bin/o2-emcal-reco-workflow --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\" --input-type digits --output-type cells --infile emcaldigits.root --disable-root-output --subspecificationOut 1 | ${O2_ROOT}/bin/o2-emcal-cell-recalibrator-workflow --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\" --input-subspec 1 --output-subspec 0 --no-timecalib --no-gaincalib --isMC | ${O2_ROOT}/bin/o2-emcal-cell-writer-workflow -b --run --condition-not-after 3385078236000 --subspec 0'",
+            "needs": [
+                "ft0fv0emcctp_digi_3"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "phsreco_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper phsreco_3.log '${O2_ROOT}/bin/o2-phos-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_3"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "cpvreco_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper cpvreco_3.log '${O2_ROOT}/bin/o2-cpv-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_3"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "mchmidMatch_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper mchmidMatch_3.log '${O2_ROOT}/bin/o2-muon-tracks-matcher-workflow -b --run --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "mchreco_3",
+                "midreco_3"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "mftmchMatch_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper mftmchMatch_3.log '${O2_ROOT}/bin/o2-globalfwd-matcher-workflow --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;FwdMatching.useMIDMatch=true\"'",
+            "needs": [
+                "mchreco_3",
+                "mftreco_3",
+                "mchmidMatch_3"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "hmpreco_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper hmpreco_3.log '${O2_ROOT}/bin/o2-hmpid-digits-to-clusters-workflow -b --run --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_3"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1000"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "hmpmatch_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper hmpmatch_3.log '${O2_ROOT}/bin/o2-hmpid-matcher-workflow --track-sources ITS-TPC,ITS-TPC-TRD,TPC-TRD -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "hmpreco_3",
+                "itstpcMatch_3",
+                "toftpcmatch_3",
+                "trdreco2_3"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1000"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "pvfinder_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper pvfinder_3.log '${O2_ROOT}/bin/o2-primary-vertexing-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;MFTAlpideParam.roFrameLengthInBC=198;pvertexer.acceptableScale2=9;pvertexer.dbscanMaxDist2=36;pvertexer.dbscanDeltaT=24;pvertexer.maxChi2TZDebris=100;pvertexer.maxMultRatDebris=1.0;pvertexer.dbscanAdaptCoef=20.0;NameConf.mDirMatLUT=..\" --vertexing-sources ITS-TPC,TPC-TRD,ITS-TPC-TRD,TPC-TOF,ITS-TPC-TOF,TPC-TRD-TOF,ITS-TPC-TRD-TOF,MFT-MCH,MCH-MID,ITS,MFT,TPC,TOF,FT0,MID,EMC,PHS,CPV,FDD,HMP,FV0,TRD,MCH,CTP --vertex-track-matching-sources ITS-TPC,TPC-TRD,ITS-TPC-TRD,TPC-TOF,ITS-TPC-TOF,TPC-TRD-TOF,ITS-TPC-TRD-TOF,MFT-MCH,MCH-MID,ITS,MFT,TPC,TOF,FT0,MID,EMC,PHS,CPV,FDD,HMP,FV0,TRD,MCH,CTP --combine-source-devices'",
+            "needs": [
+                "trdreco2_3",
+                "ft0reco_3",
+                "fv0reco_3",
+                "emcalreco_3",
+                "phsreco_3",
+                "cpvreco_3",
+                "fddreco_3",
+                "hmpmatch_3",
+                "itstpcMatch_3",
+                "toftpcmatch_3",
+                "mftmchMatch_3",
+                "mchmidMatch_3"
+            ],
+            "resources": {
+                "cpu": 4,
+                "relative_cpu": null,
+                "mem": "4000"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "svfinder_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper svfinder_3.log '${O2_ROOT}/bin/o2-secondary-vertexing-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --threads 1 --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;NameConf.mDirMatLUT=..;TPCCorrMap.lumiMean=-1\" --corrmap-lumi-mode 0 --vertexing-sources ITS-TPC,TPC-TRD,ITS-TPC-TRD,TPC-TOF,ITS-TPC-TOF,TPC-TRD-TOF,ITS-TPC-TRD-TOF,MFT-MCH,MCH-MID,ITS,MFT,TPC,TOF,FT0,MID,EMC,PHS,CPV,FDD,HMP,FV0,TRD,MCH,CTP --combine-source-devices'",
+            "needs": [
+                "pvfinder_3",
+                "ft0fv0emcctp_digi_3"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "5000"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "aod_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper aod_3.log '[ -f AO2D.root ] && rm AO2D.root; ${O2_ROOT}/bin/o2-aod-producer-workflow --reco-mctracks-only 1 --aod-writer-keep dangling --aod-writer-resfile AO2D --aod-writer-resmode \"UPDATE\" --run-number 300000 -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --info-sources ITS-TPC,TPC-TRD,ITS-TPC-TRD,TPC-TOF,ITS-TPC-TOF,TPC-TRD-TOF,ITS-TPC-TRD-TOF,MFT-MCH,MCH-MID,ITS,MFT,TPC,TOF,FT0,MID,EMC,PHS,CPV,FDD,HMP,FV0,TRD,MCH,CTP --lpmp-prod-tag unknown --anchor-pass ${ALIEN_JDL_LPMANCHORPASSNAME:-unknown} --anchor-prod ${ALIEN_JDL_LPMANCHORPRODUCTION:-unknown} --created-by gsetouel --combine-source-devices --aod-timeframe-id ${ALIEN_PROC_ID}003'",
+            "needs": [
+                "pvfinder_3",
+                "svfinder_3"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "4000"
+            },
+            "timeframe": 3,
+            "labels": [
+                "AOD"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "tpctimeseries_3",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpctimeseries_3.log 'o2-global-track-cluster-reader --disable-mc --cluster-types \"FT0,TOF,TPC\" --track-types \"ITS,TPC,ITS-TPC,ITS-TPC-TOF,ITS-TPC-TRD-TOF\" --primary-vertices | o2-tpc-time-series-workflow --enable-unbinned-root-output --sample-unbinned-tsallis --sampling-factor 0.01 --configKeyValues \"HBFUtils.orbitFirstSampled=320;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\" -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} '",
+            "needs": [
+                "tpcreco_3",
+                "itstpcMatch_3",
+                "toftpcmatch_3",
+                "ft0reco_3",
+                "pvfinder_3",
+                "trdreco2_3"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "2000"
+            },
+            "timeframe": 3,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf3"
+        },
+        {
+            "name": "gensgnconf_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper gensgnconf_4.log 'echo \"placeholder / dummy task\"'",
+            "needs": [],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": 4,
+            "labels": [],
+            "cwd": "tf4"
+        },
+        {
+            "name": "sgngen_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper sgngen_4.log '${O2_ROOT}/bin/o2-sim --noGeant -j 1 --field ccdb --vertexMode kCollContext --run 300000 --configKeyValues \"MFTBase.buildAlignment=true;Diamond.width[2]=6.;\" -g external --configFile /storage3/liveraro/ALICE_PhotonReconstruction/itstpcstudy_new/configK0gun.ini -o genevents --timestamp 1546300800000 --seed 266679462 -n 500 --detectorList ALICE2 --fromCollContext collisioncontext.root:sgn'",
+            "needs": [
+                "gensgnconf_4",
+                "grpcreate",
+                "precollcontext"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": 1000
+            },
+            "timeframe": 4,
+            "labels": [
+                "GEN"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "sgnsim_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper sgnsim_4.log '${O2_ROOT}/bin/o2-sim -e TGeant3 --skipModules ZDC -n 500 --seed 266679462 --field ccdb -j 4 --configKeyValues \"MFTBase.buildAlignment=true;Diamond.width[2]=6.;\" --configFile /storage3/liveraro/ALICE_PhotonReconstruction/itstpcstudy_new/configK0gun.ini -o sgn --detectorList ALICE2 --timestamp 1546300800000 --run 300000 -g extkinO2 --extKinFile genevents_Kine.root --vertexMode kNoVertex --fromCollContext collisioncontext.root'",
+            "needs": [
+                "gensgnconf_4",
+                "grpcreate",
+                "precollcontext",
+                "sgngen_4"
+            ],
+            "resources": {
+                "cpu": 3.5,
+                "relative_cpu": 0.875,
+                "mem": "4000"
+            },
+            "timeframe": 4,
+            "labels": [
+                "GEANT"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "linkGRP_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper linkGRP_4.log 'ln -nsf sgn_grp.root o2sim_grp.root ; ln -nsf sgn_geometry.root o2sim_geometry.root; ln -nsf sgn_geometry-aligned.root o2sim_geometry-aligned.root'",
+            "needs": [
+                "sgnsim_4"
+            ],
+            "resources": {
+                "cpu": "0",
+                "relative_cpu": null,
+                "mem": "0"
+            },
+            "timeframe": 4,
+            "labels": [],
+            "cwd": "tf4"
+        },
+        {
+            "name": "digicontext_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper digicontext_4.log '${O2_ROOT}/bin/o2-sim-digitizer-workflow --only-context --interactionRate 500000 -b --run -n 500 --sims sgn --seed 266679462 --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;DigiParams.passName=${ALIEN_JDL_LPMANCHORPASSNAME:-unanchored}\" --incontext collisioncontext.root --bcPatternFile ccdb'",
+            "needs": [
+                "linkGRP_4",
+                "sgnsim_4"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": 4,
+            "labels": [
+                "DIGI"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "tpcdigi_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcdigi_4.log '${O2_ROOT}/bin/o2-ccdb-downloadccdbfile --host http://alice-ccdb.cern.ch -p TPC/Config/RunInfoV2 --timestamp 1546300800000 --created-not-after 3385078236000 -d ${ALICEO2_CCDB_LOCALCACHE} ; ${O2_ROOT}/bin/o2-sim-digitizer-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} -n 500 --sims sgn --onlyDet TPC --TPCuseCCDB --interactionRate 500000 --tpc-lanes 4 --incontext collisioncontext.root --disable-write-ini --early-forward-policy always --forceSelectedDets --tpc-distortion-type 0 --n-threads-distortions 1 --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;DigiParams.maxOrbitsToDigitize=32;DigiParams.seed=266679462;TPCEleParam.DigiMode=2\" --tpc-chunked-writer'",
+            "needs": [
+                "digicontext_4",
+                "linkGRP_4"
+            ],
+            "resources": {
+                "cpu": 4,
+                "relative_cpu": null,
+                "mem": "9000"
+            },
+            "timeframe": 4,
+            "labels": [
+                "DIGI"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "trddigi_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper trddigi_4.log '${O2_ROOT}/bin/o2-sim-digitizer-workflow -b --run --condition-not-after 3385078236000 -n 500 --sims sgn --onlyDet TRD --interactionRate 500000 --incontext collisioncontext.root --disable-write-ini --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;TRDSimParams.digithreads=4;DigiParams.seed=266679462\" --forceSelectedDets'",
+            "needs": [
+                "digicontext_4"
+            ],
+            "resources": {
+                "cpu": 4,
+                "relative_cpu": null,
+                "mem": "8000"
+            },
+            "timeframe": 4,
+            "labels": [
+                "DIGI"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "restdigi_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper restdigi_4.log '${O2_ROOT}/bin/o2-sim-digitizer-workflow -b --run --condition-not-after 3385078236000 -n 500 --sims sgn --interactionRate 500000 --incontext collisioncontext.root --disable-write-ini --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;MFTAlpideParam.roFrameLengthInBC=198;DigiParams.seed=266679462;MCHDigitizer.seed=266679462\" --onlyDet ITS,TOF,FDD,MCH,MID,MFT,HMP,PHS,CPV --ccdb-tof-sa --forceSelectedDets --combine-devices '",
+            "needs": [
+                "digicontext_4"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": 4,
+            "labels": [
+                "DIGI",
+                "SMALLDIGI"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "ft0fv0emcctp_digi_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper ft0fv0emcctp_digi_4.log '${O2_ROOT}/bin/o2-sim-digitizer-workflow -b --run --condition-not-after 3385078236000 -n 500 --sims sgn --onlyDet FT0,FV0,EMC,CTP --interactionRate 500000 --incontext collisioncontext.root --store-ctp-lumi 0 --disable-write-ini --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;DigiParams.seed=266679462\" --combine-devices --forceSelectedDets'",
+            "needs": [
+                "digicontext_4"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": 4,
+            "labels": [
+                "DIGI",
+                "SMALLDIGI"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "tpcclusterpart0_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcclusterpart0_4.log '${O2_ROOT}/bin/o2-tpc-chunkeddigit-merger --tpc-sectors 0-17 --tpc-lanes 4 | ${O2_ROOT}/bin/o2-tpc-reco-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --input-type digitizer --output-type clusters,send-clusters-per-sector --tpc-native-cluster-writer \" --outfile tpc-native-clusters-part0.root\" --tpc-sectors 0-17 --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;GPU_proc.ompThreads=4\"'",
+            "needs": [
+                "tpcdigi_4",
+                "ft0fv0emcctp_digi_4"
+            ],
+            "resources": {
+                "cpu": "2",
+                "relative_cpu": null,
+                "mem": "8000"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4",
+            "env": {
+                "OMP_NUM_THREADS": "4",
+                "TBB_NUM_THREADS": "4"
+            },
+            "semaphore": "tpctriggers.root",
+            "retry_count": 2
+        },
+        {
+            "name": "tpcclusterpart1_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcclusterpart1_4.log '${O2_ROOT}/bin/o2-tpc-chunkeddigit-merger --tpc-sectors 18-35 --tpc-lanes 4 | ${O2_ROOT}/bin/o2-tpc-reco-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --input-type digitizer --output-type clusters,send-clusters-per-sector --tpc-native-cluster-writer \" --outfile tpc-native-clusters-part1.root\" --tpc-sectors 18-35 --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;GPU_proc.ompThreads=4\"'",
+            "needs": [
+                "tpcdigi_4",
+                "ft0fv0emcctp_digi_4"
+            ],
+            "resources": {
+                "cpu": "2",
+                "relative_cpu": null,
+                "mem": "8000"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4",
+            "env": {
+                "OMP_NUM_THREADS": "4",
+                "TBB_NUM_THREADS": "4"
+            },
+            "semaphore": "tpctriggers.root",
+            "retry_count": 2
+        },
+        {
+            "name": "tpcclustermerge_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcclustermerge_4.log '${O2_ROOT}/bin/o2-commonutils-treemergertool -i tpc-native-clusters-part*.root -o tpc-native-clusters.root -t tpcrec'",
+            "needs": [
+                "tpcclusterpart0_4",
+                "tpcclusterpart1_4"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "10000"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "tpcreco_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcreco_4.log '${O2_ROOT}/bin/o2-tpc-reco-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --input-type clusters --output-type tracks,send-clusters-per-sector --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;GPU_proc.ompThreads=4;TPCCorrMap.lumiMean=-1\" --corrmap-lumi-mode 0 --tpc-mc-time-gain'",
+            "needs": [
+                "ft0fv0emcctp_digi_4",
+                "tpcclustermerge_4"
+            ],
+            "resources": {
+                "cpu": 3.0,
+                "relative_cpu": 0.375,
+                "mem": "16000"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "itsreco_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper itsreco_4.log '${O2_ROOT}/bin/o2-its-reco-workflow -b --run --condition-not-after 3385078236000 --trackerCA --tracking-mode async --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;ITSVertexerParam.phiCut=0.5;ITSVertexerParam.clusterContributorsCut=3;ITSVertexerParam.tanLambdaCut=0.2;NameConf.mDirMatLUT=..\"'",
+            "needs": [
+                "restdigi_4"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "2000"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "ft0reco_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper ft0reco_4.log '${O2_ROOT}/bin/o2-ft0-reco-workflow -b --run --disable-time-offset-calib --disable-slewing-calib --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "ft0fv0emcctp_digi_4"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1000"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "itstpcMatch_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper itstpcMatch_4.log '${O2_ROOT}/bin/o2-tpcits-match-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --tpc-track-reader tpctracks.root --tpc-native-cluster-reader \"--infile tpc-native-clusters.root\" --use-ft0 --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;NameConf.mDirMatLUT=..;TPCCorrMap.lumiMean=-1;tpcitsMatch.cutMatchingChi2=30;tpcitsMatch.askMinTPCRow[0]=10;tpcitsMatch.askMinTPCRow[1]=10;tpcitsMatch.askMinTPCRow[2]=10;tpcitsMatch.askMinTPCRow[3]=10;tpcitsMatch.askMinTPCRow[4]=10;tpcitsMatch.askMinTPCRow[5]=10;tpcitsMatch.askMinTPCRow[6]=10;tpcitsMatch.askMinTPCRow[7]=10;tpcitsMatch.askMinTPCRow[8]=10;tpcitsMatch.askMinTPCRow[9]=10;tpcitsMatch.askMinTPCRow[10]=10;tpcitsMatch.askMinTPCRow[11]=10;tpcitsMatch.askMinTPCRow[12]=10;tpcitsMatch.askMinTPCRow[13]=10;tpcitsMatch.askMinTPCRow[14]=10;tpcitsMatch.askMinTPCRow[15]=10;tpcitsMatch.askMinTPCRow[16]=10;tpcitsMatch.askMinTPCRow[17]=10;tpcitsMatch.askMinTPCRow[18]=10;tpcitsMatch.askMinTPCRow[19]=10;tpcitsMatch.askMinTPCRow[20]=10;tpcitsMatch.askMinTPCRow[21]=10;tpcitsMatch.askMinTPCRow[22]=10;tpcitsMatch.askMinTPCRow[23]=10;tpcitsMatch.askMinTPCRow[24]=10;tpcitsMatch.askMinTPCRow[25]=10;tpcitsMatch.askMinTPCRow[26]=10;tpcitsMatch.askMinTPCRow[27]=10;tpcitsMatch.askMinTPCRow[28]=10;tpcitsMatch.askMinTPCRow[29]=10;tpcitsMatch.askMinTPCRow[30]=10;tpcitsMatch.askMinTPCRow[31]=10;tpcitsMatch.askMinTPCRow[32]=10;tpcitsMatch.askMinTPCRow[33]=10;tpcitsMatch.askMinTPCRow[34]=10;tpcitsMatch.askMinTPCRow[35]=10\" --corrmap-lumi-mode 0 '",
+            "needs": [
+                "tpcreco_4",
+                "itsreco_4",
+                "ft0reco_4"
+            ],
+            "resources": {
+                "cpu": 3.0,
+                "relative_cpu": 0.375,
+                "mem": "8000"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "trdreco_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper trdreco_4.log '${O2_ROOT}/bin/o2-trd-tracklet-transformer -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "trddigi_4",
+                "itstpcMatch_4",
+                "tpcreco_4",
+                "itsreco_4"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "2000"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "trdreco2_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper trdreco2_4.log '${O2_ROOT}/bin/o2-trd-global-tracking -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;NameConf.mDirMatLUT=..;TPCCorrMap.lumiMean=-1\" --track-sources TPC,ITS-TPC --corrmap-lumi-mode 0 '",
+            "needs": [
+                "trdreco_4"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "2000"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "tofmatch_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tofmatch_4.log '${O2_ROOT}/bin/o2-tof-reco-workflow -b --run --condition-not-after 3385078236000 --use-ccdb --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "itstpcMatch_4",
+                "restdigi_4"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "toftpcmatch_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper toftpcmatch_4.log '${O2_ROOT}/bin/o2-tof-matcher-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;TPCCorrMap.lumiMean=-1\" --track-sources TPC,ITS-TPC,TPC-TRD,ITS-TPC-TRD --combine-devices --use-fit --corrmap-lumi-mode 0 '",
+            "needs": [
+                "tofmatch_4",
+                "tpcreco_4",
+                "itstpcMatch_4",
+                "trdreco2_4"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1000"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "mftreco_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper mftreco_4.log '${O2_ROOT}/bin/o2-mft-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;MFTAlpideParam.roFrameLengthInBC=198\"'",
+            "needs": [
+                "restdigi_4"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "mchreco_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper mchreco_4.log '${O2_ROOT}/bin/o2-mch-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\" --enable-clusters-root-output'",
+            "needs": [
+                "restdigi_4"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "midreco_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper midreco_4.log '${O2_ROOT}/bin/o2-mid-digits-reader-workflow | ${O2_ROOT}/bin/o2-mid-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_4"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "fddreco_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper fddreco_4.log '${O2_ROOT}/bin/o2-fdd-reco-workflow -b --run --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_4"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "fv0reco_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper fv0reco_4.log '${O2_ROOT}/bin/o2-fv0-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "ft0fv0emcctp_digi_4"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "emcalreco_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper emcalreco_4.log '${O2_ROOT}/bin/o2-emcal-reco-workflow --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\" --input-type digits --output-type cells --infile emcaldigits.root --disable-root-output --subspecificationOut 1 | ${O2_ROOT}/bin/o2-emcal-cell-recalibrator-workflow --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\" --input-subspec 1 --output-subspec 0 --no-timecalib --no-gaincalib --isMC | ${O2_ROOT}/bin/o2-emcal-cell-writer-workflow -b --run --condition-not-after 3385078236000 --subspec 0'",
+            "needs": [
+                "ft0fv0emcctp_digi_4"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "phsreco_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper phsreco_4.log '${O2_ROOT}/bin/o2-phos-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_4"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "cpvreco_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper cpvreco_4.log '${O2_ROOT}/bin/o2-cpv-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_4"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "mchmidMatch_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper mchmidMatch_4.log '${O2_ROOT}/bin/o2-muon-tracks-matcher-workflow -b --run --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "mchreco_4",
+                "midreco_4"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "mftmchMatch_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper mftmchMatch_4.log '${O2_ROOT}/bin/o2-globalfwd-matcher-workflow --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;FwdMatching.useMIDMatch=true\"'",
+            "needs": [
+                "mchreco_4",
+                "mftreco_4",
+                "mchmidMatch_4"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "hmpreco_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper hmpreco_4.log '${O2_ROOT}/bin/o2-hmpid-digits-to-clusters-workflow -b --run --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_4"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1000"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "hmpmatch_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper hmpmatch_4.log '${O2_ROOT}/bin/o2-hmpid-matcher-workflow --track-sources ITS-TPC,ITS-TPC-TRD,TPC-TRD -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "hmpreco_4",
+                "itstpcMatch_4",
+                "toftpcmatch_4",
+                "trdreco2_4"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1000"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "pvfinder_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper pvfinder_4.log '${O2_ROOT}/bin/o2-primary-vertexing-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;MFTAlpideParam.roFrameLengthInBC=198;pvertexer.acceptableScale2=9;pvertexer.dbscanMaxDist2=36;pvertexer.dbscanDeltaT=24;pvertexer.maxChi2TZDebris=100;pvertexer.maxMultRatDebris=1.0;pvertexer.dbscanAdaptCoef=20.0;NameConf.mDirMatLUT=..\" --vertexing-sources ITS-TPC,TPC-TRD,ITS-TPC-TRD,TPC-TOF,ITS-TPC-TOF,TPC-TRD-TOF,ITS-TPC-TRD-TOF,MFT-MCH,MCH-MID,ITS,MFT,TPC,TOF,FT0,MID,EMC,PHS,CPV,FDD,HMP,FV0,TRD,MCH,CTP --vertex-track-matching-sources ITS-TPC,TPC-TRD,ITS-TPC-TRD,TPC-TOF,ITS-TPC-TOF,TPC-TRD-TOF,ITS-TPC-TRD-TOF,MFT-MCH,MCH-MID,ITS,MFT,TPC,TOF,FT0,MID,EMC,PHS,CPV,FDD,HMP,FV0,TRD,MCH,CTP --combine-source-devices'",
+            "needs": [
+                "trdreco2_4",
+                "ft0reco_4",
+                "fv0reco_4",
+                "emcalreco_4",
+                "phsreco_4",
+                "cpvreco_4",
+                "fddreco_4",
+                "hmpmatch_4",
+                "itstpcMatch_4",
+                "toftpcmatch_4",
+                "mftmchMatch_4",
+                "mchmidMatch_4"
+            ],
+            "resources": {
+                "cpu": 4,
+                "relative_cpu": null,
+                "mem": "4000"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "svfinder_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper svfinder_4.log '${O2_ROOT}/bin/o2-secondary-vertexing-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --threads 1 --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;NameConf.mDirMatLUT=..;TPCCorrMap.lumiMean=-1\" --corrmap-lumi-mode 0 --vertexing-sources ITS-TPC,TPC-TRD,ITS-TPC-TRD,TPC-TOF,ITS-TPC-TOF,TPC-TRD-TOF,ITS-TPC-TRD-TOF,MFT-MCH,MCH-MID,ITS,MFT,TPC,TOF,FT0,MID,EMC,PHS,CPV,FDD,HMP,FV0,TRD,MCH,CTP --combine-source-devices'",
+            "needs": [
+                "pvfinder_4",
+                "ft0fv0emcctp_digi_4"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "5000"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "aod_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper aod_4.log '[ -f AO2D.root ] && rm AO2D.root; ${O2_ROOT}/bin/o2-aod-producer-workflow --reco-mctracks-only 1 --aod-writer-keep dangling --aod-writer-resfile AO2D --aod-writer-resmode \"UPDATE\" --run-number 300000 -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --info-sources ITS-TPC,TPC-TRD,ITS-TPC-TRD,TPC-TOF,ITS-TPC-TOF,TPC-TRD-TOF,ITS-TPC-TRD-TOF,MFT-MCH,MCH-MID,ITS,MFT,TPC,TOF,FT0,MID,EMC,PHS,CPV,FDD,HMP,FV0,TRD,MCH,CTP --lpmp-prod-tag unknown --anchor-pass ${ALIEN_JDL_LPMANCHORPASSNAME:-unknown} --anchor-prod ${ALIEN_JDL_LPMANCHORPRODUCTION:-unknown} --created-by gsetouel --combine-source-devices --aod-timeframe-id ${ALIEN_PROC_ID}004'",
+            "needs": [
+                "pvfinder_4",
+                "svfinder_4"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "4000"
+            },
+            "timeframe": 4,
+            "labels": [
+                "AOD"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "tpctimeseries_4",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpctimeseries_4.log 'o2-global-track-cluster-reader --disable-mc --cluster-types \"FT0,TOF,TPC\" --track-types \"ITS,TPC,ITS-TPC,ITS-TPC-TOF,ITS-TPC-TRD-TOF\" --primary-vertices | o2-tpc-time-series-workflow --enable-unbinned-root-output --sample-unbinned-tsallis --sampling-factor 0.01 --configKeyValues \"HBFUtils.orbitFirstSampled=352;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\" -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} '",
+            "needs": [
+                "tpcreco_4",
+                "itstpcMatch_4",
+                "toftpcmatch_4",
+                "ft0reco_4",
+                "pvfinder_4",
+                "trdreco2_4"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "2000"
+            },
+            "timeframe": 4,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf4"
+        },
+        {
+            "name": "gensgnconf_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper gensgnconf_5.log 'echo \"placeholder / dummy task\"'",
+            "needs": [],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": 5,
+            "labels": [],
+            "cwd": "tf5"
+        },
+        {
+            "name": "sgngen_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper sgngen_5.log '${O2_ROOT}/bin/o2-sim --noGeant -j 1 --field ccdb --vertexMode kCollContext --run 300000 --configKeyValues \"MFTBase.buildAlignment=true;Diamond.width[2]=6.;\" -g external --configFile /storage3/liveraro/ALICE_PhotonReconstruction/itstpcstudy_new/configK0gun.ini -o genevents --timestamp 1546300800000 --seed 266679463 -n 500 --detectorList ALICE2 --fromCollContext collisioncontext.root:sgn'",
+            "needs": [
+                "gensgnconf_5",
+                "grpcreate",
+                "precollcontext"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": 1000
+            },
+            "timeframe": 5,
+            "labels": [
+                "GEN"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "sgnsim_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper sgnsim_5.log '${O2_ROOT}/bin/o2-sim -e TGeant3 --skipModules ZDC -n 500 --seed 266679463 --field ccdb -j 4 --configKeyValues \"MFTBase.buildAlignment=true;Diamond.width[2]=6.;\" --configFile /storage3/liveraro/ALICE_PhotonReconstruction/itstpcstudy_new/configK0gun.ini -o sgn --detectorList ALICE2 --timestamp 1546300800000 --run 300000 -g extkinO2 --extKinFile genevents_Kine.root --vertexMode kNoVertex --fromCollContext collisioncontext.root'",
+            "needs": [
+                "gensgnconf_5",
+                "grpcreate",
+                "precollcontext",
+                "sgngen_5"
+            ],
+            "resources": {
+                "cpu": 3.5,
+                "relative_cpu": 0.875,
+                "mem": "4000"
+            },
+            "timeframe": 5,
+            "labels": [
+                "GEANT"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "linkGRP_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper linkGRP_5.log 'ln -nsf sgn_grp.root o2sim_grp.root ; ln -nsf sgn_geometry.root o2sim_geometry.root; ln -nsf sgn_geometry-aligned.root o2sim_geometry-aligned.root'",
+            "needs": [
+                "sgnsim_5"
+            ],
+            "resources": {
+                "cpu": "0",
+                "relative_cpu": null,
+                "mem": "0"
+            },
+            "timeframe": 5,
+            "labels": [],
+            "cwd": "tf5"
+        },
+        {
+            "name": "digicontext_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper digicontext_5.log '${O2_ROOT}/bin/o2-sim-digitizer-workflow --only-context --interactionRate 500000 -b --run -n 500 --sims sgn --seed 266679463 --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;DigiParams.passName=${ALIEN_JDL_LPMANCHORPASSNAME:-unanchored}\" --incontext collisioncontext.root --bcPatternFile ccdb'",
+            "needs": [
+                "linkGRP_5",
+                "sgnsim_5"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": 5,
+            "labels": [
+                "DIGI"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "tpcdigi_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcdigi_5.log '${O2_ROOT}/bin/o2-ccdb-downloadccdbfile --host http://alice-ccdb.cern.ch -p TPC/Config/RunInfoV2 --timestamp 1546300800000 --created-not-after 3385078236000 -d ${ALICEO2_CCDB_LOCALCACHE} ; ${O2_ROOT}/bin/o2-sim-digitizer-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} -n 500 --sims sgn --onlyDet TPC --TPCuseCCDB --interactionRate 500000 --tpc-lanes 4 --incontext collisioncontext.root --disable-write-ini --early-forward-policy always --forceSelectedDets --tpc-distortion-type 0 --n-threads-distortions 1 --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;DigiParams.maxOrbitsToDigitize=32;DigiParams.seed=266679463;TPCEleParam.DigiMode=2\" --tpc-chunked-writer'",
+            "needs": [
+                "digicontext_5",
+                "linkGRP_5"
+            ],
+            "resources": {
+                "cpu": 4,
+                "relative_cpu": null,
+                "mem": "9000"
+            },
+            "timeframe": 5,
+            "labels": [
+                "DIGI"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "trddigi_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper trddigi_5.log '${O2_ROOT}/bin/o2-sim-digitizer-workflow -b --run --condition-not-after 3385078236000 -n 500 --sims sgn --onlyDet TRD --interactionRate 500000 --incontext collisioncontext.root --disable-write-ini --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;TRDSimParams.digithreads=4;DigiParams.seed=266679463\" --forceSelectedDets'",
+            "needs": [
+                "digicontext_5"
+            ],
+            "resources": {
+                "cpu": 4,
+                "relative_cpu": null,
+                "mem": "8000"
+            },
+            "timeframe": 5,
+            "labels": [
+                "DIGI"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "restdigi_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper restdigi_5.log '${O2_ROOT}/bin/o2-sim-digitizer-workflow -b --run --condition-not-after 3385078236000 -n 500 --sims sgn --interactionRate 500000 --incontext collisioncontext.root --disable-write-ini --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;MFTAlpideParam.roFrameLengthInBC=198;DigiParams.seed=266679463;MCHDigitizer.seed=266679463\" --onlyDet ITS,TOF,FDD,MCH,MID,MFT,HMP,PHS,CPV --ccdb-tof-sa --forceSelectedDets --combine-devices '",
+            "needs": [
+                "digicontext_5"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": 5,
+            "labels": [
+                "DIGI",
+                "SMALLDIGI"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "ft0fv0emcctp_digi_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper ft0fv0emcctp_digi_5.log '${O2_ROOT}/bin/o2-sim-digitizer-workflow -b --run --condition-not-after 3385078236000 -n 500 --sims sgn --onlyDet FT0,FV0,EMC,CTP --interactionRate 500000 --incontext collisioncontext.root --store-ctp-lumi 0 --disable-write-ini --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;DigiParams.seed=266679463\" --combine-devices --forceSelectedDets'",
+            "needs": [
+                "digicontext_5"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": 500
+            },
+            "timeframe": 5,
+            "labels": [
+                "DIGI",
+                "SMALLDIGI"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "tpcclusterpart0_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcclusterpart0_5.log '${O2_ROOT}/bin/o2-tpc-chunkeddigit-merger --tpc-sectors 0-17 --tpc-lanes 4 | ${O2_ROOT}/bin/o2-tpc-reco-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --input-type digitizer --output-type clusters,send-clusters-per-sector --tpc-native-cluster-writer \" --outfile tpc-native-clusters-part0.root\" --tpc-sectors 0-17 --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;GPU_proc.ompThreads=4\"'",
+            "needs": [
+                "tpcdigi_5",
+                "ft0fv0emcctp_digi_5"
+            ],
+            "resources": {
+                "cpu": "2",
+                "relative_cpu": null,
+                "mem": "8000"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5",
+            "env": {
+                "OMP_NUM_THREADS": "4",
+                "TBB_NUM_THREADS": "4"
+            },
+            "semaphore": "tpctriggers.root",
+            "retry_count": 2
+        },
+        {
+            "name": "tpcclusterpart1_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcclusterpart1_5.log '${O2_ROOT}/bin/o2-tpc-chunkeddigit-merger --tpc-sectors 18-35 --tpc-lanes 4 | ${O2_ROOT}/bin/o2-tpc-reco-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --input-type digitizer --output-type clusters,send-clusters-per-sector --tpc-native-cluster-writer \" --outfile tpc-native-clusters-part1.root\" --tpc-sectors 18-35 --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;GPU_proc.ompThreads=4\"'",
+            "needs": [
+                "tpcdigi_5",
+                "ft0fv0emcctp_digi_5"
+            ],
+            "resources": {
+                "cpu": "2",
+                "relative_cpu": null,
+                "mem": "8000"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5",
+            "env": {
+                "OMP_NUM_THREADS": "4",
+                "TBB_NUM_THREADS": "4"
+            },
+            "semaphore": "tpctriggers.root",
+            "retry_count": 2
+        },
+        {
+            "name": "tpcclustermerge_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcclustermerge_5.log '${O2_ROOT}/bin/o2-commonutils-treemergertool -i tpc-native-clusters-part*.root -o tpc-native-clusters.root -t tpcrec'",
+            "needs": [
+                "tpcclusterpart0_5",
+                "tpcclusterpart1_5"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "10000"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "tpcreco_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpcreco_5.log '${O2_ROOT}/bin/o2-tpc-reco-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --input-type clusters --output-type tracks,send-clusters-per-sector --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;GPU_proc.ompThreads=4;TPCCorrMap.lumiMean=-1\" --corrmap-lumi-mode 0 --tpc-mc-time-gain'",
+            "needs": [
+                "ft0fv0emcctp_digi_5",
+                "tpcclustermerge_5"
+            ],
+            "resources": {
+                "cpu": 3.0,
+                "relative_cpu": 0.375,
+                "mem": "16000"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "itsreco_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper itsreco_5.log '${O2_ROOT}/bin/o2-its-reco-workflow -b --run --condition-not-after 3385078236000 --trackerCA --tracking-mode async --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;ITSVertexerParam.phiCut=0.5;ITSVertexerParam.clusterContributorsCut=3;ITSVertexerParam.tanLambdaCut=0.2;NameConf.mDirMatLUT=..\"'",
+            "needs": [
+                "restdigi_5"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "2000"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "ft0reco_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper ft0reco_5.log '${O2_ROOT}/bin/o2-ft0-reco-workflow -b --run --disable-time-offset-calib --disable-slewing-calib --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "ft0fv0emcctp_digi_5"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1000"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "itstpcMatch_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper itstpcMatch_5.log '${O2_ROOT}/bin/o2-tpcits-match-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --tpc-track-reader tpctracks.root --tpc-native-cluster-reader \"--infile tpc-native-clusters.root\" --use-ft0 --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;NameConf.mDirMatLUT=..;TPCCorrMap.lumiMean=-1;tpcitsMatch.cutMatchingChi2=30;tpcitsMatch.askMinTPCRow[0]=10;tpcitsMatch.askMinTPCRow[1]=10;tpcitsMatch.askMinTPCRow[2]=10;tpcitsMatch.askMinTPCRow[3]=10;tpcitsMatch.askMinTPCRow[4]=10;tpcitsMatch.askMinTPCRow[5]=10;tpcitsMatch.askMinTPCRow[6]=10;tpcitsMatch.askMinTPCRow[7]=10;tpcitsMatch.askMinTPCRow[8]=10;tpcitsMatch.askMinTPCRow[9]=10;tpcitsMatch.askMinTPCRow[10]=10;tpcitsMatch.askMinTPCRow[11]=10;tpcitsMatch.askMinTPCRow[12]=10;tpcitsMatch.askMinTPCRow[13]=10;tpcitsMatch.askMinTPCRow[14]=10;tpcitsMatch.askMinTPCRow[15]=10;tpcitsMatch.askMinTPCRow[16]=10;tpcitsMatch.askMinTPCRow[17]=10;tpcitsMatch.askMinTPCRow[18]=10;tpcitsMatch.askMinTPCRow[19]=10;tpcitsMatch.askMinTPCRow[20]=10;tpcitsMatch.askMinTPCRow[21]=10;tpcitsMatch.askMinTPCRow[22]=10;tpcitsMatch.askMinTPCRow[23]=10;tpcitsMatch.askMinTPCRow[24]=10;tpcitsMatch.askMinTPCRow[25]=10;tpcitsMatch.askMinTPCRow[26]=10;tpcitsMatch.askMinTPCRow[27]=10;tpcitsMatch.askMinTPCRow[28]=10;tpcitsMatch.askMinTPCRow[29]=10;tpcitsMatch.askMinTPCRow[30]=10;tpcitsMatch.askMinTPCRow[31]=10;tpcitsMatch.askMinTPCRow[32]=10;tpcitsMatch.askMinTPCRow[33]=10;tpcitsMatch.askMinTPCRow[34]=10;tpcitsMatch.askMinTPCRow[35]=10\" --corrmap-lumi-mode 0 '",
+            "needs": [
+                "tpcreco_5",
+                "itsreco_5",
+                "ft0reco_5"
+            ],
+            "resources": {
+                "cpu": 3.0,
+                "relative_cpu": 0.375,
+                "mem": "8000"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "trdreco_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper trdreco_5.log '${O2_ROOT}/bin/o2-trd-tracklet-transformer -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "trddigi_5",
+                "itstpcMatch_5",
+                "tpcreco_5",
+                "itsreco_5"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "2000"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "trdreco2_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper trdreco2_5.log '${O2_ROOT}/bin/o2-trd-global-tracking -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;NameConf.mDirMatLUT=..;TPCCorrMap.lumiMean=-1\" --track-sources TPC,ITS-TPC --corrmap-lumi-mode 0 '",
+            "needs": [
+                "trdreco_5"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "2000"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "tofmatch_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tofmatch_5.log '${O2_ROOT}/bin/o2-tof-reco-workflow -b --run --condition-not-after 3385078236000 --use-ccdb --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "itstpcMatch_5",
+                "restdigi_5"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "toftpcmatch_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper toftpcmatch_5.log '${O2_ROOT}/bin/o2-tof-matcher-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;TPCCorrMap.lumiMean=-1\" --track-sources TPC,ITS-TPC,TPC-TRD,ITS-TPC-TRD --combine-devices --use-fit --corrmap-lumi-mode 0 '",
+            "needs": [
+                "tofmatch_5",
+                "tpcreco_5",
+                "itstpcMatch_5",
+                "trdreco2_5"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1000"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "mftreco_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper mftreco_5.log '${O2_ROOT}/bin/o2-mft-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;MFTAlpideParam.roFrameLengthInBC=198\"'",
+            "needs": [
+                "restdigi_5"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "mchreco_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper mchreco_5.log '${O2_ROOT}/bin/o2-mch-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\" --enable-clusters-root-output'",
+            "needs": [
+                "restdigi_5"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "midreco_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper midreco_5.log '${O2_ROOT}/bin/o2-mid-digits-reader-workflow | ${O2_ROOT}/bin/o2-mid-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_5"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "fddreco_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper fddreco_5.log '${O2_ROOT}/bin/o2-fdd-reco-workflow -b --run --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_5"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "fv0reco_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper fv0reco_5.log '${O2_ROOT}/bin/o2-fv0-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "ft0fv0emcctp_digi_5"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "emcalreco_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper emcalreco_5.log '${O2_ROOT}/bin/o2-emcal-reco-workflow --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\" --input-type digits --output-type cells --infile emcaldigits.root --disable-root-output --subspecificationOut 1 | ${O2_ROOT}/bin/o2-emcal-cell-recalibrator-workflow --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\" --input-subspec 1 --output-subspec 0 --no-timecalib --no-gaincalib --isMC | ${O2_ROOT}/bin/o2-emcal-cell-writer-workflow -b --run --condition-not-after 3385078236000 --subspec 0'",
+            "needs": [
+                "ft0fv0emcctp_digi_5"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "phsreco_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper phsreco_5.log '${O2_ROOT}/bin/o2-phos-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_5"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "cpvreco_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper cpvreco_5.log '${O2_ROOT}/bin/o2-cpv-reco-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_5"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "mchmidMatch_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper mchmidMatch_5.log '${O2_ROOT}/bin/o2-muon-tracks-matcher-workflow -b --run --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "mchreco_5",
+                "midreco_5"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "mftmchMatch_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper mftmchMatch_5.log '${O2_ROOT}/bin/o2-globalfwd-matcher-workflow --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;FwdMatching.useMIDMatch=true\"'",
+            "needs": [
+                "mchreco_5",
+                "mftreco_5",
+                "mchmidMatch_5"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1500"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "hmpreco_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper hmpreco_5.log '${O2_ROOT}/bin/o2-hmpid-digits-to-clusters-workflow -b --run --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "restdigi_5"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1000"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "hmpmatch_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper hmpmatch_5.log '${O2_ROOT}/bin/o2-hmpid-matcher-workflow --track-sources ITS-TPC,ITS-TPC-TRD,TPC-TRD -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\"'",
+            "needs": [
+                "hmpreco_5",
+                "itstpcMatch_5",
+                "toftpcmatch_5",
+                "trdreco2_5"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "1000"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "pvfinder_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper pvfinder_5.log '${O2_ROOT}/bin/o2-primary-vertexing-workflow -b --run --condition-not-after 3385078236000 --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;MFTAlpideParam.roFrameLengthInBC=198;pvertexer.acceptableScale2=9;pvertexer.dbscanMaxDist2=36;pvertexer.dbscanDeltaT=24;pvertexer.maxChi2TZDebris=100;pvertexer.maxMultRatDebris=1.0;pvertexer.dbscanAdaptCoef=20.0;NameConf.mDirMatLUT=..\" --vertexing-sources ITS-TPC,TPC-TRD,ITS-TPC-TRD,TPC-TOF,ITS-TPC-TOF,TPC-TRD-TOF,ITS-TPC-TRD-TOF,MFT-MCH,MCH-MID,ITS,MFT,TPC,TOF,FT0,MID,EMC,PHS,CPV,FDD,HMP,FV0,TRD,MCH,CTP --vertex-track-matching-sources ITS-TPC,TPC-TRD,ITS-TPC-TRD,TPC-TOF,ITS-TPC-TOF,TPC-TRD-TOF,ITS-TPC-TRD-TOF,MFT-MCH,MCH-MID,ITS,MFT,TPC,TOF,FT0,MID,EMC,PHS,CPV,FDD,HMP,FV0,TRD,MCH,CTP --combine-source-devices'",
+            "needs": [
+                "trdreco2_5",
+                "ft0reco_5",
+                "fv0reco_5",
+                "emcalreco_5",
+                "phsreco_5",
+                "cpvreco_5",
+                "fddreco_5",
+                "hmpmatch_5",
+                "itstpcMatch_5",
+                "toftpcmatch_5",
+                "mftmchMatch_5",
+                "mchmidMatch_5"
+            ],
+            "resources": {
+                "cpu": 4,
+                "relative_cpu": null,
+                "mem": "4000"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "svfinder_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper svfinder_5.log '${O2_ROOT}/bin/o2-secondary-vertexing-workflow -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --threads 1 --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000;NameConf.mDirMatLUT=..;TPCCorrMap.lumiMean=-1\" --corrmap-lumi-mode 0 --vertexing-sources ITS-TPC,TPC-TRD,ITS-TPC-TRD,TPC-TOF,ITS-TPC-TOF,TPC-TRD-TOF,ITS-TPC-TRD-TOF,MFT-MCH,MCH-MID,ITS,MFT,TPC,TOF,FT0,MID,EMC,PHS,CPV,FDD,HMP,FV0,TRD,MCH,CTP --combine-source-devices'",
+            "needs": [
+                "pvfinder_5",
+                "ft0fv0emcctp_digi_5"
+            ],
+            "resources": {
+                "cpu": 1,
+                "relative_cpu": null,
+                "mem": "5000"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "aod_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper aod_5.log '[ -f AO2D.root ] && rm AO2D.root; ${O2_ROOT}/bin/o2-aod-producer-workflow --reco-mctracks-only 1 --aod-writer-keep dangling --aod-writer-resfile AO2D --aod-writer-resmode \"UPDATE\" --run-number 300000 -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} --info-sources ITS-TPC,TPC-TRD,ITS-TPC-TRD,TPC-TOF,ITS-TPC-TOF,TPC-TRD-TOF,ITS-TPC-TRD-TOF,MFT-MCH,MCH-MID,ITS,MFT,TPC,TOF,FT0,MID,EMC,PHS,CPV,FDD,HMP,FV0,TRD,MCH,CTP --lpmp-prod-tag unknown --anchor-pass ${ALIEN_JDL_LPMANCHORPASSNAME:-unknown} --anchor-prod ${ALIEN_JDL_LPMANCHORPRODUCTION:-unknown} --created-by gsetouel --combine-source-devices --aod-timeframe-id ${ALIEN_PROC_ID}005'",
+            "needs": [
+                "pvfinder_5",
+                "svfinder_5"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "4000"
+            },
+            "timeframe": 5,
+            "labels": [
+                "AOD"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "tpctimeseries_5",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper tpctimeseries_5.log 'o2-global-track-cluster-reader --disable-mc --cluster-types \"FT0,TOF,TPC\" --track-types \"ITS,TPC,ITS-TPC,ITS-TPC-TOF,ITS-TPC-TRD-TOF\" --primary-vertices | o2-tpc-time-series-workflow --enable-unbinned-root-output --sample-unbinned-tsallis --sampling-factor 0.01 --configKeyValues \"HBFUtils.orbitFirstSampled=384;HBFUtils.nHBFPerTF=32;HBFUtils.orbitFirst=256;HBFUtils.runNumber=300000;HBFUtils.startTime=1546300800000\" -b --run --condition-not-after 3385078236000 --shm-segment-size ${SHMSIZE:-50000000000} '",
+            "needs": [
+                "tpcreco_5",
+                "itstpcMatch_5",
+                "toftpcmatch_5",
+                "ft0reco_5",
+                "pvfinder_5",
+                "trdreco2_5"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "2000"
+            },
+            "timeframe": 5,
+            "labels": [
+                "RECO"
+            ],
+            "cwd": "tf5"
+        },
+        {
+            "name": "aodmerge",
+            "cmd": ". ${O2_ROOT}/share/scripts/jobutils2.sh; taskwrapper aodmerge.log ' set -e ; [ -f aodmerge_input.txt ] && rm aodmerge_input.txt; for i in `seq 1 5`; do echo \"tf${i}/AO2D.root\" >> aodmerge_input.txt; done; o2-aod-merger --input aodmerge_input.txt --output AO2D_pre.root ; root -q -b -l \"${O2DPG_ROOT}/MC/utils/AODBcRewriter.C(\\\"AO2D_pre.root\\\",\\\"AO2D.root\\\")\" ; ${O2DPG_ROOT}/MC/bin/o2dpg_determine_eventstat.py'",
+            "needs": [
+                "aod_1",
+                "aod_2",
+                "aod_3",
+                "aod_4",
+                "aod_5"
+            ],
+            "resources": {
+                "cpu": "1",
+                "relative_cpu": null,
+                "mem": "2000"
+            },
+            "timeframe": -1,
+            "labels": [
+                "AOD"
+            ],
+            "cwd": "./",
+            "alternative_alienv_package": "None"
+        }
+    ],
+    "meta": {
+        "run": 300000,
+        "productionTag": "unknown",
+        "timestamp": 1546300800000,
+        "conditionDB": "http://alice-ccdb.cern.ch",
+        "qcdbHost": "http://ali-qcdbmc-gpn.cern.ch:8083",
+        "condition_not_after": 3385078236000,
+        "orbitsPerTF": 32,
+        "anchor_config": "",
+        "overwrite_config": "",
+        "dump_config": "user_config.json",
+        "ns": 500,
+        "gen": "external",
+        "proc": "none",
+        "trigger": "",
+        "ini": "/storage3/liveraro/ALICE_PhotonReconstruction/itstpcstudy_new/configK0gun.ini",
+        "confKey": "Diamond.width[2]=6.",
+        "detectorList": "ALICE2",
+        "readoutDets": "all",
+        "make_evtpool": false,
+        "interactionRate": "500000",
+        "bcPatternFile": "",
+        "meanVertexPerRunTxtFile": "",
+        "eCM": "13600",
+        "eA": -1,
+        "eB": -1,
+        "col": "pp",
+        "field": "-5",
+        "with_qed": false,
+        "ptHatMin": 0,
+        "ptHatMax": -1,
+        "weightPow": -1,
+        "embedding": false,
+        "embeddPattern": "@0:e1",
+        "nb": 20,
+        "genBkg": "",
+        "procBkg": "heavy_ion",
+        "iniBkg": "${O2DPG_ROOT}/MC/config/common/ini/basic.ini",
+        "confKeyBkg": "",
+        "colBkg": "PbPb",
+        "confKeyQED": "",
+        "e": "TGeant3",
+        "tf": 5,
+        "production_offset": 0,
+        "n_workers": 4,
+        "force_n_workers": false,
+        "skipModules": [
+            "ZDC"
+        ],
+        "skipReadout": [
+            ""
+        ],
+        "with_ZDC": false,
+        "seed": "1234",
+        "o": "workflow.json",
+        "noIPC": null,
+        "upload_bkg_to": null,
+        "use_bkg_from": null,
+        "early_tf_cleanup": false,
+        "pregenCollContext": false,
+        "data_anchoring": "",
+        "no_combine_smaller_digi": false,
+        "no_combine_dpl_devices": false,
+        "no_mc_labels": false,
+        "no_tpc_digitchunking": false,
+        "no_strangeness_tracking": false,
+        "combine_tpc_clusterization": false,
+        "first_orbit": 256,
+        "orbits_early": 1,
+        "sor": 1546300800000,
+        "run_anchored": false,
+        "alternative_reco_software": "",
+        "dpl_child_driver": "",
+        "event_gen_mode": "separated",
+        "include_qc": false,
+        "include_local_qc": false,
+        "include_analysis": false,
+        "mft_reco_full": false,
+        "mft_assessment_full": false,
+        "tpc_distortion_type": 0,
+        "tpc_corrmap_lumi_mode": 2,
+        "ctp_scaler": 0,
+        "fwdmatching_assessment_full": false,
+        "fwdmatching_4_param": false,
+        "fwdmatching_cut_4_param": false,
+        "fwdmatching_save_trainingdata": false
+    }
+}

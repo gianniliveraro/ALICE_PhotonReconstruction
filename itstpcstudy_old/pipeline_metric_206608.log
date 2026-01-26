@@ -1,7 +1,0 @@
-2023-04-06 11:30:38,079 INFO {'cpu_limit': '64', 'mem_limit': 231770.619140625, 'workflow_file': '/storage1/daviddc/k0gun/workflow_mod.json', 'target_task': ['aod'], 'rerun_from': None, 'target_labels': []}
-2023-04-06 11:30:54,712 INFO {'iter': 1, 'name': 'grpcreate', 'cpu': 0.0, 'uss': 180.80859375, 'pss': 334.1982421875, 'nice': 0, 'swap': 0.0, 'label': []}
-2023-04-06 11:30:54,756 INFO {'iter': 1, 'name': 'matbuddownloader', 'cpu': 0.0, 'uss': 144.26953125, 'pss': 297.603515625, 'nice': 0, 'swap': 0.0, 'label': []}
-2023-04-06 11:31:00,067 INFO {'iter': 2, 'name': 'sgnsim_1', 'cpu': 0.0, 'uss': 2.65625, 'pss': 6.150390625, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
-2023-04-06 11:31:00,103 INFO {'iter': 2, 'name': 'sgnsim_2', 'cpu': 0.0, 'uss': 4.79296875, 'pss': 11.5634765625, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}
-2023-04-06 11:31:05,250 INFO {'iter': 3, 'name': 'sgnsim_1', 'cpu': 6.3, 'uss': 619.75, 'pss': 813.427734375, 'nice': 0, 'swap': 0.0, 'label': ['GEANT']}
-2023-04-06 11:31:05,351 INFO {'iter': 3, 'name': 'sgnsim_2', 'cpu': 6.0, 'uss': 628.04296875, 'pss': 821.3173828125, 'nice': 19, 'swap': 0.0, 'label': ['GEANT']}

@@ -1,0 +1,20 @@
+{
+  "ConfigParams": {
+    "MFTAlpideParam": {
+      "roFrameLengthInBC": 198
+    },
+    "ITSVertexerParam": {
+      "phiCut": 0.5,
+      "clusterContributorsCut": 3,
+      "tanLambdaCut": 0.2
+    },
+    "pvertexer": {
+      "acceptableScale2": 9,
+      "dbscanMaxDist2": 36,
+      "dbscanDeltaT": 24,
+      "maxChi2TZDebris": 100,
+      "maxMultRatDebris": 1.0,
+      "dbscanAdaptCoef": 20.0
+    }
+  }
+}
