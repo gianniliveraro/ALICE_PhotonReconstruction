@@ -97,7 +97,7 @@ for _, row in df.iterrows():
     pT = 1.0 / abs(row["fSigned1Pt"])  # GeV
     charge = np.sign(row["fSigned1Pt"])
 
-    line=dict(width=2, color="red" if charge < 0 else "blue")
+    line=dict(width=2, color="blue" if charge < 0 else "red")
     fig.add_trace(go.Scatter3d(
         x=x,
         y=y,
