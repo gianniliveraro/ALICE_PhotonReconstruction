@@ -15,7 +15,7 @@ CollisionID = 1  # Select tracks from this collision only
 df = pd.read_parquet("AO2D_1.parquet")
 df = df[df.fIndexCollisions == CollisionID]
 
-print("Número de tracks carregados:", len(df))
+print("N. Charged tracks:", len(df))
 
 # ==========================================
 # Track propagation function
@@ -59,6 +59,16 @@ DetectorsRadius_mm = [
     610, 788, 848, 2466, 2580, 2780
 ]
 
+DetectorsZ_cm = [
+    27, 27, 27, 84, 84, 147, 147, # ITS
+    500, 500, 500, 500, 500, 500  # TPC
+]
+
+Detectors_Opacity = [
+    0.4, 0.4, 0.4, 0.3, 0.3, 0.2, 0.2, # ITS
+    0.15, 0.15, 0.15, 0.15, 0.15, 0.15  # TPC
+]
+
 DetectorsColors = [
     "#cb6682", "#cb6682", "#cb6682",
     "#78bf88", "#78bf88",
@@ -68,27 +78,30 @@ DetectorsColors = [
 ]
 
 phi = np.linspace(0, 2*np.pi, 60)
-z_extent = np.linspace(-300, 300, 2)  # cm
 
-Phi, Z = np.meshgrid(phi, z_extent)
-
-for r_mm, color in zip(DetectorsRadius_mm, DetectorsColors):
+Nsurfaces = 0
+for r_mm, z_cm, color in zip(DetectorsRadius_mm, DetectorsZ_cm, DetectorsColors):
     r = r_mm * 0.1  # mm → cm
+
+    z_extent = np.linspace(-z_cm/2, z_cm/2, 2)  # cm
+
+    Phi, Z = np.meshgrid(phi, z_extent)
 
     Y = r * np.cos(Phi)
     Zc = r * np.sin(Phi)
-    X = Z  # z físico → eixo x visual
+    X = Z 
 
     fig.add_trace(go.Surface(
         x=X,
         y=Y,
         z=Zc,
         showscale=False,
-        opacity=0.15,
+        opacity=Detectors_Opacity[Nsurfaces],
         surfacecolor=np.ones_like(X),
         colorscale=[[0, color], [1, color]]
     ))
 
+    Nsurfaces += 1
 # ==========================================
 # Tracks
 # ==========================================
