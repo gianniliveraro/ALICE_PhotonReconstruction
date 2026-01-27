@@ -1,0 +1,4 @@
+file:/storage3/liveraro/ALICE_PhotonReconstruction/OutputData/Localpp_PhotonEnriched/Reference/AO2D_10.root alien:/alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Reference/AO2D_10.root
+file:/storage3/liveraro/ALICE_PhotonReconstruction/OutputData/Localpp_PhotonEnriched/Reference/AO2D_11.root alien:/alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Reference/AO2D_11.root
+file:/storage3/liveraro/ALICE_PhotonReconstruction/OutputData/Localpp_PhotonEnriched/Reference/AO2D_12.root alien:/alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Reference/AO2D_12.root
+file:/storage3/liveraro/ALICE_PhotonReconstruction/OutputData/Localpp_PhotonEnriched/Reference/AO2D_13.root alien:/alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Reference/AO2D_13.root
