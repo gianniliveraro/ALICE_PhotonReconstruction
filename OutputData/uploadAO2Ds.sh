@@ -42,4 +42,4 @@ find . -maxdepth 3 -type f -name "AO2D_*.root" | sort | while read -r f; do
 done
 
 # Upload files!
-#alien.py cp -T 10 -input GRID_FileListToUpload.txt
+alien.py cp -T 20 -input GRID_FileListToUpload.txt
