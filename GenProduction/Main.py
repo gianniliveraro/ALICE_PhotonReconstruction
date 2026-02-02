@@ -16,7 +16,7 @@ import subprocess
 import time 
 
 # Change this to your desired output directory
-OutputDir = "Localpp_PhotonEnriched"
+OutputDir = "Localpp_MinBias"
 
 # ------------------ PARAMETER SPACE ------------------
 Test_params = {
