@@ -11,6 +11,7 @@ cp configs.sh ${1}/.
 cp configParticleGun.ini ${1}/.
 cp configCustomParticleGun.cfg ${1}/.
 cp generator_pythia8_gun.C ${1}/.
+cp ALICEStandard_Run3.cmnd ${1}/.
 cd ${1}
 
 echo "We are at batch `pwd`"

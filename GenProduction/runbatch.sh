@@ -21,6 +21,7 @@ cp runSimulation.sh ../GenProduction/${OutputDir}/.
 cp runbatch.sh ../GenProduction/${OutputDir}/.
 cp configParticleGun.ini ../GenProduction/${OutputDir}/.
 cp configCustomParticleGun.cfg ../GenProduction/${OutputDir}/.
+cp ALICEStandard_Run3.cmnd ../GenProduction/${OutputDir}/.
 cp generator_pythia8_gun.C ../GenProduction/${OutputDir}/.  
 cp FilesBeforeITSTPCMatchingToDelete.txt ../GenProduction/${OutputDir}/.
 cp FilesAfterITSTPCMatchingToDelete.txt ../GenProduction/${OutputDir}/.
