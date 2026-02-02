@@ -1,0 +1,1818 @@
+[INFO] Event selection autoconfiguring from metadata. Availability of info for Run 2/3 is 0
+[WARN] Metadata info missing or incomplete. Make sure --aod-file is provided at the end of the last workflow and that the AO2D has metadata stored.
+[WARN] Initializing with Run 3 data as default. Please note you will not be able to change settings manually.
+[WARN] You should instead make sure the metadata is read in correctly.
+[INFO] Initialising O2 Data Processing Layer. Driver PID: 259771.
+[INFO] Driver listening on port: 27851
+[INFO] Rate limiting set up at 2000 MB and 64 timeframes distributed over 1 readers
+[INFO] O2 Data Processing Layer initialised. We brake for nobody.
+[INFO] Optimised build. O2DEBUG / LOG(debug) / LOGF(debug) / assert statement will not be shown.
+[INFO] Redeployment of configuration asked.
+[INFO] Starting internal-dpl-clock on pid 259780
+[INFO] Starting internal-dpl-aod-reader on pid 259781
+[INFO] Starting internal-dpl-aod-spawner on pid 259782
+[INFO] Starting internal-dpl-aod-index-builder on pid 259783
+[INFO] Starting eventselection-run3 on pid 259784
+[INFO] Starting fwd-track-to-collision-association on pid 259785
+[INFO] Starting pid-tpc-service on pid 259786
+[INFO] Starting ft0-corrected-table on pid 259787
+[INFO] Starting propagation-service on pid 259788
+[INFO] Starting v0mlscoresconverter on pid 259789
+[INFO] Starting tof-signal on pid 259790
+[INFO] Starting track-selection on pid 259791
+[INFO] Starting ambiguous-track-propagation on pid 259792
+[INFO] Starting tof-event-time on pid 259793
+[INFO] Starting mult-cent-table on pid 259794
+[INFO] Starting tof-pid-full on pid 259795
+[INFO] Starting tof-pid-beta on pid 259796
+[INFO] Starting mc-collision-extra on pid 259797
+[INFO] Starting strangederivedbuilder on pid 259798
+[INFO] Starting strangenesstofpid on pid 259799
+[INFO] Starting findable-study on pid 259800
+[INFO] Starting strderived-gen-q-a on pid 259801
+[INFO] Starting internal-dpl-aod-writer on pid 259802
+[INFO] Starting internal-dpl-aod-global-analysis-file-sink on pid 259803
+[INFO] Starting internal-dpl-injected-dummy-sink on pid 259804
+[INFO] Redeployment of configuration done.
+[259784:eventselection-run3]: [INFO] Event selection autoconfiguring from metadata. Availability of info for Run 2/3 is 0
+[259784:eventselection-run3]: [WARN] Metadata info missing or incomplete. Make sure --aod-file is provided at the end of the last workflow and that the AO2D has metadata stored.
+[259784:eventselection-run3]: [WARN] Initializing with Run 3 data as default. Please note you will not be able to change settings manually.
+[259784:eventselection-run3]: [WARN] You should instead make sure the metadata is read in correctly.
+[259783:internal-dpl-aod-index-builder]: [INFO] Instrumenting crash signals
+[259784:eventselection-run3]: [INFO] Instrumenting crash signals
+[259782:internal-dpl-aod-spawner]: [INFO] Instrumenting crash signals
+[259785:fwd-track-to-collision-association]: [INFO] Instrumenting crash signals
+[259783:internal-dpl-aod-index-builder]: [INFO] Spawning new device internal-dpl-aod-index-builder in process with pid 259783
+[259783:internal-dpl-aod-index-builder]: [13:09:53][INFO] 
+[259783:internal-dpl-aod-index-builder]:       ______      _    _______  _________ 
+[259783:internal-dpl-aod-index-builder]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259783:internal-dpl-aod-index-builder]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259783:internal-dpl-aod-index-builder]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259783:internal-dpl-aod-index-builder]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259783:internal-dpl-aod-index-builder]: 
+[259783:internal-dpl-aod-index-builder]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259783:internal-dpl-aod-index-builder]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259783:internal-dpl-aod-index-builder]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259783:internal-dpl-aod-index-builder]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259783:internal-dpl-aod-index-builder]: [13:09:53][STATE] BINDING ---> BOUND
+[259783:internal-dpl-aod-index-builder]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259783:internal-dpl-aod-index-builder]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259783:internal-dpl-aod-index-builder]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259783:internal-dpl-aod-index-builder]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259783:internal-dpl-aod-index-builder]: [13:09:53][STATE] READY ---> RUNNING
+[259783:internal-dpl-aod-index-builder]: [13:09:53][INFO] fair::mq::Device running...
+[259783:internal-dpl-aod-index-builder]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259783:internal-dpl-aod-index-builder]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259786:pid-tpc-service]: [INFO] Instrumenting crash signals
+[259787:ft0-corrected-table]: [INFO] Instrumenting crash signals
+[259784:eventselection-run3]: [INFO] Spawning new device eventselection-run3 in process with pid 259784
+[259784:eventselection-run3]: [13:09:53][INFO] 
+[259784:eventselection-run3]:       ______      _    _______  _________ 
+[259784:eventselection-run3]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259784:eventselection-run3]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259784:eventselection-run3]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259784:eventselection-run3]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259784:eventselection-run3]: 
+[259784:eventselection-run3]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259788:propagation-service]: [INFO] Instrumenting crash signals
+[259789:v0mlscoresconverter]: [INFO] Instrumenting crash signals
+[259784:eventselection-run3]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259784:eventselection-run3]: [13:09:53][INFO] Init CcdApi with UserAgentID: o2-analysis-eve/o2-analysis-event-selection-service@259784 target/Linux_x86_64 init/1770034193130 id/oussama@comsolpc session/SmNXP9pV , Host: http://alice-ccdb.cern.ch/, Curl timeouts: upload:20 download:5
+[259784:eventselection-run3]: [13:09:53][INFO] Init CcdApi with UserAgentID: o2-analysis-eve/o2-analysis-event-selection-service@259784 target/Linux_x86_64 init/1770034193130 id/oussama@comsolpc session/SmNXP9pV , Host: http://alice-ccdb.cern.ch, Curl timeouts: upload:20 download:5
+[259784:eventselection-run3]: [13:09:53][INFO] From metadata this data is from Run 2
+[259784:eventselection-run3]: [13:09:53][INFO] From metadata this data is from Data
+[259784:eventselection-run3]: [13:09:53][INFO] Auto-enabling table: BcSels
+[259784:eventselection-run3]: [13:09:53][INFO] Auto-enabling table: EvSels
+[259784:eventselection-run3]: [13:09:53][INFO] BC Selection / Autodetection for aod::BcSels: subscription present, will generate.
+[259784:eventselection-run3]: [13:09:53][INFO] Auto-enabling table: EvSels
+[259784:eventselection-run3]: [13:09:53][INFO] Event Selection / Autodetecting for aod::EvSels: subscription present, will generate.
+[259784:eventselection-run3]: [13:09:53][INFO] Auto-enabling table: BcSels
+[259784:eventselection-run3]: [13:09:53][INFO] Auto-enabling table: EvSels
+[259784:eventselection-run3]: [13:09:53][INFO] Luminosity / Autodetection for aod::BcSels: subscription present, will generate.
+[259782:internal-dpl-aod-spawner]: [INFO] Spawning new device internal-dpl-aod-spawner in process with pid 259782
+[259782:internal-dpl-aod-spawner]: [13:09:53][INFO] 
+[259782:internal-dpl-aod-spawner]:       ______      _    _______  _________ 
+[259782:internal-dpl-aod-spawner]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259782:internal-dpl-aod-spawner]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259782:internal-dpl-aod-spawner]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259782:internal-dpl-aod-spawner]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259782:internal-dpl-aod-spawner]: 
+[259782:internal-dpl-aod-spawner]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259790:tof-signal]: [INFO] Instrumenting crash signals
+[259785:fwd-track-to-collision-association]: [INFO] Spawning new device fwd-track-to-collision-association in process with pid 259785
+[259785:fwd-track-to-collision-association]: [13:09:53][INFO] 
+[259785:fwd-track-to-collision-association]:       ______      _    _______  _________ 
+[259785:fwd-track-to-collision-association]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259785:fwd-track-to-collision-association]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259785:fwd-track-to-collision-association]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259785:fwd-track-to-collision-association]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259785:fwd-track-to-collision-association]: 
+[259785:fwd-track-to-collision-association]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259782:internal-dpl-aod-spawner]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259785:fwd-track-to-collision-association]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259791:track-selection]: [INFO] Instrumenting crash signals
+[259785:fwd-track-to-collision-association]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259785:fwd-track-to-collision-association]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259782:internal-dpl-aod-spawner]: /local/workspace/DailyBuilds/DailyO2-ubuntu2404/daily-tags.onuiTBKb8d/BUILD/24a6b1a7b5202aef95888a6dcc13602254507764/arrow/src_tmp/cpp/src/gandiva/cache.cc:58: Creating gandiva cache with capacity of 5000
+[259785:fwd-track-to-collision-association]: [13:09:53][STATE] BINDING ---> BOUND
+[259785:fwd-track-to-collision-association]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259785:fwd-track-to-collision-association]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259785:fwd-track-to-collision-association]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259782:internal-dpl-aod-spawner]: /local/workspace/DailyBuilds/DailyO2-ubuntu2404/daily-tags.onuiTBKb8d/BUILD/24a6b1a7b5202aef95888a6dcc13602254507764/arrow/src_tmp/cpp/src/gandiva/engine.cc:282: Detected CPU Name : znver5
+[259782:internal-dpl-aod-spawner]: /local/workspace/DailyBuilds/DailyO2-ubuntu2404/daily-tags.onuiTBKb8d/BUILD/24a6b1a7b5202aef95888a6dcc13602254507764/arrow/src_tmp/cpp/src/gandiva/engine.cc:283: Detected CPU Features: [ +prfchw -cldemote +avx +aes +sahf +pclmul -xop +crc32 -amx-fp8 +xsaves -avx512fp16 -usermsr -sm4 -egpr +sse4.1 +avx512ifma +xsave +sse4.2 -tsxldtrk -sm3 -ptwrite -widekl -movrs +invpcid +64bit +xsavec -avx10.1-512 +avx512vpopcntdq +cmov +avx512vp2intersect +avx512cd +movbe -avxvnniint8 -ccmp -amx-int8 -kl -avx10.1-256 +evex512 +avxvnni -rtm +adx +avx2 -hreset +movdiri -serialize -sha512 +vpclmulqdq +avx512vl -uintr -cf +clflushopt -raoint -cmpccxadd +bmi -amx-tile +sse -avx10.2-256 +gfni -avxvnniint16 -amx-fp16 -zu -ndd +xsaveopt +rdrnd +avx512f -amx-bf16 +avx512bf16 +avx512vnni -push2pop2 +cx8 +avx512bw +sse3 +pku -nf -amx-tf32 -amx-avx512 +fsgsbase +clzero +mwaitx -lwp +lzcnt +sha +movdir64b -ppx +wbnoinvd -enqcmd -amx-transpose -avx10.2-512 -avxneconvert -tbm -pconfig -amx-complex +ssse3 +cx16 +bmi2 +fma +popcnt -avxifma +f16c +avx512bitalg +rdpru +clwb +mmx +sse2 +rdseed +avx512vbmi2 -prefetchi -amx-movrs +rdpid -fma4 +avx512vbmi +shstk +vaes -waitpkg -sgx +fxsr +avx512dq +sse4a]
+[259785:fwd-track-to-collision-association]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259785:fwd-track-to-collision-association]: [13:09:53][STATE] READY ---> RUNNING
+[259785:fwd-track-to-collision-association]: [13:09:53][INFO] fair::mq::Device running...
+[259785:fwd-track-to-collision-association]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259785:fwd-track-to-collision-association]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259786:pid-tpc-service]: [INFO] Spawning new device pid-tpc-service in process with pid 259786
+[259792:ambiguous-track-propagation]: [INFO] Instrumenting crash signals
+[259786:pid-tpc-service]: [13:09:53][INFO] 
+[259786:pid-tpc-service]:       ______      _    _______  _________ 
+[259786:pid-tpc-service]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259786:pid-tpc-service]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259786:pid-tpc-service]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259786:pid-tpc-service]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259786:pid-tpc-service]: 
+[259786:pid-tpc-service]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259787:ft0-corrected-table]: [INFO] Spawning new device ft0-corrected-table in process with pid 259787
+[259787:ft0-corrected-table]: [13:09:53][INFO] 
+[259787:ft0-corrected-table]:       ______      _    _______  _________ 
+[259787:ft0-corrected-table]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259787:ft0-corrected-table]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259787:ft0-corrected-table]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259787:ft0-corrected-table]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259787:ft0-corrected-table]: 
+[259787:ft0-corrected-table]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259793:tof-event-time]: [INFO] Instrumenting crash signals
+[259786:pid-tpc-service]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259787:ft0-corrected-table]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259786:pid-tpc-service]: [13:09:53][INFO] Init CcdApi with UserAgentID: o2-analysis-pid/o2-analysis-pid-tpc-service@259786 target/Linux_x86_64 init/1770034193088 id/oussama@comsolpc session/V0ZpTDOI , Host: http://alice-ccdb.cern.ch/, Curl timeouts: upload:20 download:5
+[259786:pid-tpc-service]: [13:09:53][INFO] Init CcdApi with UserAgentID: o2-analysis-pid/o2-analysis-pid-tpc-service@259786 target/Linux_x86_64 init/1770034193088 id/oussama@comsolpc session/V0ZpTDOI , Host: http://alice-ccdb.cern.ch, Curl timeouts: upload:20 download:5
+[259786:pid-tpc-service]: [13:09:53][INFO] Init CcdApi with UserAgentID: o2-analysis-pid/o2-analysis-pid-tpc-service@259786 target/Linux_x86_64 init/1770034193088 id/oussama@comsolpc session/lVl6G8yd , Host: http://alice-ccdb.cern.ch, Curl timeouts: upload:20 download:5
+[259786:pid-tpc-service]: [13:09:53][INFO] ***************************************************
+[259786:pid-tpc-service]: [13:09:53][INFO]  the skipTPConly flag has a value of -1! 
+[259786:pid-tpc-service]: [13:09:53][INFO]  ---> autodetecting TPC-only track necessity now 
+[259786:pid-tpc-service]: [13:09:53][INFO] ***************************************************
+[259786:pid-tpc-service]: [13:09:53][INFO] Will search for #0 device requiring TPC PID for TPC only: photon-conversion-builder
+[259786:pid-tpc-service]: [13:09:53][INFO] ***************************************************
+[259786:pid-tpc-service]: [13:09:53][INFO]  ---> propagation service detected, checking if photons enabled...
+[259786:pid-tpc-service]: [13:09:53][INFO]  ---> propagation service: photons enabled, will calculate TPC PID for TPC only tracks.
+[259786:pid-tpc-service]: [13:09:53][INFO] ***************************************************
+[259786:pid-tpc-service]: [13:09:53][INFO] Auto-disabling table: DEdxsCorrected
+[259786:pid-tpc-service]: [13:09:53][INFO] Auto-enabling table: pidTPCFullEl
+[259786:pid-tpc-service]: [13:09:53][INFO] Auto-disabling table: pidTPCFullMu
+[259786:pid-tpc-service]: [13:09:53][INFO] Auto-enabling table: pidTPCFullPi
+[259786:pid-tpc-service]: [13:09:53][INFO] Auto-enabling table: pidTPCFullKa
+[259786:pid-tpc-service]: [13:09:53][INFO] Auto-enabling table: pidTPCFullPr
+[259786:pid-tpc-service]: [13:09:53][INFO] Auto-disabling table: pidTPCFullDe
+[259786:pid-tpc-service]: [13:09:53][INFO] Auto-disabling table: pidTPCFullTr
+[259786:pid-tpc-service]: [13:09:53][INFO] Auto-enabling table: pidTPCFullHe
+[259786:pid-tpc-service]: [13:09:53][INFO] Auto-disabling table: pidTPCFullAl
+[259786:pid-tpc-service]: [13:09:53][INFO] Auto-disabling table: pidTPCEl
+[259786:pid-tpc-service]: [13:09:53][INFO] Auto-disabling table: pidTPCMu
+[259786:pid-tpc-service]: [13:09:53][INFO] Auto-disabling table: pidTPCPi
+[259786:pid-tpc-service]: [13:09:53][INFO] Auto-disabling table: pidTPCKa
+[259786:pid-tpc-service]: [13:09:53][INFO] Auto-disabling table: pidTPCPr
+[259786:pid-tpc-service]: [13:09:53][INFO] Auto-disabling table: pidTPCDe
+[259786:pid-tpc-service]: [13:09:53][INFO] Auto-disabling table: pidTPCTr
+[259786:pid-tpc-service]: [13:09:53][INFO] Auto-disabling table: pidTPCHe
+[259786:pid-tpc-service]: [13:09:53][INFO] Auto-disabling table: pidTPCAl
+[259786:pid-tpc-service]: [13:09:53][INFO] From metadata this data is from Data
+[259786:pid-tpc-service]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259786:pid-tpc-service]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259787:ft0-corrected-table]: [13:09:53][INFO] Init CcdApi with UserAgentID: o2-analysis-ft0/o2-analysis-ft0-corrected-table@259787 target/Linux_x86_64 init/1770034193151 id/oussama@comsolpc session/2dOcWOIz , Host: http://alice-ccdb.cern.ch/, Curl timeouts: upload:20 download:5
+[259787:ft0-corrected-table]: [13:09:53][INFO] Init CcdApi with UserAgentID: o2-analysis-ft0/o2-analysis-ft0-corrected-table@259787 target/Linux_x86_64 init/1770034193151 id/oussama@comsolpc session/2dOcWOIz , Host: http://alice-ccdb.cern.ch, Curl timeouts: upload:20 download:5
+[259786:pid-tpc-service]: [13:09:53][STATE] BINDING ---> BOUND
+[259786:pid-tpc-service]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259787:ft0-corrected-table]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259787:ft0-corrected-table]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259786:pid-tpc-service]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259786:pid-tpc-service]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259787:ft0-corrected-table]: [13:09:53][STATE] BINDING ---> BOUND
+[259787:ft0-corrected-table]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259787:ft0-corrected-table]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259787:ft0-corrected-table]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259786:pid-tpc-service]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259786:pid-tpc-service]: [13:09:53][STATE] READY ---> RUNNING
+[259786:pid-tpc-service]: [13:09:53][INFO] fair::mq::Device running...
+[259786:pid-tpc-service]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259786:pid-tpc-service]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259787:ft0-corrected-table]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259787:ft0-corrected-table]: [13:09:53][STATE] READY ---> RUNNING
+[259787:ft0-corrected-table]: [13:09:53][INFO] fair::mq::Device running...
+[259787:ft0-corrected-table]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259787:ft0-corrected-table]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[INFO] Controller for internal-dpl-aod-reader not yet available.
+[259794:mult-cent-table]: [INFO] Instrumenting crash signals
+[259788:propagation-service]: [INFO] Spawning new device propagation-service in process with pid 259788
+[259795:tof-pid-full]: [INFO] Instrumenting crash signals
+[259788:propagation-service]: [13:09:53][INFO] 
+[259788:propagation-service]:       ______      _    _______  _________ 
+[259788:propagation-service]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259788:propagation-service]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259788:propagation-service]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259788:propagation-service]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259788:propagation-service]: 
+[259788:propagation-service]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259789:v0mlscoresconverter]: [INFO] Spawning new device v0mlscoresconverter in process with pid 259789
+[259788:propagation-service]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259789:v0mlscoresconverter]: [13:09:53][INFO] 
+[259789:v0mlscoresconverter]:       ______      _    _______  _________ 
+[259789:v0mlscoresconverter]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259789:v0mlscoresconverter]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259789:v0mlscoresconverter]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259789:v0mlscoresconverter]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259789:v0mlscoresconverter]: 
+[259789:v0mlscoresconverter]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259788:propagation-service]: [13:09:53][INFO] Init CcdApi with UserAgentID: o2-analysis-pro/o2-analysis-propagationservice@259788 target/Linux_x86_64 init/1770034193162 id/oussama@comsolpc session/ZV0fiINa , Host: http://alice-ccdb.cern.ch/, Curl timeouts: upload:20 download:5
+[259788:propagation-service]: [13:09:53][INFO] Init CcdApi with UserAgentID: o2-analysis-pro/o2-analysis-propagationservice@259788 target/Linux_x86_64 init/1770034193162 id/oussama@comsolpc session/ZV0fiINa , Host: http://alice-ccdb.cern.ch, Curl timeouts: upload:20 download:5
+[259788:propagation-service]: [13:09:53][INFO]  Track propagation table detection results:
+[259788:propagation-service]: [13:09:53][INFO]  ---> Will generate Tracks table.
+[259788:propagation-service]: [13:09:53][INFO]  ---> Will generate TracksDCA table.
+[259789:v0mlscoresconverter]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259788:propagation-service]: [13:09:53][INFO] Checking if strangeness building is required
+[259788:propagation-service]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to V0Indices (version 0)
+[259788:propagation-service]: [13:09:53][INFO] Device strangenesstofpid has subscribed to V0Indices (version 0)
+[259788:propagation-service]: [13:09:53][INFO] Device v0mlscoresconverter has subscribed to V0CoresBase (version 0)
+[259788:propagation-service]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to V0CoresBase (version 0)
+[259788:propagation-service]: [13:09:53][INFO] Device strangenesstofpid has subscribed to V0CoresBase (version 0)
+[259788:propagation-service]: [13:09:53][INFO] Device findable-study has subscribed to V0CoresBase (version 0)
+[259788:propagation-service]: [13:09:53][INFO] Device strderived-gen-q-a has subscribed to V0CoresBase (version 0)
+[259788:propagation-service]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to CascIndices (version 0)
+[259788:propagation-service]: [13:09:53][INFO] Device strangenesstofpid has subscribed to CascIndices (version 0)
+[259788:propagation-service]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to KFCascIndices (version 0)
+[259788:propagation-service]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to TraCascIndices (version 0)
+[259788:propagation-service]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to StoredCascCores (version 0)
+[259788:propagation-service]: [13:09:53][INFO] Device strangenesstofpid has subscribed to StoredCascCores (version 0)
+[259788:propagation-service]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to StoredKFCascCores (version 0)
+[259788:propagation-service]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to StoredTraCascCores (version 0)
+[259788:propagation-service]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to V0TrackXs (version 0)
+[259789:v0mlscoresconverter]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259788:propagation-service]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to CascBBs (version 0)
+[259789:v0mlscoresconverter]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259788:propagation-service]: [13:09:53][INFO] Device findable-study has subscribed to V0CoreMCLabels (version 0)
+[259788:propagation-service]: [13:09:53][INFO] Device strderived-gen-q-a has subscribed to V0CoreMCLabels (version 0)
+[259788:propagation-service]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to V0MCCollRefs (version 0)
+[259788:propagation-service]: [13:09:53][INFO] Device findable-study has subscribed to V0MCCollRefs (version 0)
+[259788:propagation-service]: [13:09:53][INFO] Device strderived-gen-q-a has subscribed to V0MCCollRefs (version 0)
+[259788:propagation-service]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to McCascLabels (version 0)
+[259789:v0mlscoresconverter]: [13:09:53][STATE] BINDING ---> BOUND
+[259789:v0mlscoresconverter]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259789:v0mlscoresconverter]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259790:tof-signal]: [INFO] Spawning new device tof-signal in process with pid 259790
+[259796:tof-pid-beta]: [INFO] Instrumenting crash signals
+[259790:tof-signal]: [13:09:53][INFO] 
+[259790:tof-signal]:       ______      _    _______  _________ 
+[259790:tof-signal]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259790:tof-signal]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259790:tof-signal]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259790:tof-signal]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259790:tof-signal]: 
+[259790:tof-signal]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259791:track-selection]: [INFO] Spawning new device track-selection in process with pid 259791
+[259789:v0mlscoresconverter]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259791:track-selection]: [13:09:53][INFO] 
+[259791:track-selection]:       ______      _    _______  _________ 
+[259791:track-selection]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259791:track-selection]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259791:track-selection]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259791:track-selection]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259791:track-selection]: 
+[259789:v0mlscoresconverter]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259789:v0mlscoresconverter]: [13:09:53][STATE] READY ---> RUNNING
+[259789:v0mlscoresconverter]: [13:09:53][INFO] fair::mq::Device running...
+[259789:v0mlscoresconverter]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259791:track-selection]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259789:v0mlscoresconverter]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259790:tof-signal]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259790:tof-signal]: [13:09:53][INFO] Table TOFSignal enabled!
+[259790:tof-signal]: [13:09:53][INFO] Configuring selections for good match: 999 low mult 999 mult. threshold 0
+[259791:track-selection]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259790:tof-signal]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259790:tof-signal]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259791:track-selection]: [13:09:53][INFO] Auto-disabling table: TrackSelection
+[259791:track-selection]: [13:09:53][INFO] Auto-disabling table: TrackSelectionExtension
+[259791:track-selection]: [13:09:53][INFO] setting up getGlobalTrackSelectionRun3ITSMatch(TrackSelection::GlobalTrackRun3ITSMatching::Run3ITSibAny, 0);
+[259791:track-selection]: [13:09:53][INFO] Track selection, set track type: 254
+[259791:track-selection]: [13:09:53][INFO] Track selection, set pt range: 0.1 - 1e+10
+[259791:track-selection]: [13:09:53][INFO] Track selection, set eta range: -0.8 - 0.8
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require ITS refit: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require TPC refit: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require golden chi2: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set min N crossed rows TPC: 70
+[259791:track-selection]: [13:09:53][INFO] Track selection, set min N crossed rows over findable clusters TPC: 0.8
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max chi2 per cluster TPC: 4
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require hits in ITS layers: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max chi2 per cluster ITS: 36
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max DCA xy pt dep: 0.0455
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max DCA z: 2
+[259791:track-selection]: [13:09:53][INFO] Track selection, set track type: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require hits in ITS layers: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set pt range: 0.1 - 1e+10
+[259791:track-selection]: [13:09:53][INFO] Track selection, set eta range: -1 - 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set track type: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection:
+[259791:track-selection]: [13:09:53][INFO] TrackType == 1
+[259791:track-selection]: [13:09:53][INFO] PtRange in [0.1, 1e+10]
+[259791:track-selection]: [13:09:53][INFO] EtaRange in [-1, 1]
+[259791:track-selection]: [13:09:53][INFO] TPCNCls > 0
+[259791:track-selection]: [13:09:53][INFO] TPCCrossedRows > 70
+[259791:track-selection]: [13:09:53][INFO] TPCCrossedRowsOverNCls > 0.8
+[259791:track-selection]: [13:09:53][INFO] TPCChi2NDF < 4
+[259791:track-selection]: [13:09:53][INFO] TPCRefit == 1
+[259791:track-selection]: [13:09:53][INFO] ITSNCls > 0
+[259791:track-selection]: [13:09:53][INFO] ITSChi2NDF < 36
+[259791:track-selection]: [13:09:53][INFO] ITSRefit == 1
+[259791:track-selection]: [13:09:53][INFO] ITSHits == 
+[259791:track-selection]: [13:09:53][INFO] GoldenChi2 == 1
+[259791:track-selection]: [13:09:53][INFO] DCAxy < 1e+10
+[259791:track-selection]: [13:09:53][INFO] DCAz < 2
+[259791:track-selection]: [13:09:53][INFO] TPCFracSharedCls < 1e+10
+[259791:track-selection]: [13:09:53][INFO] Track selection, set track type: 254
+[259791:track-selection]: [13:09:53][INFO] Track selection, set pt range: 0.1 - 1e+10
+[259791:track-selection]: [13:09:53][INFO] Track selection, set eta range: -0.8 - 0.8
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require ITS refit: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require TPC refit: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require golden chi2: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set min N crossed rows TPC: 70
+[259791:track-selection]: [13:09:53][INFO] Track selection, set min N crossed rows over findable clusters TPC: 0.8
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max chi2 per cluster TPC: 4
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require hits in ITS layers: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max chi2 per cluster ITS: 36
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max DCA xy pt dep: 0.0455
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max DCA z: 2
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require no hits in ITS layers
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require hits in ITS layers: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set pt range: 0.1 - 1e+10
+[259791:track-selection]: [13:09:53][INFO] Track selection, set eta range: -1 - 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set track type: 254
+[259791:track-selection]: [13:09:53][INFO] Track selection, set pt range: 0.1 - 1e+10
+[259791:track-selection]: [13:09:53][INFO] Track selection, set eta range: -0.8 - 0.8
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require ITS refit: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require TPC refit: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require golden chi2: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set min N crossed rows TPC: 70
+[259791:track-selection]: [13:09:53][INFO] Track selection, set min N crossed rows over findable clusters TPC: 0.8
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max chi2 per cluster TPC: 4
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require hits in ITS layers: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max chi2 per cluster ITS: 36
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max DCA xy pt dep: 0.0455
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max DCA z: 2
+[259791:track-selection]: [13:09:53][INFO] Track selection, set track type: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require hits in ITS layers: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set track type: 254
+[259791:track-selection]: [13:09:53][INFO] Track selection, set pt range: 0.1 - 1e+10
+[259791:track-selection]: [13:09:53][INFO] Track selection, set eta range: -0.8 - 0.8
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require ITS refit: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require TPC refit: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require golden chi2: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set min N crossed rows TPC: 70
+[259791:track-selection]: [13:09:53][INFO] Track selection, set min N crossed rows over findable clusters TPC: 0.8
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max chi2 per cluster TPC: 4
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require hits in ITS layers: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max chi2 per cluster ITS: 36
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max DCA xy pt dep: 0.0455
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max DCA z: 2
+[259791:track-selection]: [13:09:53][INFO] Track selection, set track type: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require hits in ITS layers: 2
+[259791:track-selection]: [13:09:53][INFO] Track selection, set track type: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set pt range: 0.1 - 1e+10
+[259791:track-selection]: [13:09:53][INFO] Track selection, set eta range: -0.8 - 0.8
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require ITS refit: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require TPC refit: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require golden chi2: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set min N crossed rows TPC: 70
+[259791:track-selection]: [13:09:53][INFO] Track selection, set min N crossed rows over findable clusters TPC: 0.8
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max chi2 per cluster TPC: 4
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require hits in ITS layers: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max chi2 per cluster ITS: 36
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max DCA z: 2
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max DCA xy: 0.25
+[259791:track-selection]: [13:09:53][INFO] Track selection, set track type: 254
+[259791:track-selection]: [13:09:53][INFO] Track selection, set pt range: 0.1 - 1e+10
+[259791:track-selection]: [13:09:53][INFO] Track selection, set eta range: -0.8 - 0.8
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require ITS refit: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require TPC refit: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require golden chi2: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set min N crossed rows TPC: 70
+[259791:track-selection]: [13:09:53][INFO] Track selection, set min N crossed rows over findable clusters TPC: 0.8
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max chi2 per cluster TPC: 4
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require hits in ITS layers: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max chi2 per cluster ITS: 36
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max DCA xy pt dep: 0.0455
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max DCA z: 2
+[259791:track-selection]: [13:09:53][INFO] Track selection, set track type: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require hits in ITS layers: 2
+[259791:track-selection]: [13:09:53][INFO] setting up filtBit5 = getJEGlobalTrackSelectionRun2();
+[259791:track-selection]: [13:09:53][INFO] Track selection, set track type: 254
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require ITS refit: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require TPC refit: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require golden chi2: 1
+[259791:track-selection]: [13:09:53][INFO] Track selection, set min N crossed rows TPC: 70
+[259791:track-selection]: [13:09:53][INFO] Track selection, set min N crossed rows over findable clusters TPC: 0.8
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max chi2 per cluster TPC: 4
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max chi2 per cluster ITS: 36
+[259791:track-selection]: [13:09:53][INFO] Track selection, set pt range: 0.15 - 1000
+[259791:track-selection]: [13:09:53][INFO] Track selection, set eta range: -0.9 - 0.9
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max DCA xy pt dep: 1e+10
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max DCA xy: 2.4
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max DCA z: 3.2
+[259791:track-selection]: [13:09:53][INFO] Track selection, set require hits in ITS layers: 0
+[259791:track-selection]: [13:09:53][INFO] Track selection, set max fraction of shared clusters TPC: 0.4
+[259790:tof-signal]: [13:09:53][STATE] BINDING ---> BOUND
+[259790:tof-signal]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259790:tof-signal]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259790:tof-signal]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259791:track-selection]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259791:track-selection]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259790:tof-signal]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259790:tof-signal]: [13:09:53][STATE] READY ---> RUNNING
+[259790:tof-signal]: [13:09:53][INFO] fair::mq::Device running...
+[259790:tof-signal]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259790:tof-signal]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259791:track-selection]: [13:09:53][STATE] BINDING ---> BOUND
+[259791:track-selection]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259791:track-selection]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259791:track-selection]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259797:mc-collision-extra]: [INFO] Instrumenting crash signals
+[259791:track-selection]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259791:track-selection]: [13:09:53][STATE] READY ---> RUNNING
+[259791:track-selection]: [13:09:53][INFO] fair::mq::Device running...
+[259791:track-selection]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259791:track-selection]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259792:ambiguous-track-propagation]: [INFO] Spawning new device ambiguous-track-propagation in process with pid 259792
+[259792:ambiguous-track-propagation]: [13:09:53][INFO] 
+[259792:ambiguous-track-propagation]:       ______      _    _______  _________ 
+[259792:ambiguous-track-propagation]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259792:ambiguous-track-propagation]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259792:ambiguous-track-propagation]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259792:ambiguous-track-propagation]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259792:ambiguous-track-propagation]: 
+[259792:ambiguous-track-propagation]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259792:ambiguous-track-propagation]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259792:ambiguous-track-propagation]: [13:09:53][INFO] Init CcdApi with UserAgentID: o2-analysis-mm-/o2-analysis-mm-track-propagation@259792 target/Linux_x86_64 init/1770034193177 id/oussama@comsolpc session/5ODtyRRT , Host: http://alice-ccdb.cern.ch/, Curl timeouts: upload:20 download:5
+[259792:ambiguous-track-propagation]: [13:09:53][INFO] Init CcdApi with UserAgentID: o2-analysis-mm-/o2-analysis-mm-track-propagation@259792 target/Linux_x86_64 init/1770034193177 id/oussama@comsolpc session/5ODtyRRT , Host: http://alice-ccdb.cern.ch, Curl timeouts: upload:20 download:5
+[259792:ambiguous-track-propagation]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259792:ambiguous-track-propagation]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259792:ambiguous-track-propagation]: [13:09:53][STATE] BINDING ---> BOUND
+[259792:ambiguous-track-propagation]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259792:ambiguous-track-propagation]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259792:ambiguous-track-propagation]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259792:ambiguous-track-propagation]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259792:ambiguous-track-propagation]: [13:09:53][STATE] READY ---> RUNNING
+[259792:ambiguous-track-propagation]: [13:09:53][INFO] fair::mq::Device running...
+[259792:ambiguous-track-propagation]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259792:ambiguous-track-propagation]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259794:mult-cent-table]: [INFO] Spawning new device mult-cent-table in process with pid 259794
+[259798:strangederivedbuilder]: [INFO] Instrumenting crash signals
+[259799:strangenesstofpid]: [INFO] Instrumenting crash signals
+[259794:mult-cent-table]: [13:09:53][INFO] 
+[259794:mult-cent-table]:       ______      _    _______  _________ 
+[259794:mult-cent-table]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259794:mult-cent-table]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259794:mult-cent-table]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259794:mult-cent-table]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259794:mult-cent-table]: 
+[259794:mult-cent-table]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259793:tof-event-time]: [INFO] Spawning new device tof-event-time in process with pid 259793
+[259793:tof-event-time]: [13:09:53][INFO] 
+[259793:tof-event-time]:       ______      _    _______  _________ 
+[259793:tof-event-time]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259793:tof-event-time]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259793:tof-event-time]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259793:tof-event-time]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259793:tof-event-time]: 
+[259793:tof-event-time]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259795:tof-pid-full]: [INFO] Spawning new device tof-pid-full in process with pid 259795
+[259793:tof-event-time]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259795:tof-pid-full]: [13:09:53][INFO] 
+[259795:tof-pid-full]:       ______      _    _______  _________ 
+[259795:tof-pid-full]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259795:tof-pid-full]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259795:tof-pid-full]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259795:tof-pid-full]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259795:tof-pid-full]: 
+[259795:tof-pid-full]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259793:tof-event-time]: [13:09:53][INFO] Init CcdApi with UserAgentID: o2-analysis-pid/o2-analysis-pid-tof-base@259793 target/Linux_x86_64 init/1770034193186 id/oussama@comsolpc session/xYI3yXho , Host: http://alice-ccdb.cern.ch/, Curl timeouts: upload:20 download:5
+[259793:tof-event-time]: [13:09:53][INFO] Checking for option 'ccdb-url' in task 'tof-signal'
+[259793:tof-event-time]: [13:09:53][INFO]  Device 0 internal-dpl-clock
+[259793:tof-event-time]: [13:09:53][INFO]  Device 1 internal-dpl-aod-reader
+[259793:tof-event-time]: [13:09:53][INFO]  Device 2 internal-dpl-aod-spawner
+[259793:tof-event-time]: [13:09:53][INFO]  Device 3 internal-dpl-aod-index-builder
+[259793:tof-event-time]: [13:09:53][INFO]  Device 4 eventselection-run3
+[259793:tof-event-time]: [13:09:53][INFO]  Device 5 fwd-track-to-collision-association
+[259793:tof-event-time]: [13:09:53][INFO]  Device 6 pid-tpc-service
+[259793:tof-event-time]: [13:09:53][INFO]  Device 7 ft0-corrected-table
+[259793:tof-event-time]: [13:09:53][INFO]  Device 8 propagation-service
+[259793:tof-event-time]: [13:09:53][INFO]  Device 9 v0mlscoresconverter
+[259793:tof-event-time]: [13:09:53][INFO]  Device 10 tof-signal
+[259793:tof-event-time]: [13:09:53][INFO]   Option 0 ccdb-url of type 4 = 'http://alice-ccdb.cern.ch'
+[259793:tof-event-time]: [13:09:53][INFO]    Found option 'ccdb-url of type LabeledArray<float>
+[259793:tof-event-time]: [13:09:53][INFO]   Option 1 ccdb-timestamp of type 1 = '-1'
+[259793:tof-event-time]: [13:09:53][INFO]   Option 2 timeShiftCCDBPath of type 4 = ''
+[259793:tof-event-time]: [13:09:53][INFO]   Option 3 distanceForGoodMatch of type 2 = '999'
+[259793:tof-event-time]: [13:09:53][INFO]   Option 4 distanceForGoodMatchLowMult of type 2 = '999'
+[259793:tof-event-time]: [13:09:53][INFO]   Option 5 multThreshold of type 0 = '0'
+[259793:tof-event-time]: [13:09:53][INFO]   Option 6 enableQaHistograms of type 5 = '0'
+[259793:tof-event-time]: [13:09:53][INFO]   Option 7 processRun3 of type 5 = '1'
+[259793:tof-event-time]: [13:09:53][INFO]   Option 8 processRun2 of type 5 = '0'
+[259793:tof-event-time]: [13:09:53][INFO] Checking for option 'ccdb-timestamp' in task 'tof-signal'
+[259793:tof-event-time]: [13:09:53][INFO]  Device 0 internal-dpl-clock
+[259793:tof-event-time]: [13:09:53][INFO]  Device 1 internal-dpl-aod-reader
+[259793:tof-event-time]: [13:09:53][INFO]  Device 2 internal-dpl-aod-spawner
+[259793:tof-event-time]: [13:09:53][INFO]  Device 3 internal-dpl-aod-index-builder
+[259793:tof-event-time]: [13:09:53][INFO]  Device 4 eventselection-run3
+[259793:tof-event-time]: [13:09:53][INFO]  Device 5 fwd-track-to-collision-association
+[259793:tof-event-time]: [13:09:53][INFO]  Device 6 pid-tpc-service
+[259793:tof-event-time]: [13:09:53][INFO]  Device 7 ft0-corrected-table
+[259793:tof-event-time]: [13:09:53][INFO]  Device 8 propagation-service
+[259793:tof-event-time]: [13:09:53][INFO]  Device 9 v0mlscoresconverter
+[259793:tof-event-time]: [13:09:53][INFO]  Device 10 tof-signal
+[259793:tof-event-time]: [13:09:53][INFO]   Option 0 ccdb-url of type 4 = 'http://alice-ccdb.cern.ch'
+[259793:tof-event-time]: [13:09:53][INFO]   Option 1 ccdb-timestamp of type 1 = '-1'
+[259793:tof-event-time]: [13:09:53][INFO]    Found option 'ccdb-timestamp of type LabeledArray<float>
+[259793:tof-event-time]: [13:09:53][INFO]   Option 2 timeShiftCCDBPath of type 4 = ''
+[259793:tof-event-time]: [13:09:53][INFO]   Option 3 distanceForGoodMatch of type 2 = '999'
+[259793:tof-event-time]: [13:09:53][INFO]   Option 4 distanceForGoodMatchLowMult of type 2 = '999'
+[259793:tof-event-time]: [13:09:53][INFO]   Option 5 multThreshold of type 0 = '0'
+[259793:tof-event-time]: [13:09:53][INFO]   Option 6 enableQaHistograms of type 5 = '0'
+[259793:tof-event-time]: [13:09:53][INFO]   Option 7 processRun3 of type 5 = '1'
+[259793:tof-event-time]: [13:09:53][INFO]   Option 8 processRun2 of type 5 = '0'
+[259793:tof-event-time]: [13:09:53][INFO] Configuring track sample for TOF ev. time: 0.5 < p < 2
+[259793:tof-event-time]: [13:09:53][INFO] Enabling process function: processNoFT0
+[259793:tof-event-time]: [13:09:53][INFO] Table TOFEvTime enabled!
+[259793:tof-event-time]: [13:09:53][INFO] Init CcdApi with UserAgentID: o2-analysis-pid/o2-analysis-pid-tof-base@259793 target/Linux_x86_64 init/1770034193186 id/oussama@comsolpc session/xYI3yXho , Host: http://alice-ccdb.cern.ch, Curl timeouts: upload:20 download:5
+[259793:tof-event-time]: [13:09:53][WARN] Passed autodetect mode for pass, not implemented yet, waiting for metadata. Taking 'unanchored'
+[259793:tof-event-time]: [13:09:53][INFO] Using parameter collection, starting from pass 'unanchored'
+[259793:tof-event-time]: [13:09:53][INFO] Parameters 'TOFResoParamsV2'
+[259793:tof-event-time]: [13:09:53][INFO] Parameter 0/12 TrkRes.Pi.P0 is 0.008
+[259793:tof-event-time]: [13:09:53][INFO] Parameter 1/12 TrkRes.Pi.P1 is 0.008
+[259793:tof-event-time]: [13:09:53][INFO] Parameter 2/12 TrkRes.Pi.P2 is 0.002
+[259793:tof-event-time]: [13:09:53][INFO] Parameter 3/12 TrkRes.Pi.P3 is 40
+[259793:tof-event-time]: [13:09:53][INFO] Parameter 4/12 time_resolution is 60
+[259793:tof-event-time]: [13:09:53][INFO] Parameter 5/12 TrkRes.Ka.P0 is 0.008
+[259793:tof-event-time]: [13:09:53][INFO] Parameter 6/12 TrkRes.Ka.P1 is 0.008
+[259793:tof-event-time]: [13:09:53][INFO] Parameter 7/12 TrkRes.Ka.P2 is 0.002
+[259793:tof-event-time]: [13:09:53][INFO] Parameter 8/12 TrkRes.Ka.P3 is 40
+[259793:tof-event-time]: [13:09:53][INFO] Parameter 9/12 TrkRes.Pr.P0 is 0.008
+[259793:tof-event-time]: [13:09:53][INFO] Parameter 10/12 TrkRes.Pr.P1 is 0.008
+[259793:tof-event-time]: [13:09:53][INFO] Parameter 11/12 TrkRes.Pr.P2 is 0.002
+[259793:tof-event-time]: [13:09:53][INFO] Parameter 12/12 TrkRes.Pr.P3 is 40
+[259793:tof-event-time]: [13:09:53][INFO] eventTimeContainer configuration:
+[259793:tof-event-time]: [13:09:53][INFO]  maxNtracksInSet = 10
+[259793:tof-event-time]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259793:tof-event-time]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259793:tof-event-time]: [13:09:53][STATE] BINDING ---> BOUND
+[259793:tof-event-time]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259793:tof-event-time]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259793:tof-event-time]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259793:tof-event-time]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259793:tof-event-time]: [13:09:53][STATE] READY ---> RUNNING
+[259793:tof-event-time]: [13:09:53][INFO] fair::mq::Device running...
+[259793:tof-event-time]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259793:tof-event-time]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259795:tof-pid-full]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259795:tof-pid-full]: [13:09:53][INFO] Init CcdApi with UserAgentID: o2-analysis-pid/o2-analysis-pid-tof-full@259795 target/Linux_x86_64 init/1770034193190 id/oussama@comsolpc session/5r3MlnvI , Host: http://alice-ccdb.cern.ch/, Curl timeouts: upload:20 download:5
+[259795:tof-pid-full]: [13:09:53][INFO] Checking for option 'ccdb-url' in task 'tof-signal'
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 0 internal-dpl-clock
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 1 internal-dpl-aod-reader
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 2 internal-dpl-aod-spawner
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 3 internal-dpl-aod-index-builder
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 4 eventselection-run3
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 5 fwd-track-to-collision-association
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 6 pid-tpc-service
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 7 ft0-corrected-table
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 8 propagation-service
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 9 v0mlscoresconverter
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 10 tof-signal
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 0 ccdb-url of type 4 = 'http://alice-ccdb.cern.ch'
+[259795:tof-pid-full]: [13:09:53][INFO]    Found option 'ccdb-url of type LabeledArray<float>
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 1 ccdb-timestamp of type 1 = '-1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 2 timeShiftCCDBPath of type 4 = ''
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 3 distanceForGoodMatch of type 2 = '999'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 4 distanceForGoodMatchLowMult of type 2 = '999'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 5 multThreshold of type 0 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 6 enableQaHistograms of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 7 processRun3 of type 5 = '1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 8 processRun2 of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO] Checking for option 'ccdb-timestamp' in task 'tof-signal'
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 0 internal-dpl-clock
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 1 internal-dpl-aod-reader
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 2 internal-dpl-aod-spawner
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 3 internal-dpl-aod-index-builder
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 4 eventselection-run3
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 5 fwd-track-to-collision-association
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 6 pid-tpc-service
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 7 ft0-corrected-table
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 8 propagation-service
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 9 v0mlscoresconverter
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 10 tof-signal
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 0 ccdb-url of type 4 = 'http://alice-ccdb.cern.ch'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 1 ccdb-timestamp of type 1 = '-1'
+[259795:tof-pid-full]: [13:09:53][INFO]    Found option 'ccdb-timestamp of type LabeledArray<float>
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 2 timeShiftCCDBPath of type 4 = ''
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 3 distanceForGoodMatch of type 2 = '999'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 4 distanceForGoodMatchLowMult of type 2 = '999'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 5 multThreshold of type 0 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 6 enableQaHistograms of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 7 processRun3 of type 5 = '1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 8 processRun2 of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO] Checking for option 'paramFileName' in task 'tof-event-time'
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 0 internal-dpl-clock
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 1 internal-dpl-aod-reader
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 2 internal-dpl-aod-spawner
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 3 internal-dpl-aod-index-builder
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 4 eventselection-run3
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 5 fwd-track-to-collision-association
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 6 pid-tpc-service
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 7 ft0-corrected-table
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 8 propagation-service
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 9 v0mlscoresconverter
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 10 tof-signal
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 11 track-selection
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 12 ambiguous-track-propagation
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 13 tof-event-time
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 0 inheritFromBaseTask of type 5 = '1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 1 ccdb-url of type 4 = ''
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 2 ccdb-timestamp of type 1 = '-1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 3 minMomentum of type 2 = '0.5'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 4 maxMomentum of type 2 = '2'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 5 maxEvTimeTOF of type 2 = '100000'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 6 sel8TOFEvTime of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 7 maxNtracksInSet of type 0 = '10'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 8 paramFileName of type 4 = ''
+[259795:tof-pid-full]: [13:09:53][INFO]    Found option 'paramFileName of type LabeledArray<float>
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 9 parametrizationPath of type 4 = 'TOF/Calib/Params'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 10 passName of type 4 = ''
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 11 loadResponseFromCCDB of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 12 enableTimeDependentResponse of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 13 fatalOnPassNotAvailable of type 5 = '1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 14 processRun2 of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 15 processNoFT0 of type 5 = '1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 16 processFT0 of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 17 processOnlyFT0 of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO] Checking for option 'parametrizationPath' in task 'tof-event-time'
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 0 internal-dpl-clock
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 1 internal-dpl-aod-reader
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 2 internal-dpl-aod-spawner
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 3 internal-dpl-aod-index-builder
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 4 eventselection-run3
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 5 fwd-track-to-collision-association
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 6 pid-tpc-service
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 7 ft0-corrected-table
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 8 propagation-service
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 9 v0mlscoresconverter
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 10 tof-signal
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 11 track-selection
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 12 ambiguous-track-propagation
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 13 tof-event-time
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 0 inheritFromBaseTask of type 5 = '1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 1 ccdb-url of type 4 = ''
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 2 ccdb-timestamp of type 1 = '-1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 3 minMomentum of type 2 = '0.5'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 4 maxMomentum of type 2 = '2'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 5 maxEvTimeTOF of type 2 = '100000'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 6 sel8TOFEvTime of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 7 maxNtracksInSet of type 0 = '10'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 8 paramFileName of type 4 = ''
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 9 parametrizationPath of type 4 = 'TOF/Calib/Params'
+[259795:tof-pid-full]: [13:09:53][INFO]    Found option 'parametrizationPath of type LabeledArray<float>
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 10 passName of type 4 = ''
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 11 loadResponseFromCCDB of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 12 enableTimeDependentResponse of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 13 fatalOnPassNotAvailable of type 5 = '1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 14 processRun2 of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 15 processNoFT0 of type 5 = '1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 16 processFT0 of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 17 processOnlyFT0 of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO] Checking for option 'passName' in task 'tof-event-time'
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 0 internal-dpl-clock
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 1 internal-dpl-aod-reader
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 2 internal-dpl-aod-spawner
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 3 internal-dpl-aod-index-builder
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 4 eventselection-run3
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 5 fwd-track-to-collision-association
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 6 pid-tpc-service
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 7 ft0-corrected-table
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 8 propagation-service
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 9 v0mlscoresconverter
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 10 tof-signal
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 11 track-selection
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 12 ambiguous-track-propagation
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 13 tof-event-time
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 0 inheritFromBaseTask of type 5 = '1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 1 ccdb-url of type 4 = ''
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 2 ccdb-timestamp of type 1 = '-1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 3 minMomentum of type 2 = '0.5'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 4 maxMomentum of type 2 = '2'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 5 maxEvTimeTOF of type 2 = '100000'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 6 sel8TOFEvTime of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 7 maxNtracksInSet of type 0 = '10'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 8 paramFileName of type 4 = ''
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 9 parametrizationPath of type 4 = 'TOF/Calib/Params'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 10 passName of type 4 = ''
+[259795:tof-pid-full]: [13:09:53][INFO]    Found option 'passName of type LabeledArray<float>
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 11 loadResponseFromCCDB of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 12 enableTimeDependentResponse of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 13 fatalOnPassNotAvailable of type 5 = '1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 14 processRun2 of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 15 processNoFT0 of type 5 = '1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 16 processFT0 of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 17 processOnlyFT0 of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO] Checking for option 'timeShiftCCDBPath' in task 'tof-signal'
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 0 internal-dpl-clock
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 1 internal-dpl-aod-reader
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 2 internal-dpl-aod-spawner
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 3 internal-dpl-aod-index-builder
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 4 eventselection-run3
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 5 fwd-track-to-collision-association
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 6 pid-tpc-service
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 7 ft0-corrected-table
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 8 propagation-service
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 9 v0mlscoresconverter
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 10 tof-signal
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 0 ccdb-url of type 4 = 'http://alice-ccdb.cern.ch'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 1 ccdb-timestamp of type 1 = '-1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 2 timeShiftCCDBPath of type 4 = ''
+[259795:tof-pid-full]: [13:09:53][INFO]    Found option 'timeShiftCCDBPath of type LabeledArray<float>
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 3 distanceForGoodMatch of type 2 = '999'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 4 distanceForGoodMatchLowMult of type 2 = '999'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 5 multThreshold of type 0 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 6 enableQaHistograms of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 7 processRun3 of type 5 = '1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 8 processRun2 of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO] Checking for option 'loadResponseFromCCDB' in task 'tof-event-time'
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 0 internal-dpl-clock
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 1 internal-dpl-aod-reader
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 2 internal-dpl-aod-spawner
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 3 internal-dpl-aod-index-builder
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 4 eventselection-run3
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 5 fwd-track-to-collision-association
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 6 pid-tpc-service
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 7 ft0-corrected-table
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 8 propagation-service
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 9 v0mlscoresconverter
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 10 tof-signal
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 11 track-selection
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 12 ambiguous-track-propagation
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 13 tof-event-time
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 0 inheritFromBaseTask of type 5 = '1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 1 ccdb-url of type 4 = ''
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 2 ccdb-timestamp of type 1 = '-1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 3 minMomentum of type 2 = '0.5'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 4 maxMomentum of type 2 = '2'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 5 maxEvTimeTOF of type 2 = '100000'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 6 sel8TOFEvTime of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 7 maxNtracksInSet of type 0 = '10'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 8 paramFileName of type 4 = ''
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 9 parametrizationPath of type 4 = 'TOF/Calib/Params'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 10 passName of type 4 = ''
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 11 loadResponseFromCCDB of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]    Found option 'loadResponseFromCCDB of type LabeledArray<float>
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 12 enableTimeDependentResponse of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 13 fatalOnPassNotAvailable of type 5 = '1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 14 processRun2 of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 15 processNoFT0 of type 5 = '1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 16 processFT0 of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 17 processOnlyFT0 of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO] Checking for option 'enableTimeDependentResponse' in task 'tof-event-time'
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 0 internal-dpl-clock
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 1 internal-dpl-aod-reader
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 2 internal-dpl-aod-spawner
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 3 internal-dpl-aod-index-builder
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 4 eventselection-run3
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 5 fwd-track-to-collision-association
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 6 pid-tpc-service
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 7 ft0-corrected-table
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 8 propagation-service
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 9 v0mlscoresconverter
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 10 tof-signal
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 11 track-selection
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 12 ambiguous-track-propagation
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 13 tof-event-time
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 0 inheritFromBaseTask of type 5 = '1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 1 ccdb-url of type 4 = ''
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 2 ccdb-timestamp of type 1 = '-1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 3 minMomentum of type 2 = '0.5'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 4 maxMomentum of type 2 = '2'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 5 maxEvTimeTOF of type 2 = '100000'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 6 sel8TOFEvTime of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 7 maxNtracksInSet of type 0 = '10'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 8 paramFileName of type 4 = ''
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 9 parametrizationPath of type 4 = 'TOF/Calib/Params'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 10 passName of type 4 = ''
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 11 loadResponseFromCCDB of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 12 enableTimeDependentResponse of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]    Found option 'enableTimeDependentResponse of type LabeledArray<float>
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 13 fatalOnPassNotAvailable of type 5 = '1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 14 processRun2 of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 15 processNoFT0 of type 5 = '1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 16 processFT0 of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 17 processOnlyFT0 of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO] Checking for option 'fatalOnPassNotAvailable' in task 'tof-event-time'
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 0 internal-dpl-clock
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 1 internal-dpl-aod-reader
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 2 internal-dpl-aod-spawner
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 3 internal-dpl-aod-index-builder
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 4 eventselection-run3
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 5 fwd-track-to-collision-association
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 6 pid-tpc-service
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 7 ft0-corrected-table
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 8 propagation-service
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 9 v0mlscoresconverter
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 10 tof-signal
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 11 track-selection
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 12 ambiguous-track-propagation
+[259795:tof-pid-full]: [13:09:53][INFO]  Device 13 tof-event-time
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 0 inheritFromBaseTask of type 5 = '1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 1 ccdb-url of type 4 = ''
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 2 ccdb-timestamp of type 1 = '-1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 3 minMomentum of type 2 = '0.5'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 4 maxMomentum of type 2 = '2'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 5 maxEvTimeTOF of type 2 = '100000'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 6 sel8TOFEvTime of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 7 maxNtracksInSet of type 0 = '10'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 8 paramFileName of type 4 = ''
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 9 parametrizationPath of type 4 = 'TOF/Calib/Params'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 10 passName of type 4 = ''
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 11 loadResponseFromCCDB of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 12 enableTimeDependentResponse of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 13 fatalOnPassNotAvailable of type 5 = '1'
+[259795:tof-pid-full]: [13:09:53][INFO]    Found option 'fatalOnPassNotAvailable of type LabeledArray<float>
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 14 processRun2 of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 15 processNoFT0 of type 5 = '1'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 16 processFT0 of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO]   Option 17 processOnlyFT0 of type 5 = '0'
+[259795:tof-pid-full]: [13:09:53][INFO] Auto-disabling table: pidTOFFullEl
+[259795:tof-pid-full]: [13:09:53][INFO] Auto-disabling table: pidTOFFullMu
+[259795:tof-pid-full]: [13:09:53][INFO] Auto-disabling table: pidTOFFullPi
+[259795:tof-pid-full]: [13:09:53][INFO] Auto-disabling table: pidTOFFullKa
+[259795:tof-pid-full]: [13:09:53][INFO] Auto-disabling table: pidTOFFullPr
+[259795:tof-pid-full]: [13:09:53][INFO] Auto-disabling table: pidTOFFullDe
+[259795:tof-pid-full]: [13:09:53][INFO] Auto-disabling table: pidTOFFullTr
+[259795:tof-pid-full]: [13:09:53][INFO] Auto-disabling table: pidTOFFullHe
+[259795:tof-pid-full]: [13:09:53][INFO] Auto-disabling table: pidTOFFullAl
+[259795:tof-pid-full]: [13:09:53][INFO] ++ Enabled tables:
+[259795:tof-pid-full]: [13:09:53][INFO] Init CcdApi with UserAgentID: o2-analysis-pid/o2-analysis-pid-tof-full@259795 target/Linux_x86_64 init/1770034193190 id/oussama@comsolpc session/5r3MlnvI , Host: http://alice-ccdb.cern.ch, Curl timeouts: upload:20 download:5
+[259795:tof-pid-full]: [13:09:53][WARN] Passed autodetect mode for pass, not implemented yet, waiting for metadata. Taking 'unanchored'
+[259795:tof-pid-full]: [13:09:53][INFO] Using parameter collection, starting from pass 'unanchored'
+[259795:tof-pid-full]: [13:09:53][INFO] Parameters 'TOFResoParamsV2'
+[259795:tof-pid-full]: [13:09:53][INFO] Parameter 0/12 TrkRes.Pi.P0 is 0.008
+[259795:tof-pid-full]: [13:09:53][INFO] Parameter 1/12 TrkRes.Pi.P1 is 0.008
+[259795:tof-pid-full]: [13:09:53][INFO] Parameter 2/12 TrkRes.Pi.P2 is 0.002
+[259795:tof-pid-full]: [13:09:53][INFO] Parameter 3/12 TrkRes.Pi.P3 is 40
+[259795:tof-pid-full]: [13:09:53][INFO] Parameter 4/12 time_resolution is 60
+[259795:tof-pid-full]: [13:09:53][INFO] Parameter 5/12 TrkRes.Ka.P0 is 0.008
+[259795:tof-pid-full]: [13:09:53][INFO] Parameter 6/12 TrkRes.Ka.P1 is 0.008
+[259795:tof-pid-full]: [13:09:53][INFO] Parameter 7/12 TrkRes.Ka.P2 is 0.002
+[259795:tof-pid-full]: [13:09:53][INFO] Parameter 8/12 TrkRes.Ka.P3 is 40
+[259795:tof-pid-full]: [13:09:53][INFO] Parameter 9/12 TrkRes.Pr.P0 is 0.008
+[259795:tof-pid-full]: [13:09:53][INFO] Parameter 10/12 TrkRes.Pr.P1 is 0.008
+[259795:tof-pid-full]: [13:09:53][INFO] Parameter 11/12 TrkRes.Pr.P2 is 0.002
+[259795:tof-pid-full]: [13:09:53][INFO] Parameter 12/12 TrkRes.Pr.P3 is 40
+[259801:strderived-gen-q-a]: [INFO] Instrumenting crash signals
+[259795:tof-pid-full]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259795:tof-pid-full]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259795:tof-pid-full]: [13:09:53][STATE] BINDING ---> BOUND
+[259795:tof-pid-full]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259795:tof-pid-full]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259795:tof-pid-full]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259795:tof-pid-full]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259795:tof-pid-full]: [13:09:53][STATE] READY ---> RUNNING
+[259795:tof-pid-full]: [13:09:53][INFO] fair::mq::Device running...
+[259795:tof-pid-full]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259795:tof-pid-full]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259796:tof-pid-beta]: [INFO] Spawning new device tof-pid-beta in process with pid 259796
+[259796:tof-pid-beta]: [13:09:53][INFO] 
+[259796:tof-pid-beta]:       ______      _    _______  _________ 
+[259796:tof-pid-beta]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259796:tof-pid-beta]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259796:tof-pid-beta]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259796:tof-pid-beta]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259796:tof-pid-beta]: 
+[259796:tof-pid-beta]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259796:tof-pid-beta]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259802:internal-dpl-aod-writer]: [INFO] Instrumenting crash signals
+[259796:tof-pid-beta]: [13:09:53][INFO] Init CcdApi with UserAgentID: o2-analysis-pid/o2-analysis-pid-tof-beta@259796 target/Linux_x86_64 init/1770034193198 id/oussama@comsolpc session/WfrH7oKa , Host: http://alice-ccdb.cern.ch/, Curl timeouts: upload:20 download:5
+[259797:mc-collision-extra]: [INFO] Spawning new device mc-collision-extra in process with pid 259797
+[259796:tof-pid-beta]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259796:tof-pid-beta]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259797:mc-collision-extra]: [13:09:53][INFO] 
+[259797:mc-collision-extra]:       ______      _    _______  _________ 
+[259797:mc-collision-extra]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259797:mc-collision-extra]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259797:mc-collision-extra]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259797:mc-collision-extra]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259797:mc-collision-extra]: 
+[259796:tof-pid-beta]: [13:09:53][STATE] BINDING ---> BOUND
+[259796:tof-pid-beta]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259797:mc-collision-extra]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259796:tof-pid-beta]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259796:tof-pid-beta]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259796:tof-pid-beta]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259796:tof-pid-beta]: [13:09:53][STATE] READY ---> RUNNING
+[259796:tof-pid-beta]: [13:09:53][INFO] fair::mq::Device running...
+[259796:tof-pid-beta]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259796:tof-pid-beta]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259797:mc-collision-extra]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259797:mc-collision-extra]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259797:mc-collision-extra]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259797:mc-collision-extra]: [13:09:53][STATE] BINDING ---> BOUND
+[259797:mc-collision-extra]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259797:mc-collision-extra]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259797:mc-collision-extra]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259797:mc-collision-extra]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259797:mc-collision-extra]: [13:09:53][STATE] READY ---> RUNNING
+[259797:mc-collision-extra]: [13:09:53][INFO] fair::mq::Device running...
+[259797:mc-collision-extra]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259797:mc-collision-extra]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259798:strangederivedbuilder]: [INFO] Spawning new device strangederivedbuilder in process with pid 259798
+[259798:strangederivedbuilder]: [13:09:53][INFO] 
+[259798:strangederivedbuilder]:       ______      _    _______  _________ 
+[259798:strangederivedbuilder]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259798:strangederivedbuilder]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259798:strangederivedbuilder]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259798:strangederivedbuilder]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259798:strangederivedbuilder]: 
+[259798:strangederivedbuilder]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259799:strangenesstofpid]: [INFO] Spawning new device strangenesstofpid in process with pid 259799
+[259781:internal-dpl-aod-reader]: [INFO] Instrumenting crash signals
+[259799:strangenesstofpid]: [13:09:53][INFO] 
+[259799:strangenesstofpid]:       ______      _    _______  _________ 
+[259799:strangenesstofpid]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259799:strangenesstofpid]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259799:strangenesstofpid]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259799:strangenesstofpid]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259799:strangenesstofpid]: 
+[259799:strangenesstofpid]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259799:strangenesstofpid]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259799:strangenesstofpid]: [13:09:53][INFO] Init CcdApi with UserAgentID: o2-analysis-lf-/o2-analysis-lf-strangenesstofpid@259799 target/Linux_x86_64 init/1770034193213 id/oussama@comsolpc session/gYI1VNmM , Host: http://alice-ccdb.cern.ch/, Curl timeouts: upload:20 download:5
+[259799:strangenesstofpid]: [13:09:53][INFO] Strangeness TOF PID: V0TOFPIDs calculations enabled automatically
+[259799:strangenesstofpid]: [13:09:53][INFO] Init CcdApi with UserAgentID: o2-analysis-lf-/o2-analysis-lf-strangenesstofpid@259799 target/Linux_x86_64 init/1770034193213 id/oussama@comsolpc session/gYI1VNmM , Host: http://alice-ccdb.cern.ch, Curl timeouts: upload:20 download:5
+[259799:strangenesstofpid]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259799:strangenesstofpid]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259799:strangenesstofpid]: [13:09:53][STATE] BINDING ---> BOUND
+[259799:strangenesstofpid]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259799:strangenesstofpid]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259799:strangenesstofpid]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259799:strangenesstofpid]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259799:strangenesstofpid]: [13:09:53][STATE] READY ---> RUNNING
+[259799:strangenesstofpid]: [13:09:53][INFO] fair::mq::Device running...
+[259799:strangenesstofpid]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259799:strangenesstofpid]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259801:strderived-gen-q-a]: [INFO] Spawning new device strderived-gen-q-a in process with pid 259801
+[259801:strderived-gen-q-a]: [13:09:53][INFO] 
+[259801:strderived-gen-q-a]:       ______      _    _______  _________ 
+[259801:strderived-gen-q-a]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259801:strderived-gen-q-a]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259801:strderived-gen-q-a]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259801:strderived-gen-q-a]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259801:strderived-gen-q-a]: 
+[259801:strderived-gen-q-a]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259780:internal-dpl-clock]: [INFO] Instrumenting crash signals
+[259801:strderived-gen-q-a]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259802:internal-dpl-aod-writer]: [INFO] Spawning new device internal-dpl-aod-writer in process with pid 259802
+[259802:internal-dpl-aod-writer]: [13:09:53][INFO] 
+[259802:internal-dpl-aod-writer]:       ______      _    _______  _________ 
+[259802:internal-dpl-aod-writer]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259802:internal-dpl-aod-writer]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259802:internal-dpl-aod-writer]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259802:internal-dpl-aod-writer]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259802:internal-dpl-aod-writer]: 
+[259802:internal-dpl-aod-writer]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259802:internal-dpl-aod-writer]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259802:internal-dpl-aod-writer]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259802:internal-dpl-aod-writer]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259802:internal-dpl-aod-writer]: [13:09:53][STATE] BINDING ---> BOUND
+[259802:internal-dpl-aod-writer]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259802:internal-dpl-aod-writer]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259802:internal-dpl-aod-writer]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259802:internal-dpl-aod-writer]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259802:internal-dpl-aod-writer]: [13:09:53][STATE] READY ---> RUNNING
+[259802:internal-dpl-aod-writer]: [13:09:53][INFO] fair::mq::Device running...
+[259802:internal-dpl-aod-writer]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259802:internal-dpl-aod-writer]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259804:internal-dpl-injected-dummy-sink]: [INFO] Instrumenting crash signals
+[259781:internal-dpl-aod-reader]: [INFO] Spawning new device internal-dpl-aod-reader in process with pid 259781
+[259800:findable-study]: [INFO] Instrumenting crash signals
+[259781:internal-dpl-aod-reader]: [13:09:53][INFO] 
+[259781:internal-dpl-aod-reader]:       ______      _    _______  _________ 
+[259781:internal-dpl-aod-reader]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259781:internal-dpl-aod-reader]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259781:internal-dpl-aod-reader]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259781:internal-dpl-aod-reader]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259781:internal-dpl-aod-reader]: 
+[259781:internal-dpl-aod-reader]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259803:internal-dpl-aod-global-analysis-file-sink]: [INFO] Instrumenting crash signals
+[259781:internal-dpl-aod-reader]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259780:internal-dpl-clock]: [INFO] Spawning new device internal-dpl-clock in process with pid 259780
+[259780:internal-dpl-clock]: [13:09:53][INFO] 
+[259780:internal-dpl-clock]:       ______      _    _______  _________ 
+[259780:internal-dpl-clock]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259780:internal-dpl-clock]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259780:internal-dpl-clock]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259780:internal-dpl-clock]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259780:internal-dpl-clock]: 
+[259780:internal-dpl-clock]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259780:internal-dpl-clock]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259784:eventselection-run3]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259784:eventselection-run3]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259780:internal-dpl-clock]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259780:internal-dpl-clock]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259784:eventselection-run3]: [13:09:53][STATE] BINDING ---> BOUND
+[259784:eventselection-run3]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259784:eventselection-run3]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259784:eventselection-run3]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259780:internal-dpl-clock]: [13:09:53][STATE] BINDING ---> BOUND
+[259780:internal-dpl-clock]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259780:internal-dpl-clock]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259780:internal-dpl-clock]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259780:internal-dpl-clock]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259780:internal-dpl-clock]: [13:09:53][STATE] READY ---> RUNNING
+[259780:internal-dpl-clock]: [13:09:53][INFO] fair::mq::Device running...
+[259780:internal-dpl-clock]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259780:internal-dpl-clock]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259784:eventselection-run3]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259784:eventselection-run3]: [13:09:53][STATE] READY ---> RUNNING
+[259784:eventselection-run3]: [13:09:53][INFO] fair::mq::Device running...
+[259784:eventselection-run3]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259784:eventselection-run3]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259804:internal-dpl-injected-dummy-sink]: [INFO] Spawning new device internal-dpl-injected-dummy-sink in process with pid 259804
+[259804:internal-dpl-injected-dummy-sink]: [13:09:53][INFO] 
+[259804:internal-dpl-injected-dummy-sink]:       ______      _    _______  _________ 
+[259804:internal-dpl-injected-dummy-sink]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259804:internal-dpl-injected-dummy-sink]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259804:internal-dpl-injected-dummy-sink]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259804:internal-dpl-injected-dummy-sink]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259804:internal-dpl-injected-dummy-sink]: 
+[259804:internal-dpl-injected-dummy-sink]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259800:findable-study]: [INFO] Spawning new device findable-study in process with pid 259800
+[259800:findable-study]: [13:09:53][INFO] 
+[259800:findable-study]:       ______      _    _______  _________ 
+[259800:findable-study]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259800:findable-study]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259800:findable-study]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259800:findable-study]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259800:findable-study]: 
+[259803:internal-dpl-aod-global-analysis-file-sink]: [INFO] Spawning new device internal-dpl-aod-global-analysis-file-sink in process with pid 259803
+[259800:findable-study]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:09:53][INFO] 
+[259803:internal-dpl-aod-global-analysis-file-sink]:       ______      _    _______  _________ 
+[259803:internal-dpl-aod-global-analysis-file-sink]:      / ____/___ _(_)_______   |/  /_  __ \    version 1.10.0
+[259803:internal-dpl-aod-global-analysis-file-sink]:     / /_  / __ `/ / ___/__  /|_/ /_  / / /    build RELWITHDEBINFO
+[259803:internal-dpl-aod-global-analysis-file-sink]:    / __/ / /_/ / / /    _  /  / / / /_/ /     https://github.com/FairRootGroup/FairMQ
+[259803:internal-dpl-aod-global-analysis-file-sink]:   /_/    \__,_/_/_/     /_/  /_/  \___\_\     LGPL-3.0  © 2012-2025 GSI
+[259803:internal-dpl-aod-global-analysis-file-sink]: 
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:09:53][STATE] Starting FairMQ state machine --> IDLE
+[259804:internal-dpl-injected-dummy-sink]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259804:internal-dpl-injected-dummy-sink]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259804:internal-dpl-injected-dummy-sink]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259804:internal-dpl-injected-dummy-sink]: [13:09:53][STATE] BINDING ---> BOUND
+[259804:internal-dpl-injected-dummy-sink]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259804:internal-dpl-injected-dummy-sink]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259804:internal-dpl-injected-dummy-sink]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259804:internal-dpl-injected-dummy-sink]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259804:internal-dpl-injected-dummy-sink]: [13:09:53][STATE] READY ---> RUNNING
+[259804:internal-dpl-injected-dummy-sink]: [13:09:53][INFO] fair::mq::Device running...
+[259804:internal-dpl-injected-dummy-sink]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259804:internal-dpl-injected-dummy-sink]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259800:findable-study]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259800:findable-study]: [13:09:53][INFO] +++ Phase space selections ++++++++++++++++++++++++
+[259800:findable-study]: [13:09:53][INFO] Rapidity cut ...........................: 0.50
+[259800:findable-study]: [13:09:53][INFO] Eta (daughters) cut ....................: 0.80
+[259800:findable-study]: [13:09:53][INFO] +++ Topological selections ++++++++++++++++++++++++
+[259800:findable-study]: [13:09:53][INFO] V0 cosine of PA ........................: 0.80
+[259800:findable-study]: [13:09:53][INFO] DCA V0 daughters .......................: 3.50
+[259800:findable-study]: [13:09:53][INFO] Neg track DCA to PV ....................: 0.00
+[259800:findable-study]: [13:09:53][INFO] Pos track DCA to PV ....................: 0.00
+[259800:findable-study]: [13:09:53][INFO] Minimum radius .........................: 3.00
+[259800:findable-study]: [13:09:53][INFO] Maximum radius .........................: 115.00
+[259800:findable-study]: [13:09:53][INFO] +++ Track quality selections ++++++++++++++++++++++
+[259800:findable-study]: [13:09:53][INFO] Minimum TPC rows .......................: 30
+[259800:findable-study]: [13:09:53][INFO] Minimum ITS clusters ...................: -1
+[259800:findable-study]: [13:09:53][INFO] Skip TPC only ..........................: false
+[259800:findable-study]: [13:09:53][INFO] Require positive ITS only ..............: false
+[259800:findable-study]: [13:09:53][INFO] Require negative ITS only ..............: false
+[259800:findable-study]: [13:09:53][INFO] +++ Particle identification selections ++++++++++++
+[259800:findable-study]: [13:09:53][INFO] TPC PID Nsigma .........................: 3.00
+[259800:findable-study]: [13:09:53][INFO] TOF PID Nsigma LaPr ....................: 1000000.00
+[259800:findable-study]: [13:09:53][INFO] TOF PID Nsigma LaPi ....................: 1000000.00
+[259800:findable-study]: [13:09:53][INFO] TOF PID Nsigma K0Pi ....................: 1000000.00
+[259800:findable-study]: [13:09:53][INFO] +++ Misc selections ++++++++++++++++++++++++++++++
+[259800:findable-study]: [13:09:53][INFO] K0Short lifetime cut ...................: 1000000000.00
+[259800:findable-study]: [13:09:53][INFO] Lambda lifetime cut ....................: 1000000000.00
+[259800:findable-study]: [13:09:53][INFO] Armenteros podolanski parameter ........: 5.00
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:09:53][STATE] BINDING ---> BOUND
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:09:53][STATE] READY ---> RUNNING
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:09:53][INFO] fair::mq::Device running...
+[259800:findable-study]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259800:findable-study]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259800:findable-study]: [13:09:53][STATE] BINDING ---> BOUND
+[259800:findable-study]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259800:findable-study]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259800:findable-study]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259800:findable-study]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259800:findable-study]: [13:09:53][STATE] READY ---> RUNNING
+[259800:findable-study]: [13:09:53][INFO] fair::mq::Device running...
+[259800:findable-study]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259800:findable-study]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259788:propagation-service]: [13:09:53][INFO] *+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*
+[259788:propagation-service]: [13:09:53][INFO]  Strangeness builder: basic configuration listing
+[259788:propagation-service]: [13:09:53][INFO] *+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*
+[259788:propagation-service]: [13:09:53][INFO]  ===> findable mode 1 is enabled: complement reco-ed with non-found findable
+[259788:propagation-service]: [13:09:53][INFO]  -~> Table enabled: V0Indices, requested by strangederivedbuilder strangenesstofpid 
+[259788:propagation-service]: [13:09:53][INFO]  -~> Table enabled: V0CoresBase, requested by v0mlscoresconverter strangederivedbuilder strangenesstofpid findable-study strderived-gen-q-a 
+[259788:propagation-service]: [13:09:53][INFO]  -~> Table enabled: CascIndices, requested by strangederivedbuilder strangenesstofpid 
+[259788:propagation-service]: [13:09:53][INFO]  -~> Table enabled: KFCascIndices, requested by strangederivedbuilder 
+[259788:propagation-service]: [13:09:53][INFO]  -~> Table enabled: TraCascIndices, requested by strangederivedbuilder 
+[259788:propagation-service]: [13:09:53][INFO]  -~> Table enabled: StoredCascCores, requested by strangederivedbuilder strangenesstofpid 
+[259788:propagation-service]: [13:09:53][INFO]  -~> Table enabled: StoredKFCascCores, requested by strangederivedbuilder 
+[259788:propagation-service]: [13:09:53][INFO]  -~> Table enabled: StoredTraCascCores, requested by strangederivedbuilder 
+[259788:propagation-service]: [13:09:53][INFO]  -~> Table enabled: V0TrackXs, requested by strangederivedbuilder 
+[259788:propagation-service]: [13:09:53][INFO]  -~> Table enabled: CascBBs, requested by strangederivedbuilder 
+[259788:propagation-service]: [13:09:53][INFO]  -~> Table enabled: McV0Labels, requested by manual enabling
+[259788:propagation-service]: [13:09:53][INFO]  -~> Table enabled: V0MCCores, requested by manual enabling
+[259788:propagation-service]: [13:09:53][INFO]  -~> Table enabled: V0CoreMCLabels, requested by findable-study strderived-gen-q-a 
+[259788:propagation-service]: [13:09:53][INFO]  -~> Table enabled: V0MCCollRefs, requested by strangederivedbuilder findable-study strderived-gen-q-a 
+[259788:propagation-service]: [13:09:53][INFO]  -~> Table enabled: McCascLabels, requested by strangederivedbuilder 
+[259788:propagation-service]: [13:09:53][INFO]  -~> Table enabled: V0FoundTags, requested by manual enabling
+[259788:propagation-service]: [13:09:53][INFO] *+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*
+[259788:propagation-service]: [13:09:53][INFO] -~> V0 | min crossed rows ..............: -1
+[259788:propagation-service]: [13:09:53][INFO] -~> V0 | DCA pos track to PV ...........: 0.050000
+[259788:propagation-service]: [13:09:53][INFO] -~> V0 | DCA neg track to PV ...........: 0.050000
+[259788:propagation-service]: [13:09:53][INFO] -~> V0 | V0 cosine of PA ...............: 0.950000
+[259788:propagation-service]: [13:09:53][INFO] -~> V0 | DCA between V0 daughters ......: 3.000000
+[259788:propagation-service]: [13:09:53][INFO] -~> V0 | V0 2D decay radius ............: 0.900000
+[259788:propagation-service]: [13:09:53][INFO] -~> V0 | Maximum daughter eta ..........: 1.000000
+[259788:propagation-service]: [13:09:53][INFO] -~> Cascade | min crossed rows .........: 50
+[259788:propagation-service]: [13:09:53][INFO] -~> Cascade | DCA bach track to PV .....: 0.050000
+[259788:propagation-service]: [13:09:53][INFO] -~> Cascade | Cascade cosine of PA .....: 0.950000
+[259788:propagation-service]: [13:09:53][INFO] -~> Cascade | Cascade daughter DCA .....: 1.000000
+[259788:propagation-service]: [13:09:53][INFO] -~> Cascade | Cascade radius ...........: 0.900000
+[259788:propagation-service]: [13:09:53][INFO] -~> Cascade | Lambda mass window .......: 0.010000
+[259788:propagation-service]: [13:09:53][INFO] -~> Cascade | Maximum daughter eta .....: 5.000000
+[259788:propagation-service]: [13:09:53][INFO] *+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*+-+*
+[259788:propagation-service]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259788:propagation-service]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259788:propagation-service]: [13:09:53][STATE] BINDING ---> BOUND
+[259788:propagation-service]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259788:propagation-service]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259788:propagation-service]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259788:propagation-service]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259788:propagation-service]: [13:09:53][STATE] READY ---> RUNNING
+[259788:propagation-service]: [13:09:53][INFO] fair::mq::Device running...
+[259788:propagation-service]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259788:propagation-service]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259794:mult-cent-table]: Warning in <TDatabasePDG::AddParticle>: Particle with PDGcode=1000030040 already defined
+[259794:mult-cent-table]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259794:mult-cent-table]: [13:09:53][INFO] Init CcdApi with UserAgentID: o2-analysis-mul/o2-analysis-multcenttable@259794 target/Linux_x86_64 init/1770034193293 id/oussama@comsolpc session/G4VrczxY , Host: http://alice-ccdb.cern.ch/, Curl timeouts: upload:20 download:5
+[259794:mult-cent-table]: [13:09:53][INFO] Init CcdApi with UserAgentID: o2-analysis-mul/o2-analysis-multcenttable@259794 target/Linux_x86_64 init/1770034193293 id/oussama@comsolpc session/G4VrczxY , Host: http://alice-ccdb.cern.ch, Curl timeouts: upload:20 download:5
+[259794:mult-cent-table]: [13:09:53][INFO] Configuring tables to generate
+[259794:mult-cent-table]: [13:09:53][INFO] From metadata this data is from Data
+[259794:mult-cent-table]: [13:09:53][INFO] Metadata information: isMC? 0
+[259794:mult-cent-table]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to FV0Mults (version 0)
+[259794:mult-cent-table]: [13:09:53][INFO] Device mc-collision-extra has subscribed to FT0Mults (version 0)
+[259794:mult-cent-table]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to FT0Mults (version 0)
+[259794:mult-cent-table]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to FDDMults (version 0)
+[259794:mult-cent-table]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to ZDCMults (version 0)
+[259794:mult-cent-table]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to PVMults (version 0)
+[259794:mult-cent-table]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to MultsExtra (version 1)
+[259794:mult-cent-table]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to MultMCExtras (version 1)
+[259794:mult-cent-table]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to MultsGlobal (version 0)
+[259794:mult-cent-table]: [13:09:53][INFO] Device mc-collision-extra has subscribed to CentFV0As (version 0)
+[259794:mult-cent-table]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to CentFV0As (version 0)
+[259794:mult-cent-table]: [13:09:53][INFO] Device mc-collision-extra has subscribed to CentFT0Ms (version 0)
+[259794:mult-cent-table]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to CentFT0Ms (version 0)
+[259794:mult-cent-table]: [13:09:53][INFO] Device mc-collision-extra has subscribed to CentFT0As (version 0)
+[259794:mult-cent-table]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to CentFT0As (version 0)
+[259794:mult-cent-table]: [13:09:53][INFO] Device mc-collision-extra has subscribed to CentFT0Cs (version 0)
+[259794:mult-cent-table]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to CentFT0Cs (version 0)
+[259794:mult-cent-table]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to CentFT0CVariant1s (version 0)
+[259794:mult-cent-table]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to CentNGlobals (version 0)
+[259794:mult-cent-table]: [13:09:53][INFO] Device strangederivedbuilder has subscribed to CentMFTs (version 0)
+[259794:mult-cent-table]: [13:09:53][INFO]  -~> Table enabled: FV0Mults, requested by strangederivedbuilder 
+[259794:mult-cent-table]: [13:09:53][INFO]  -~> Table enabled: FT0Mults, requested by mc-collision-extra strangederivedbuilder 
+[259794:mult-cent-table]: [13:09:53][INFO]  -~> Table enabled: FDDMults, requested by strangederivedbuilder 
+[259794:mult-cent-table]: [13:09:53][INFO]  -~> Table enabled: ZDCMults, requested by strangederivedbuilder 
+[259794:mult-cent-table]: [13:09:53][INFO]  -~> Table enabled: PVMults, requested by strangederivedbuilder 
+[259794:mult-cent-table]: [13:09:53][INFO]  -~> Table enabled: MultsExtra, requested by strangederivedbuilder 
+[259794:mult-cent-table]: [13:09:53][INFO]  -~> Table enabled: FV0MultZeqs, requested by dependency check 
+[259794:mult-cent-table]: [13:09:53][INFO]  -~> Table enabled: FT0MultZeqs, requested by dependency check 
+[259794:mult-cent-table]: [13:09:53][INFO]  -~> Table enabled: GlobalMultZeqs, requested by dependency check 
+[259794:mult-cent-table]: [13:09:53][INFO]  -~> Table enabled: MFTMultZeqs, requested by dependency check 
+[259794:mult-cent-table]: [13:09:53][INFO]  -~> Table enabled: MultMCExtras, requested by strangederivedbuilder 
+[259794:mult-cent-table]: [13:09:53][INFO]  -~> Table enabled: MFTMults, requested by dependency check 
+[259794:mult-cent-table]: [13:09:53][INFO]  -~> Table enabled: MultsGlobal, requested by strangederivedbuilder 
+[259794:mult-cent-table]: [13:09:53][INFO]  -~> Table enabled: CentFV0As, requested by mc-collision-extra strangederivedbuilder 
+[259794:mult-cent-table]: [13:09:53][INFO]  -~> Table enabled: CentFT0Ms, requested by mc-collision-extra strangederivedbuilder 
+[259794:mult-cent-table]: [13:09:53][INFO]  -~> Table enabled: CentFT0As, requested by mc-collision-extra strangederivedbuilder 
+[259794:mult-cent-table]: [13:09:53][INFO]  -~> Table enabled: CentFT0Cs, requested by mc-collision-extra strangederivedbuilder 
+[259794:mult-cent-table]: [13:09:53][INFO]  -~> Table enabled: CentFT0CVariant1s, requested by strangederivedbuilder 
+[259794:mult-cent-table]: [13:09:53][INFO]  -~> Table enabled: CentNGlobals, requested by strangederivedbuilder 
+[259794:mult-cent-table]: [13:09:53][INFO]  -~> Table enabled: CentMFTs, requested by strangederivedbuilder 
+[259794:mult-cent-table]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259794:mult-cent-table]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259794:mult-cent-table]: [13:09:53][STATE] BINDING ---> BOUND
+[259794:mult-cent-table]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259794:mult-cent-table]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259794:mult-cent-table]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259794:mult-cent-table]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259794:mult-cent-table]: [13:09:53][STATE] READY ---> RUNNING
+[259794:mult-cent-table]: [13:09:53][INFO] fair::mq::Device running...
+[259794:mult-cent-table]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259794:mult-cent-table]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259798:strangederivedbuilder]: Warning in <TDatabasePDG::AddParticle>: Particle with PDGcode=1000030040 already defined
+[259798:strangederivedbuilder]: [13:09:53][STATE] IDLE ---> INITIALIZING DEVICE
+[259798:strangederivedbuilder]: [13:09:53][INFO] Initializing now: cross-checking correctness...
+[259798:strangederivedbuilder]: [13:09:53][INFO] ====] base information processing [===============================
+[259798:strangederivedbuilder]: [13:09:53][INFO] Process data frame IDs............: no
+[259798:strangederivedbuilder]: [13:09:53][INFO] Collision processing type.........: Run 3, with MC, no UD
+[259798:strangederivedbuilder]: [13:09:53][INFO] ====] event characterization processing [=========================
+[259798:strangederivedbuilder]: [13:09:53][INFO] Process FT0A Q-vectors............: no
+[259798:strangederivedbuilder]: [13:09:53][INFO] Process FT0C Q-vectors............: no
+[259798:strangederivedbuilder]: [13:09:53][INFO] Process FT0C Q-vectors (LF).......: no
+[259798:strangederivedbuilder]: [13:09:53][INFO] Process FT0M Q-vectors............: no
+[259798:strangederivedbuilder]: [13:09:53][INFO] Process FV0A Q-vectors............: no
+[259798:strangederivedbuilder]: [13:09:53][INFO] Process TPC Q-vectors.............: no
+[259798:strangederivedbuilder]: [13:09:53][INFO] Process TPC Q-vectors (LF)........: no
+[259798:strangederivedbuilder]: [13:09:53][INFO] Process ZPC spectator plane.......: no
+[259798:strangederivedbuilder]: [13:09:53][INFO] ====] daughter track property processing [========================
+[259798:strangederivedbuilder]: [13:09:53][INFO] TracksExtra processing type.......: V0s + cascades, Monte Carlo
+[259798:strangederivedbuilder]: [13:09:53][INFO] ====] cascade interlink processing [==============================
+[259798:strangederivedbuilder]: [13:09:53][INFO] Process cascade/tracked interlink.: no
+[259798:strangederivedbuilder]: [13:09:53][INFO] Process cascade/KF interlink......: no
+[259798:strangederivedbuilder]: [13:09:53][INFO] ====] simulated information processing [==========================
+[259798:strangederivedbuilder]: [13:09:53][INFO] Process pure simulation info......: yes
+[259798:strangederivedbuilder]: [13:09:53][INFO] Process reco simulation info......: yes
+[259798:strangederivedbuilder]: [13:09:53][INFO] Process binned simulation info....: no
+[259798:strangederivedbuilder]: [13:09:53][INFO] Process strange mothers...........: yes
+[259798:strangederivedbuilder]: [13:09:53][INFO] ==================================================================
+[259798:strangederivedbuilder]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259798:strangederivedbuilder]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259798:strangederivedbuilder]: [13:09:53][STATE] BINDING ---> BOUND
+[259798:strangederivedbuilder]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259798:strangederivedbuilder]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259798:strangederivedbuilder]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259798:strangederivedbuilder]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259798:strangederivedbuilder]: [13:09:53][STATE] READY ---> RUNNING
+[259798:strangederivedbuilder]: [13:09:53][INFO] fair::mq::Device running...
+[259798:strangederivedbuilder]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259798:strangederivedbuilder]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259801:strderived-gen-q-a]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259801:strderived-gen-q-a]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259801:strderived-gen-q-a]: [13:09:53][STATE] BINDING ---> BOUND
+[259801:strderived-gen-q-a]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259801:strderived-gen-q-a]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259801:strderived-gen-q-a]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259801:strderived-gen-q-a]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259801:strderived-gen-q-a]: [13:09:53][STATE] READY ---> RUNNING
+[259801:strderived-gen-q-a]: [13:09:53][INFO] fair::mq::Device running...
+[259801:strderived-gen-q-a]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259801:strderived-gen-q-a]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259782:internal-dpl-aod-spawner]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259782:internal-dpl-aod-spawner]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259782:internal-dpl-aod-spawner]: [13:09:53][STATE] BINDING ---> BOUND
+[259782:internal-dpl-aod-spawner]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259782:internal-dpl-aod-spawner]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259782:internal-dpl-aod-spawner]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[259782:internal-dpl-aod-spawner]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259782:internal-dpl-aod-spawner]: [13:09:53][STATE] READY ---> RUNNING
+[259782:internal-dpl-aod-spawner]: [13:09:53][INFO] fair::mq::Device running...
+[259782:internal-dpl-aod-spawner]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259782:internal-dpl-aod-spawner]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259781:internal-dpl-aod-reader]: Info in <TJAlienConnectionManager>: Opening connection to JCentral. Please wait
+[259781:internal-dpl-aod-reader]: Info in <TJAlienConnectionManager>: Opening connection to 128.142.249.29
+[259781:internal-dpl-aod-reader]: Info in <TJAlienConnectionManager>: Successfully connected to 128.142.249.29
+[259781:internal-dpl-aod-reader]: [13:09:53][STATE] INITIALIZING DEVICE ---> INITIALIZED
+[259781:internal-dpl-aod-reader]: [13:09:53][STATE] INITIALIZED ---> BINDING
+[259781:internal-dpl-aod-reader]: [13:09:53][STATE] BINDING ---> BOUND
+[259781:internal-dpl-aod-reader]: [13:09:53][STATE] BOUND ---> CONNECTING
+[259781:internal-dpl-aod-reader]: [13:09:53][STATE] CONNECTING ---> DEVICE READY
+[259781:internal-dpl-aod-reader]: [13:09:53][STATE] DEVICE READY ---> INITIALIZING TASK
+[INFO] Controller for internal-dpl-aod-reader now available.
+[259781:internal-dpl-aod-reader]: [13:09:53][STATE] INITIALIZING TASK ---> READY
+[259781:internal-dpl-aod-reader]: [13:09:53][STATE] READY ---> RUNNING
+[259781:internal-dpl-aod-reader]: [13:09:53][INFO] fair::mq::Device running...
+[259781:internal-dpl-aod-reader]: [13:09:53][INFO] LHCPeriod is not available, using current month FEB
+[259781:internal-dpl-aod-reader]: [13:09:53][INFO] Correctly handshaken websocket connection.
+[259781:internal-dpl-aod-reader]: Info in <TJAlienFile::Open>: Accessing file /alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Test_10/AO2D_10.root in SE <ALICE::ZA_CHPC::EOS>
+[259781:internal-dpl-aod-reader]: [13:09:59][INFO] Opening file: lfn=alien:///alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Test_10/AO2D_10.root,size=202442163,se=ALICE::ZA_CHPC::EOS,open_time=6.2
+[259781:internal-dpl-aod-reader]: [13:13:38][WARN] Not enough resources to schedule computation. 0 skipped so far. Last scheduled at 271432593.
+[259781:internal-dpl-aod-reader]: [13:13:38][WARN] Not enough resources to schedule computation. 1 skipped so far. Last scheduled at 271432593.
+[259781:internal-dpl-aod-reader]: [13:13:38][WARN] Not enough resources to schedule computation. 2 skipped so far. Last scheduled at 271432593.
+[259784:eventselection-run3]: /local/workspace/DailyBuilds/DailyO2-ubuntu2404/daily-tags.onuiTBKb8d/BUILD/24a6b1a7b5202aef95888a6dcc13602254507764/arrow/src_tmp/cpp/src/gandiva/cache.cc:58: Creating gandiva cache with capacity of 5000
+[259784:eventselection-run3]: /local/workspace/DailyBuilds/DailyO2-ubuntu2404/daily-tags.onuiTBKb8d/BUILD/24a6b1a7b5202aef95888a6dcc13602254507764/arrow/src_tmp/cpp/src/gandiva/engine.cc:282: Detected CPU Name : znver5
+[259784:eventselection-run3]: /local/workspace/DailyBuilds/DailyO2-ubuntu2404/daily-tags.onuiTBKb8d/BUILD/24a6b1a7b5202aef95888a6dcc13602254507764/arrow/src_tmp/cpp/src/gandiva/engine.cc:283: Detected CPU Features: [ +prfchw -cldemote +avx +aes +sahf +pclmul -xop +crc32 -amx-fp8 +xsaves -avx512fp16 -usermsr -sm4 -egpr +sse4.1 +avx512ifma +xsave +sse4.2 -tsxldtrk -sm3 -ptwrite -widekl -movrs +invpcid +64bit +xsavec -avx10.1-512 +avx512vpopcntdq +cmov +avx512vp2intersect +avx512cd +movbe -avxvnniint8 -ccmp -amx-int8 -kl -avx10.1-256 +evex512 +avxvnni -rtm +adx +avx2 -hreset +movdiri -serialize -sha512 +vpclmulqdq +avx512vl -uintr -cf +clflushopt -raoint -cmpccxadd +bmi -amx-tile +sse -avx10.2-256 +gfni -avxvnniint16 -amx-fp16 -zu -ndd +xsaveopt +rdrnd +avx512f -amx-bf16 +avx512bf16 +avx512vnni -push2pop2 +cx8 +avx512bw +sse3 +pku -nf -amx-tf32 -amx-avx512 +fsgsbase +clzero +mwaitx -lwp +lzcnt +sha +movdir64b -ppx +wbnoinvd -enqcmd -amx-transpose -avx10.2-512 -avxneconvert -tbm -pconfig -amx-complex +ssse3 +cx16 +bmi2 +fma +popcnt -avxifma +f16c +avx512bitalg +rdpru +clwb +mmx +sse2 +rdseed +avx512vbmi2 -prefetchi -amx-movrs +rdpid -fma4 +avx512vbmi +shstk +vaes -waitpkg -sgx +fxsr +avx512dq +sse4a]
+[259784:eventselection-run3]: [13:13:39][WARN] Missing STF/EFT -> use SOX/EOX; Missing/invalid SOX -> use SOR | Missing/invalid EOX -> use EOR
+[259784:eventselection-run3]: [13:13:39][INFO] Add new run number 300000 with orbit-reset timestamp 1546300800000000, SOR: 1546300800000, EOR: 1546301200000 to cache
+[259784:eventselection-run3]: DN >>> C=ch/O=AliEn2/CN=Users/CN=obenchik/OU=obenchik
+[259784:eventselection-run3]: ISSUER >>> C=ch/O=AliEn2/CN=AliEn CA
+[259784:eventselection-run3]: BEGIN >>> 2026-01-30 08:19:41
+[259784:eventselection-run3]: EXPIRE >>> 2026-03-02 10:19:41
+[259784:eventselection-run3]: Info in <TJAlienConnectionManager>: Opening connection to JCentral. Please wait
+[259784:eventselection-run3]: Info in <TJAlienConnectionManager>: Opening connection to 128.142.249.76
+[259784:eventselection-run3]: Info in <TJAlienConnectionManager>: Successfully connected to 128.142.249.76
+[259784:eventselection-run3]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/CTP/Calib/OrbitReset/06/62200/b9f985c3-b4b0-11ec-8fd3-90ce809b24ee in SE <ALICE::PRAGUE::SE>
+[259784:eventselection-run3]: Error in <TNetXNGFile::Open>: [ERROR] Server responded with an error: [3011] No servers are available to read the file.
+[259784:eventselection-run3]: 
+[259784:eventselection-run3]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/CTP/Calib/OrbitReset/06/62200/b9f985c3-b4b0-11ec-8fd3-90ce809b24ee in SE <ALICE::ISS::EOS>
+[259784:eventselection-run3]: Error in <TNetXNGFile::Open>: [FATAL] Invalid address
+[259784:eventselection-run3]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/CTP/Calib/OrbitReset/06/62200/b9f985c3-b4b0-11ec-8fd3-90ce809b24ee in SE <ALICE::UPB::CCDB>
+[259784:eventselection-run3]: Error in <TNetXNGFile::Open>: [FATAL] Socket timeout
+[259784:eventselection-run3]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/CTP/Calib/OrbitReset/06/62200/b9f985c3-b4b0-11ec-8fd3-90ce809b24ee in SE <ALICE::UPB::EOS>
+[259784:eventselection-run3]: Error in <TNetXNGFile::Open>: [FATAL] Socket timeout
+[259784:eventselection-run3]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/CTP/Calib/OrbitReset/06/62200/b9f985c3-b4b0-11ec-8fd3-90ce809b24ee in SE <ALICE::NIPNE::EOS>
+[259784:eventselection-run3]: Error in <TNetXNGFile::Open>: [FATAL] Invalid address
+[259784:eventselection-run3]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/CTP/Calib/OrbitReset/06/62200/b9f985c3-b4b0-11ec-8fd3-90ce809b24ee in SE <ALICE::POZNAN::EOS>
+[259784:eventselection-run3]: Error in <TNetXNGFile::Open>: [ERROR] Server responded with an error: [3014] Unable to open file  /eos/PSNC/grid/02/09013/b9feb74d-b4b0-11ec-8fd3-08f1eaf024ee; Network is unreachable
+[259784:eventselection-run3]: 
+[259784:eventselection-run3]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/CTP/Calib/OrbitReset/06/62200/b9f985c3-b4b0-11ec-8fd3-90ce809b24ee in SE <ALICE::CCIN2P3::SE>
+[259784:eventselection-run3]: [13:14:05][INFO] ccdb reads http://alice-ccdb.cern.ch/CTP/Calib/OrbitReset/1546300800000/b9f985c3-b4b0-11ec-8fd3-90ce809b24ee for 1546301000000 (retrieve, agent_id: o2-analysis-eve/o2-analysis-event-selection-service@259784 target/Linux_x86_64 init/1770034193130 id/oussama@comsolpc session/SmNXP9pV ), 
+[259784:eventselection-run3]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/EventSelection/EventSelectionParams/05/07443/5f880452-f6ff-11ee-82dc-90ce809b250c in SE <ALICE::UPB::CCDB>
+[259784:eventselection-run3]: Error in <TNetXNGFile::Open>: [FATAL] Socket timeout
+[259784:eventselection-run3]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/EventSelection/EventSelectionParams/05/07443/5f880452-f6ff-11ee-82dc-90ce809b250c in SE <ALICE::UPB::EOS>
+[259784:eventselection-run3]: Error in <TNetXNGFile::Open>: [FATAL] Socket timeout
+[259784:eventselection-run3]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/EventSelection/EventSelectionParams/05/07443/5f880452-f6ff-11ee-82dc-90ce809b250c in SE <ALICE::CCIN2P3::SE>
+[259784:eventselection-run3]: [13:14:05][INFO] ccdb reads http://alice-ccdb.cern.ch/EventSelection/EventSelectionParams/1543767116001/5f880452-f6ff-11ee-82dc-90ce809b250c for 1546301000000 (retrieve, agent_id: o2-analysis-eve/o2-analysis-event-selection-service@259784 target/Linux_x86_64 init/1770034193130 id/oussama@comsolpc session/SmNXP9pV ), 
+[259784:eventselection-run3]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/ITS/Config/AlpideParam/02/10715/76f24ad5-e339-11ec-9e90-200114580204 in SE <ALICE::UPB::CCDB>
+[259784:eventselection-run3]: Error in <TNetXNGFile::Open>: [FATAL] Socket timeout
+[259784:eventselection-run3]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/ITS/Config/AlpideParam/02/10715/76f24ad5-e339-11ec-9e90-200114580204 in SE <ALICE::UPB::EOS>
+[259784:eventselection-run3]: Error in <TNetXNGFile::Open>: [FATAL] Socket timeout
+[259784:eventselection-run3]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/ITS/Config/AlpideParam/02/10715/76f24ad5-e339-11ec-9e90-200114580204 in SE <ALICE::CCIN2P3::SE>
+[259784:eventselection-run3]: [13:14:06][INFO] ccdb reads http://alice-ccdb.cern.ch/ITS/Config/AlpideParam/1546300800000/76f24ad5-e339-11ec-9e90-200114580204 for 1546301000000 (retrieve, agent_id: o2-analysis-eve/o2-analysis-event-selection-service@259784 target/Linux_x86_64 init/1770034193130 id/oussama@comsolpc session/SmNXP9pV ), 
+[259784:eventselection-run3]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/EventSelection/TriggerAliases/13/01265/5d79c029-dac8-11ed-9692-90ce809b250c in SE <ALICE::UPB::CCDB>
+[259784:eventselection-run3]: Error in <TNetXNGFile::Open>: [FATAL] Socket timeout
+[259784:eventselection-run3]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/EventSelection/TriggerAliases/13/01265/5d79c029-dac8-11ed-9692-90ce809b250c in SE <ALICE::UPB::EOS>
+[259784:eventselection-run3]: Error in <TNetXNGFile::Open>: [FATAL] Socket timeout
+[259784:eventselection-run3]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/EventSelection/TriggerAliases/13/01265/5d79c029-dac8-11ed-9692-90ce809b250c in SE <ALICE::CCIN2P3::SE>
+[259784:eventselection-run3]: [13:14:06][INFO] ccdb reads http://alice-ccdb.cern.ch/EventSelection/TriggerAliases/1543767116001/5d79c029-dac8-11ed-9692-90ce809b250c for 1546301000000 (retrieve, agent_id: o2-analysis-eve/o2-analysis-event-selection-service@259784 target/Linux_x86_64 init/1770034193130 id/oussama@comsolpc session/SmNXP9pV ), 
+[259784:eventselection-run3]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/ITS/Calib/TimeDeadMap/08/25131/edf6c274-b3b9-11ee-8d89-200114580202 in SE <ALICE::UPB::CCDB>
+[259784:eventselection-run3]: Error in <TNetXNGFile::Open>: [FATAL] Socket timeout
+[259784:eventselection-run3]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/ITS/Calib/TimeDeadMap/08/25131/edf6c274-b3b9-11ee-8d89-200114580202 in SE <ALICE::UPB::EOS>
+[259784:eventselection-run3]: Error in <TNetXNGFile::Open>: [FATAL] Socket timeout
+[259784:eventselection-run3]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/ITS/Calib/TimeDeadMap/08/25131/edf6c274-b3b9-11ee-8d89-200114580202 in SE <ALICE::POZNAN::EOS>
+[259784:eventselection-run3]: [13:14:07][INFO] ccdb reads http://alice-ccdb.cern.ch/ITS/Calib/TimeDeadMap/1/edf6c274-b3b9-11ee-8d89-200114580202 for 1546301000000 (retrieve, agent_id: o2-analysis-eve/o2-analysis-event-selection-service@259784 target/Linux_x86_64 init/1770034193130 id/oussama@comsolpc session/SmNXP9pV ), 
+[259784:eventselection-run3]: [13:14:07][ERROR] Requested resource does not exist: http://alice-ccdb.cern.ch/RCT/Flags/RunFlags/1546301000000/run=300000/
+[259784:eventselection-run3]: [13:14:07][INFO] rct object missing... inserting dummy rct flags
+[259786:pid-tpc-service]: [13:14:07][INFO] Retrieving latest TPC response object for timestamp 1546300800022:
+[259786:pid-tpc-service]: DN >>> C=ch/O=AliEn2/CN=Users/CN=obenchik/OU=obenchik
+[259786:pid-tpc-service]: ISSUER >>> C=ch/O=AliEn2/CN=AliEn CA
+[259786:pid-tpc-service]: BEGIN >>> 2026-01-30 08:19:41
+[259786:pid-tpc-service]: EXPIRE >>> 2026-03-02 10:19:41
+[259786:pid-tpc-service]: Info in <TJAlienConnectionManager>: Opening connection to JCentral. Please wait
+[259786:pid-tpc-service]: Info in <TJAlienConnectionManager>: Opening connection to 128.142.249.32
+[259786:pid-tpc-service]: Info in <TJAlienConnectionManager>: Successfully connected to 128.142.249.32
+[259786:pid-tpc-service]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/Analysis/PID/TPC/Response/02/38295/d1cc7ea0-a5e0-11ec-975c-8cb53d0d24ee in SE <ALICE::PRAGUE::SE>
+[259786:pid-tpc-service]: [13:14:08][INFO] ccdb reads http://alice-ccdb.cern.ch/Analysis/PID/TPC/Response/0/d1cc7ea0-a5e0-11ec-975c-8cb53d0d24ee for 1546300800022 (retrieve, agent_id: o2-analysis-pid/o2-analysis-pid-tpc-service@259786 target/Linux_x86_64 init/1770034193088 id/oussama@comsolpc session/V0ZpTDOI ), 
+[259786:pid-tpc-service]: [13:14:09][INFO] Successfully retrieved TPC PID object from CCDB for timestamp 1546300800022, period , recoPass 
+[259786:pid-tpc-service]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/GLO/Config/GRPLHCIF/04/60609/b3296373-efea-11ec-b9c0-2a010e0a0b16 in SE <ALICE::UPB::CCDB>
+[259786:pid-tpc-service]: [13:14:09][INFO] ccdb reads http://alice-ccdb.cern.ch/GLO/Config/GRPLHCIF/1546300800000/b3296373-efea-11ec-b9c0-2a010e0a0b16 for 1546300800022 (retrieve, agent_id: o2-analysis-pid/o2-analysis-pid-tpc-service@259786 target/Linux_x86_64 init/1770034193088 id/oussama@comsolpc session/V0ZpTDOI ), 
+[259786:pid-tpc-service]: [13:14:09][INFO] Collisions type::0
+[259786:pid-tpc-service]: [13:14:09][INFO] ==== TPC PID response parameters: ====
+[259786:pid-tpc-service]: [13:14:09][INFO] BB param [0] = 0.0320981
+[259786:pid-tpc-service]: [13:14:09][INFO] BB param [1] = 19.9768
+[259786:pid-tpc-service]: [13:14:09][INFO] BB param [2] = 2.52666e-16
+[259786:pid-tpc-service]: [13:14:09][INFO] BB param [3] = 2.72123
+[259786:pid-tpc-service]: [13:14:09][INFO] BB param [4] = 6.08092
+[259786:pid-tpc-service]: [13:14:09][INFO] use default resolution parametrization = true
+[259786:pid-tpc-service]: [13:14:09][INFO] Default Resolution parametrization: 
+[259786:pid-tpc-service]: [13:14:09][INFO] Resolution param [0] = 0.07
+[259786:pid-tpc-service]: [13:14:09][INFO] Resolution param [1] = 0
+[259786:pid-tpc-service]: [13:14:09][INFO] mMIP = 50
+[259786:pid-tpc-service]: [13:14:09][INFO] mChargeFactor = 2.3
+[259786:pid-tpc-service]: [13:14:09][INFO] mMultNormalization = 11000
+[259786:pid-tpc-service]: [13:14:09][INFO] nClNorm = 152
+[259788:propagation-service]: [13:14:10][WARN] Missing STF/EFT -> use SOX/EOX; Missing/invalid SOX -> use SOR | Missing/invalid EOX -> use EOR
+[259788:propagation-service]: DN >>> C=ch/O=AliEn2/CN=Users/CN=obenchik/OU=obenchik
+[259788:propagation-service]: ISSUER >>> C=ch/O=AliEn2/CN=AliEn CA
+[259788:propagation-service]: BEGIN >>> 2026-01-30 08:19:41
+[259788:propagation-service]: EXPIRE >>> 2026-03-02 10:19:41
+[259788:propagation-service]: Info in <TJAlienConnectionManager>: Opening connection to JCentral. Please wait
+[259788:propagation-service]: Info in <TJAlienConnectionManager>: Opening connection to 128.142.249.50
+[259788:propagation-service]: Info in <TJAlienConnectionManager>: Successfully connected to 128.142.249.50
+[259788:propagation-service]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/GLO/Config/GRPMagField/06/62924/01d633ab-efdf-11ec-841e-2a010e0a0b16 in SE <ALICE::UPB::CCDB>
+[259788:propagation-service]: [13:14:12][INFO] ccdb reads http://alice-ccdb.cern.ch/GLO/Config/GRPMagField/1546300800000/01d633ab-efdf-11ec-841e-2a010e0a0b16 for 1546301000000 (retrieve, agent_id: o2-analysis-pro/o2-analysis-propagationservice@259788 target/Linux_x86_64 init/1770034193162 id/oussama@comsolpc session/ZV0fiINa ), 
+[259788:propagation-service]: [13:14:12][INFO] Setting global propagator magnetic field to current -30000 A for run 300000 from its GRPMagField CCDB object
+[259788:propagation-service]: [13:14:12][INFO] MagneticField::Print: MagneticFieldMap:
+[259788:propagation-service]: [13:14:12][INFO] MagneticField::Print: Solenoid (-1*)5 kG, Dipole ON (-1) 
+[259788:propagation-service]: [13:14:12][INFO] MagneticField::Print: Machine B fields for p-p  beam (7000 GeV): QGrad: 22.0002 Dipole: 37.8781
+[259788:propagation-service]: [13:14:12][INFO] MagneticField::Print: Uses Sol30_Dip6_Hole  of /home/oussama/alice/sw/ubuntu2404_x86-64/O2/dev-local2/share/Common/maps/mfchebKGI_sym.root
+[259788:propagation-service]: Info in <TGeoGlobalMagField::SetField>: Global magnetic field set to <MagneticFieldMap>
+[259788:propagation-service]: Info in <TGeoGlobalMagField::Lock>: Global magnetic field <MagneticFieldMap> is now locked
+[259788:propagation-service]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/GLO/Calib/MeanVertex/10/06884/9c31089f-2c77-11ed-ac0b-2a010e0a0b16 in SE <ALICE::UPB::CCDB>
+[259788:propagation-service]: [13:14:12][INFO] ccdb reads http://alice-ccdb.cern.ch/GLO/Calib/MeanVertex/1546300800000/9c31089f-2c77-11ed-ac0b-2a010e0a0b16 for 1546301000000 (retrieve, agent_id: o2-analysis-pro/o2-analysis-propagationservice@259788 target/Linux_x86_64 init/1770034193162 id/oussama@comsolpc session/ZV0fiINa ), 
+[259788:propagation-service]: [13:14:12][INFO] Loading material look-up table for timestamp: 300000
+[259788:propagation-service]: Error in <TFile::TFile>: file /cvmfs/alice.cern.ch/ccdb/GLO/Param/MatLUT/06/29739/3f0d0f81-99d9-11ee-b9a2-200114580202 does not exist
+[259788:propagation-service]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/GLO/Param/MatLUT/06/29739/3f0d0f81-99d9-11ee-b9a2-200114580202 in SE <ALICE::UPB::CCDB>
+[259788:propagation-service]: [13:14:13][INFO] ccdb reads http://alice-ccdb.cern.ch/GLO/Param/MatLUT/1546300800000/3f0d0f81-99d9-11ee-b9a2-200114580202 for 1546301000000 (retrieve, agent_id: o2-analysis-pro/o2-analysis-propagationservice@259788 target/Linux_x86_64 init/1770034193162 id/oussama@comsolpc session/ZV0fiINa ), 
+[259788:propagation-service]: [13:14:13][INFO] Initializing voxel layer lookup
+[259788:propagation-service]: [13:14:13][INFO] Setting global propagator material propagation LUT
+[259788:propagation-service]: [13:14:13][INFO] Loaded 440 params from $(O2_ROOT)/share/Common/maps/sol5k.txt
+[259788:propagation-service]: [13:14:13][INFO] Configuring for timestamp 1546300800022 with magnetic field of -5.00675 kG
+[259788:propagation-service]: [13:14:13][INFO] Fully configured for run: 300000
+[259788:propagation-service]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/TPC/Calib/VDriftTgl/04/00148/01683855-2e90-11ed-ac0b-200114580202 in SE <ALICE::UPB::CCDB>
+[259788:propagation-service]: [13:14:13][INFO] ccdb reads http://alice-ccdb.cern.ch/TPC/Calib/VDriftTgl/1546300800000/01683855-2e90-11ed-ac0b-200114580202 for 1546300800022 (retrieve, agent_id: o2-analysis-pro/o2-analysis-propagationservice@259788 target/Linux_x86_64 init/1770034193162 id/oussama@comsolpc session/ZV0fiINa ), 
+[259788:propagation-service]: [13:14:13][INFO] Updated VDrift for timestamp 0 with vdrift=0.0025800 (cm/ns)
+[259788:propagation-service]: fitter 0: error (2 muted): propagation failed for X:-6.1000e+01 Alp:-2.618e+00 Par: -8.9288e+01 +1.9304e+02 +9.5227e-01 -1.9239e+00 -5.2609e+00 |Q|:1 Electron Cov: [+1.043e+03] [-1.453e+03 +2.544e+03] [-2.901e+00 +4.028e+00 +8.211e-03] [-4.815e-01 -3.163e+00 +1.689e-03 +3.383e-02] [+3.419e+00 -3.483e+00 -1.030e-02 -1.382e-02 +4.463e-02]
+[259788:propagation-service]: fitter 0: error (3 muted): propagation failed for X:-6.1000e+01 Alp:-2.618e+00 Par: -8.9266e+01 +1.9302e+02 +9.5219e-01 -1.9239e+00 -5.2599e+00 |Q|:1 Electron Cov: [+1.042e+03] [-1.451e+03 +2.541e+03] [-2.900e+00 +4.026e+00 +8.217e-03] [-4.814e-01 -3.167e+00 +1.691e-03 +3.386e-02] [+3.416e+00 -3.477e+00 -1.030e-02 -1.383e-02 +4.463e-02]
+[259788:propagation-service]: fitter 0: error (5 muted): propagation failed for X:+1.5500e+02 Alp:-2.618e+00 Par: -8.3777e+01 -3.7016e+02 -9.6680e-01 -1.9527e+00 -6.5322e+00 |Q|:1 Electron Cov: [+2.190e+01] [+3.728e+01 +6.562e+01] [+7.556e-02 +1.290e-01 +2.643e-04] [-1.538e-03 +1.949e-02 -5.455e-06 +2.365e-04] [+8.020e-01 +1.382e+00 +2.950e-03 -6.614e-05 +3.899e-02]
+[259788:propagation-service]: fitter 0: error (9 muted): propagation failed for X:+3.3000e+01 Alp:-1.920e+00 Par: -3.3859e+01 -1.0284e+02 +9.9340e-01 +5.8994e-02 -2.1374e+01 |Q|:1 Electron Cov: [+9.312e+03] [+4.704e+02 +6.409e+01] [-3.529e+01 -1.783e+00 +1.338e-01] [+1.119e-02 -8.060e-01 -4.575e-05 +1.681e-02] [+3.744e+02 +1.888e+01 -1.425e+00 +9.566e-04 +1.708e+01]
+[259788:propagation-service]: fitter 0: error (17 muted): propagation failed for X:+1.5700e+02 Alp:+8.727e-01 Par: +6.3459e+01 -2.2812e+02 +9.5300e-01 -1.2027e+00 +6.7476e+00 |Q|:1 Electron Cov: [+3.795e+00] [-3.823e+00 +4.612e+00] [+1.564e-02 -1.589e-02 +6.685e-05] [-4.846e-04 +9.814e-03 -2.557e-06 +1.465e-04] [+7.326e-02 -7.829e-02 +3.601e-04 -5.373e-05 +4.511e-03]
+[259788:propagation-service]: fitter 0: error (33 muted): propagation failed for X:+1.9100e+02 Alp:-1.745e-01 Par: +7.1994e+01 -1.4506e+02 +9.5335e-01 -6.3888e-01 +5.4752e+00 |Q|:1 Electron Cov: [+6.172e+00] [-3.221e+00 +2.547e+00] [+1.905e-02 -1.007e-02 +6.067e-05] [-6.505e-04 +7.400e-03 -2.462e-06 +7.105e-05] [+4.900e-02 -2.887e-02 +1.820e-04 -2.655e-05 +1.434e-03]
+[259788:propagation-service]: fitter 0: error (65 muted): propagation failed for X:-7.0000e+00 Alp:+1.571e+00 Par: -4.9869e+01 +8.8923e+01 +9.6665e-01 -1.9684e+00 -7.2395e+00 |Q|:1 Electron Cov: [+8.610e+02] [-1.341e+03 +2.447e+03] [-2.917e+00 +4.536e+00 +1.018e-02] [-3.888e-01 -3.468e+00 +1.641e-03 +6.758e-02] [+2.377e+00 -2.170e+00 -8.674e-03 -2.722e-02 +6.078e-02]
+[259788:propagation-service]: fitter 0: error (129 muted): propagation failed for X:-1.7000e+01 Alp:+2.269e+00 Par: -4.7454e+01 +1.5746e+01 +9.7305e-01 -1.5076e-01 -9.1246e+00 |Q|:1 Electron Cov: [+3.341e+02] [-3.897e+01 +2.668e+01] [-1.176e+00 +1.371e-01 +4.213e-03] [-8.774e-03 -2.475e-01 +3.721e-05 +3.983e-03] [+2.546e+00 -2.648e-01 -9.229e-03 -5.797e-04 +5.311e-02]
+[259788:propagation-service]: fitter 0: error (257 muted): propagation failed for X:-2.2300e+02 Alp:+8.727e-01 Par: -1.9747e+02 -5.9091e+02 +9.5583e-01 +1.9560e+00 -2.4693e+00 |Q|:1 Electron Cov: [+6.828e+03] [+8.066e+03 +1.000e+04] [-9.188e+00 -1.084e+01 +1.241e-02] [+7.282e-01 -1.055e+00 -1.118e-03 +8.223e-03] [+1.600e+01 +1.869e+01 -2.211e-02 +3.352e-03 +4.555e-02]
+[259788:propagation-service]: fitter 0: error (513 muted): propagation failed for X:+9.9000e+01 Alp:-5.236e-01 Par: -3.2027e+01 +1.2337e+02 -9.7780e-01 +1.0145e+00 -1.6730e+01 |Q|:1 Electron Cov: [+2.429e+00] [-2.258e+00 +2.364e+00] [+1.751e-02 -1.620e-02 +1.323e-04] [+5.982e-05 +1.027e-02 +5.705e-07 +5.156e-04] [+3.224e-01 -2.502e-01 +3.608e-03 +6.923e-05 +4.240e-01]
+[259788:propagation-service]: fitter 0: error (1025 muted): propagation failed for X:+1.0700e+02 Alp:+1.222e+00 Par: +6.7067e+00 +4.2337e+01 -8.6079e-01 +1.1534e-01 -4.9784e+01 |Q|:1 Electron Cov: [+4.974e-01] [-2.157e-02 +3.185e-01] [+1.994e-02 -1.318e-03 +9.246e-04] [+1.503e-05 +1.418e-02 +8.404e-07 +7.941e-04] [+3.689e-01 -5.731e-02 +2.165e-02 +4.921e-05 +1.043e+00]
+[259788:propagation-service]: fitter 0: error (2049 muted): propagation failed for X:+8.5000e+01 Alp:-2.269e+00 Par: -1.2739e+01 -2.1362e+02 -6.3002e-01 -4.3899e-02 +1.0526e+02 |Q|:1 Electron
+[259788:propagation-service]: fitter 0: error (4097 muted): propagation failed for X:+1.2697e+02 Alp:+2.618e+00 Par: +1.1031e+01 -1.0325e+02 -5.9300e-01 -3.1459e-01 +1.1877e+02 |Q|:1 Electron
+[259792:ambiguous-track-propagation]: DN >>> C=ch/O=AliEn2/CN=Users/CN=obenchik/OU=obenchik
+[259792:ambiguous-track-propagation]: ISSUER >>> C=ch/O=AliEn2/CN=AliEn CA
+[259792:ambiguous-track-propagation]: BEGIN >>> 2026-01-30 08:19:41
+[259792:ambiguous-track-propagation]: EXPIRE >>> 2026-03-02 10:19:41
+[259792:ambiguous-track-propagation]: Info in <TJAlienConnectionManager>: Opening connection to JCentral. Please wait
+[259792:ambiguous-track-propagation]: Info in <TJAlienConnectionManager>: Opening connection to 128.142.249.46
+[259792:ambiguous-track-propagation]: Info in <TJAlienConnectionManager>: Successfully connected to 128.142.249.46
+[259792:ambiguous-track-propagation]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/GLO/Config/GRPMagField/06/62924/01d633ab-efdf-11ec-841e-2a010e0a0b16 in SE <ALICE::UPB::CCDB>
+[259792:ambiguous-track-propagation]: Error in <TNetXNGFile::Open>: [FATAL] Socket timeout
+[259792:ambiguous-track-propagation]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/GLO/Config/GRPMagField/06/62924/01d633ab-efdf-11ec-841e-2a010e0a0b16 in SE <ALICE::UPB::EOS>
+[259792:ambiguous-track-propagation]: Error in <TNetXNGFile::Open>: [FATAL] Socket timeout
+[259792:ambiguous-track-propagation]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/GLO/Config/GRPMagField/06/62924/01d633ab-efdf-11ec-841e-2a010e0a0b16 in SE <ALICE::CCIN2P3::SE>
+[259792:ambiguous-track-propagation]: [13:14:21][INFO] ccdb reads http://alice-ccdb.cern.ch/GLO/Config/GRPMagField/1546300800000/01d633ab-efdf-11ec-841e-2a010e0a0b16 for 1546300800022 (retrieve, agent_id: o2-analysis-mm-/o2-analysis-mm-track-propagation@259792 target/Linux_x86_64 init/1770034193177 id/oussama@comsolpc session/5ODtyRRT ), 
+[259792:ambiguous-track-propagation]: [13:14:21][INFO] Setting magnetic field to current -30000 A for run 300000 from its GRPMagField CCDB object
+[259792:ambiguous-track-propagation]: [13:14:21][INFO] MagneticField::Print: MagneticFieldMap:
+[259792:ambiguous-track-propagation]: [13:14:21][INFO] MagneticField::Print: Solenoid (-1*)5 kG, Dipole ON (-1) 
+[259792:ambiguous-track-propagation]: [13:14:21][INFO] MagneticField::Print: Machine B fields for p-p  beam (7000 GeV): QGrad: 22.0002 Dipole: 37.8781
+[259792:ambiguous-track-propagation]: [13:14:21][INFO] MagneticField::Print: Uses Sol30_Dip6_Hole  of /home/oussama/alice/sw/ubuntu2404_x86-64/O2/dev-local2/share/Common/maps/mfchebKGI_sym.root
+[259792:ambiguous-track-propagation]: Info in <TGeoGlobalMagField::SetField>: Global magnetic field set to <MagneticFieldMap>
+[259792:ambiguous-track-propagation]: Info in <TGeoGlobalMagField::Lock>: Global magnetic field <MagneticFieldMap> is now locked
+[259792:ambiguous-track-propagation]: [13:14:21][INFO] The field at the center of the MFT is bZ = -5.00188
+[259794:mult-cent-table]: [13:14:22][WARN] Missing STF/EFT -> use SOX/EOX; Missing/invalid SOX -> use SOR | Missing/invalid EOX -> use EOR
+[259794:mult-cent-table]: DN >>> C=ch/O=AliEn2/CN=Users/CN=obenchik/OU=obenchik
+[259794:mult-cent-table]: ISSUER >>> C=ch/O=AliEn2/CN=AliEn CA
+[259794:mult-cent-table]: BEGIN >>> 2026-01-30 08:19:41
+[259794:mult-cent-table]: EXPIRE >>> 2026-03-02 10:19:41
+[259794:mult-cent-table]: Info in <TJAlienConnectionManager>: Opening connection to JCentral. Please wait
+[259794:mult-cent-table]: Info in <TJAlienConnectionManager>: Opening connection to 128.142.249.51
+[259794:mult-cent-table]: Info in <TJAlienConnectionManager>: Successfully connected to 128.142.249.51
+[259794:mult-cent-table]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/Centrality/Calibration/09/13101/b68b3ca1-f318-11ec-841e-533d7ebf24ee in SE <ALICE::UPB::CCDB>
+[259794:mult-cent-table]: Error in <TNetXNGFile::Open>: [FATAL] Socket timeout
+[259794:mult-cent-table]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/Centrality/Calibration/09/13101/b68b3ca1-f318-11ec-841e-533d7ebf24ee in SE <ALICE::UPB::EOS>
+[259794:mult-cent-table]: Error in <TNetXNGFile::Open>: [FATAL] Socket timeout
+[259794:mult-cent-table]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/Centrality/Calibration/09/13101/b68b3ca1-f318-11ec-841e-533d7ebf24ee in SE <ALICE::CCIN2P3::SE>
+[259794:mult-cent-table]: [13:14:27][INFO] ccdb reads http://alice-ccdb.cern.ch/Centrality/Calibration/1546300800000/b68b3ca1-f318-11ec-841e-533d7ebf24ee for 1546301000000 (retrieve, agent_id: o2-analysis-mul/o2-analysis-multcenttable@259794 target/Linux_x86_64 init/1770034193293 id/oussama@comsolpc session/G4VrczxY ), 
+[259794:mult-cent-table]: [13:14:27][ERROR] Problem loading CCDB objects! Please check
+[259794:mult-cent-table]: [13:14:27][INFO] MFT track counter: vertex-Z calibration not loaded, will run without.
+[259794:mult-cent-table]: [13:14:27][INFO] Global track counter: vertex-Z calibration not loaded, will run without.
+[259794:mult-cent-table]: [13:14:27][INFO] centrality loading procedure for timestamp=1546300800022, run number=300000
+[259794:mult-cent-table]: [13:14:27][INFO] From metadata this data is from Data
+[259794:mult-cent-table]: [13:14:27][INFO] From metadata this data is from Data
+[259794:mult-cent-table]: [13:14:27][INFO] centrality loading procedure for timestamp=1546300800022, run number=300000
+[259794:mult-cent-table]: [13:14:27][ERROR] Requested resource does not exist: http://alice-ccdb.cern.ch/Centrality/Estimators/1546301000000/
+[259794:mult-cent-table]: [13:14:27][INFO] Centrality calibration is not available in CCDB for run=300000 at timestamp=1546300800022, will fill tables with dummy values
+[259799:strangenesstofpid]: [13:14:28][WARN] Missing STF/EFT -> use SOX/EOX; Missing/invalid SOX -> use SOR | Missing/invalid EOX -> use EOR
+[259799:strangenesstofpid]: DN >>> C=ch/O=AliEn2/CN=Users/CN=obenchik/OU=obenchik
+[259799:strangenesstofpid]: ISSUER >>> C=ch/O=AliEn2/CN=AliEn CA
+[259799:strangenesstofpid]: BEGIN >>> 2026-01-30 08:19:41
+[259799:strangenesstofpid]: EXPIRE >>> 2026-03-02 10:19:41
+[259799:strangenesstofpid]: Info in <TJAlienConnectionManager>: Opening connection to JCentral. Please wait
+[259799:strangenesstofpid]: Info in <TJAlienConnectionManager>: Opening connection to 128.142.249.61
+[259799:strangenesstofpid]: Info in <TJAlienConnectionManager>: Successfully connected to 128.142.249.61
+[259799:strangenesstofpid]: Info in <TJAlienFile::Open>: Accessing file /alice/data/CCDB/GLO/GRP/GRP/09/30561/abf19450-4ddd-11ec-975c-028a3a0724ee in SE <ALICE::PRAGUE::SE>
+[259799:strangenesstofpid]: [13:14:29][INFO] ccdb reads http://alice-ccdb.cern.ch/GLO/GRP/GRP/1546300740000/abf19450-4ddd-11ec-975c-028a3a0724ee for 1546301000000 (retrieve, agent_id: o2-analysis-lf-/o2-analysis-lf-strangenesstofpid@259799 target/Linux_x86_64 init/1770034193213 id/oussama@comsolpc session/gYI1VNmM ), 
+[259799:strangenesstofpid]: [13:14:29][INFO] MagneticField::Print: MagneticFieldMap:
+[259799:strangenesstofpid]: [13:14:29][INFO] MagneticField::Print: Solenoid (-1*)5 kG, Dipole ON (-1) 
+[259799:strangenesstofpid]: [13:14:29][INFO] MagneticField::Print: Machine B fields for p-p  beam (7000 GeV): QGrad: 22.0002 Dipole: 37.8781
+[259799:strangenesstofpid]: [13:14:29][INFO] MagneticField::Print: Uses Sol30_Dip6_Hole  of /home/oussama/alice/sw/ubuntu2404_x86-64/O2/dev-local2/share/Common/maps/mfchebKGI_sym.root
+[259799:strangenesstofpid]: Info in <TGeoGlobalMagField::SetField>: Global magnetic field set to <MagneticFieldMap>
+[259799:strangenesstofpid]: Info in <TGeoGlobalMagField::Lock>: Global magnetic field <MagneticFieldMap> is now locked
+[259799:strangenesstofpid]: [13:14:29][INFO] Retrieved GRP for run 300000 with magnetic field of -5 kZG
+[259799:strangenesstofpid]: [13:14:29][ERROR] Requested resource does not exist: http://alice-ccdb.cern.ch/Users/d/ddobrigk/stratofeloss/1546301000000/
+[259799:strangenesstofpid]: [13:14:29][INFO] Loaded 440 params from $(O2_ROOT)/share/Common/maps/sol5k.txt
+[259802:internal-dpl-aod-writer]: [13:14:29][INFO] No AODs to be saved.
+[259781:internal-dpl-aod-reader]: [13:20:01][WARN] Not enough resources to schedule computation. 0 skipped so far. Last scheduled at 271866883.
+[259781:internal-dpl-aod-reader]: [13:20:01][WARN] Not enough resources to schedule computation. 1 skipped so far. Last scheduled at 271866883.
+[259781:internal-dpl-aod-reader]: [13:20:01][WARN] Not enough resources to schedule computation. 2 skipped so far. Last scheduled at 271866883.
+[259781:internal-dpl-aod-reader]: [13:20:01][WARN] Not enough resources to schedule computation. 3 skipped so far. Last scheduled at 271866883.
+[259781:internal-dpl-aod-reader]: [13:20:43][INFO] Read info: lfn=alien:///alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Test_10/AO2D_10.root,size=202442163,total_df=4,read_df=4,read_bytes=282630887,read_calls=331,io_time=649.9,wait_time=0.0,level=0,se=ALICE::ZA_CHPC::EOS,open_time=6.2
+[259781:internal-dpl-aod-reader]: Info in <TJAlienFile::Open>: Accessing file /alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Test_10/AO2D_11.root in SE <ALICE::KISTI_GSDC::EOS>
+[259781:internal-dpl-aod-reader]: [13:20:49][INFO] Opening file: lfn=alien:///alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Test_10/AO2D_11.root,size=207152105,se=ALICE::KISTI_GSDC::EOS,open_time=5.5
+[259781:internal-dpl-aod-reader]: [13:21:23][WARN] Not enough resources to schedule computation. 0 skipped so far. Last scheduled at 272082536.
+[259781:internal-dpl-aod-reader]: [13:21:23][WARN] Not enough resources to schedule computation. 1 skipped so far. Last scheduled at 272082536.
+[259781:internal-dpl-aod-reader]: [13:21:23][WARN] Not enough resources to schedule computation. 2 skipped so far. Last scheduled at 272082536.
+[259781:internal-dpl-aod-reader]: [13:22:27][WARN] Not enough resources to schedule computation. 0 skipped so far. Last scheduled at 272154905.
+[259781:internal-dpl-aod-reader]: [13:22:27][WARN] Not enough resources to schedule computation. 1 skipped so far. Last scheduled at 272154905.
+[259781:internal-dpl-aod-reader]: [13:22:27][WARN] Not enough resources to schedule computation. 2 skipped so far. Last scheduled at 272154905.
+[259781:internal-dpl-aod-reader]: [13:22:38][INFO] Read info: lfn=alien:///alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Test_10/AO2D_11.root,size=207152105,total_df=4,read_df=4,read_bytes=291095403,read_calls=331,io_time=115.2,wait_time=0.0,level=0,se=ALICE::KISTI_GSDC::EOS,open_time=5.5
+[259781:internal-dpl-aod-reader]: Info in <TJAlienFile::Open>: Accessing file /alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Test_10/AO2D_12.root in SE <ALICE::KISTI_GSDC::EOS>
+[259781:internal-dpl-aod-reader]: [13:22:40][INFO] Opening file: lfn=alien:///alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Test_10/AO2D_12.root,size=209414149,se=ALICE::KISTI_GSDC::EOS,open_time=1.7
+[259781:internal-dpl-aod-reader]: [13:24:19][INFO] Read info: lfn=alien:///alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Test_10/AO2D_12.root,size=209414149,total_df=4,read_df=4,read_bytes=299781060,read_calls=279,io_time=100.1,wait_time=0.0,level=0,se=ALICE::KISTI_GSDC::EOS,open_time=1.7
+[259781:internal-dpl-aod-reader]: Info in <TJAlienFile::Open>: Accessing file /alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Test_10/AO2D_13.root in SE <ALICE::CCIN2P3::SE>
+[259781:internal-dpl-aod-reader]: [13:24:19][INFO] Opening file: lfn=alien:///alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Test_10/AO2D_13.root,size=213202041,se=ALICE::CCIN2P3::SE,open_time=0.4
+[259781:internal-dpl-aod-reader]: [13:25:23][INFO] Read info: lfn=alien:///alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Test_10/AO2D_13.root,size=213202041,total_df=4,read_df=4,read_bytes=300168967,read_calls=312,io_time=64.5,wait_time=0.0,level=0,se=ALICE::CCIN2P3::SE,open_time=0.4
+[259781:internal-dpl-aod-reader]: Info in <TJAlienFile::Open>: Accessing file /alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Test_10/AO2D_14.root in SE <ALICE::ZA_CHPC::EOS>
+[259781:internal-dpl-aod-reader]: [13:25:30][INFO] Opening file: lfn=alien:///alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Test_10/AO2D_14.root,size=208894909,se=ALICE::ZA_CHPC::EOS,open_time=7.2
+[259781:internal-dpl-aod-reader]: [13:27:33][WARN] Not enough resources to schedule computation. 0 skipped so far. Last scheduled at 272362681.
+[259781:internal-dpl-aod-reader]: [13:27:33][WARN] Not enough resources to schedule computation. 1 skipped so far. Last scheduled at 272362681.
+[259781:internal-dpl-aod-reader]: [13:27:33][WARN] Not enough resources to schedule computation. 2 skipped so far. Last scheduled at 272362681.
+[INFO] Quit requested at Mon Feb  2 13:28:22 2026
+
+[259780:internal-dpl-clock]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259780:internal-dpl-clock]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259780:internal-dpl-clock]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259781:internal-dpl-aod-reader]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259781:internal-dpl-aod-reader]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259782:internal-dpl-aod-spawner]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259782:internal-dpl-aod-spawner]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259782:internal-dpl-aod-spawner]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259782:internal-dpl-aod-spawner]: [13:28:22][STATE] RUNNING ---> READY
+[259783:internal-dpl-aod-index-builder]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259783:internal-dpl-aod-index-builder]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259783:internal-dpl-aod-index-builder]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259783:internal-dpl-aod-index-builder]: [13:28:22][STATE] RUNNING ---> READY
+[259783:internal-dpl-aod-index-builder]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259784:eventselection-run3]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259784:eventselection-run3]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259784:eventselection-run3]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259784:eventselection-run3]: [13:28:22][STATE] RUNNING ---> READY
+[259785:fwd-track-to-collision-association]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259785:fwd-track-to-collision-association]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259785:fwd-track-to-collision-association]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259785:fwd-track-to-collision-association]: [13:28:22][STATE] RUNNING ---> READY
+[259786:pid-tpc-service]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259786:pid-tpc-service]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259786:pid-tpc-service]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259786:pid-tpc-service]: [13:28:22][STATE] RUNNING ---> READY
+[259787:ft0-corrected-table]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259787:ft0-corrected-table]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259787:ft0-corrected-table]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259788:propagation-service]: fitter 0: error (8193 muted): propagation failed for X:+9.5000e+01 Alp:+2.967e+00 Par: +6.2464e+00 -8.7723e-01 -8.9078e-01 +3.4376e-01 -4.3148e+01 |Q|:1 Electron Cov: [+7.066e-01] [-1.691e-01 +2.161e-01] [+3.397e-02 -8.014e-03 +2.000e-03] [+5.241e-05 +1.538e-02 +2.987e-06 +1.653e-03] [+1.458e+00 -2.335e-01 +1.601e-01 +2.323e-04 +2.925e+01]
+[259788:propagation-service]: fitter 0: error (16385 muted): propagation failed for X:+1.1597e+02 Alp:-1.745e-01 Par: +9.8269e-01 +2.0487e+02 -8.6934e-01 +1.9477e-01 -6.9111e+01 |Q|:1 Electron Cov: [+3.155e-01] [-1.913e-02 +1.972e-01] [+1.594e-02 -2.190e-03 +1.007e-03] [+2.141e-05 +1.135e-02 +1.551e-06 +9.185e-04] [+2.970e-01 -1.341e-01 +2.855e-02 +1.238e-04 +1.875e+00]
+[259788:propagation-service]: fitter 0: error (32769 muted): propagation failed for X:+1.1897e+02 Alp:+1.745e-01 Par: -7.7742e-01 -7.9926e-01 -8.0957e-01 +8.0123e-01 -9.7937e+01 |Q|:1 Electron Cov: [+1.270e-01] [-4.319e-02 +2.170e-01] [+1.172e-02 -6.212e-03 +1.332e-03] [+5.016e-05 +1.438e-02 +6.875e-06 +2.153e-03] [+3.419e-01 -6.190e-01 +5.027e-02 +8.525e-04 +5.821e+00]
+[259788:propagation-service]: fitter 0: error (65537 muted): propagation failed for X:+9.8475e+01 Alp:-1.222e+00 Par: -7.4924e+00 +1.1108e+02 +6.1332e-01 -2.7749e-01 -1.0437e+02 |Q|:1 Electron
+[259788:propagation-service]: fitter 0: error (131073 muted): propagation failed for X:+9.8475e+01 Alp:+1.920e+00 Par: +5.4550e+00 -2.1228e+02 +4.8382e-01 -6.6560e-02 -1.1844e+02 |Q|:1 Electron
+[259788:propagation-service]: fitter 0: error (262145 muted): propagation failed for X:+1.0322e+02 Alp:-1.222e+00 Par: -1.3329e+01 -4.3659e+01 +9.0654e-01 +8.7078e-02 -9.4039e+01 |Q|:1 Electron Cov: [+9.871e-02] [+0.000e+00 +6.595e-03] [-9.700e-03 +0.000e+00 +1.032e-03] [+0.000e+00 -7.608e-04 +0.000e+00 +2.065e-04] [+7.561e-01 +0.000e+00 -8.747e-02 +0.000e+00 +9.681e+00]
+[259788:propagation-service]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259788:propagation-service]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259788:propagation-service]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259788:propagation-service]: [13:28:22][STATE] RUNNING ---> READY
+[259789:v0mlscoresconverter]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259789:v0mlscoresconverter]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259789:v0mlscoresconverter]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259789:v0mlscoresconverter]: [13:28:22][STATE] RUNNING ---> READY
+[259790:tof-signal]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259790:tof-signal]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259790:tof-signal]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259790:tof-signal]: [13:28:22][STATE] RUNNING ---> READY
+[259790:tof-signal]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259791:track-selection]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259791:track-selection]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259791:track-selection]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259791:track-selection]: [13:28:22][STATE] RUNNING ---> READY
+[259792:ambiguous-track-propagation]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259792:ambiguous-track-propagation]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259792:ambiguous-track-propagation]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259792:ambiguous-track-propagation]: [13:28:22][STATE] RUNNING ---> READY
+[259793:tof-event-time]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259793:tof-event-time]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259793:tof-event-time]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259793:tof-event-time]: [13:28:22][STATE] RUNNING ---> READY
+[259794:mult-cent-table]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259794:mult-cent-table]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259794:mult-cent-table]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259794:mult-cent-table]: [13:28:22][STATE] RUNNING ---> READY
+[259795:tof-pid-full]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259795:tof-pid-full]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259795:tof-pid-full]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259795:tof-pid-full]: [13:28:22][STATE] RUNNING ---> READY
+[259796:tof-pid-beta]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259796:tof-pid-beta]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259796:tof-pid-beta]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259796:tof-pid-beta]: [13:28:22][STATE] RUNNING ---> READY
+[259796:tof-pid-beta]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259797:mc-collision-extra]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259797:mc-collision-extra]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259797:mc-collision-extra]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259797:mc-collision-extra]: [13:28:22][STATE] RUNNING ---> READY
+[259797:mc-collision-extra]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259798:strangederivedbuilder]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259798:strangederivedbuilder]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259798:strangederivedbuilder]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259798:strangederivedbuilder]: [13:28:22][STATE] RUNNING ---> READY
+[259800:findable-study]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259800:findable-study]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259800:findable-study]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259800:findable-study]: [13:28:22][STATE] RUNNING ---> READY
+[259801:strderived-gen-q-a]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259801:strderived-gen-q-a]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259801:strderived-gen-q-a]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259801:strderived-gen-q-a]: [13:28:22][STATE] RUNNING ---> READY
+[259801:strderived-gen-q-a]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259802:internal-dpl-aod-writer]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259802:internal-dpl-aod-writer]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259802:internal-dpl-aod-writer]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:28:22][STATE] RUNNING ---> READY
+[259804:internal-dpl-injected-dummy-sink]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259804:internal-dpl-injected-dummy-sink]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259804:internal-dpl-injected-dummy-sink]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259804:internal-dpl-injected-dummy-sink]: [13:28:22][STATE] RUNNING ---> READY
+[259804:internal-dpl-injected-dummy-sink]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259799:strangenesstofpid]: [13:28:22][INFO] Received device shutdown request (signal 2).
+[259799:strangenesstofpid]: [13:28:22][INFO] Waiting for graceful device shutdown. Hit Ctrl-C again to abort immediately.
+[259799:strangenesstofpid]: [13:28:22][INFO] New state requested. No timeout set, quitting immediately as per --completion-policy
+[259799:strangenesstofpid]: [13:28:22][STATE] RUNNING ---> READY
+[259799:strangenesstofpid]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259799:strangenesstofpid]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259799:strangenesstofpid]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259780:internal-dpl-clock]: [13:28:22][INFO] Sending end-of-stream message to channel from_internal-dpl-clock_to_internal-dpl-aod-reader
+[259780:internal-dpl-clock]: [13:28:22][STATE] RUNNING ---> READY
+[259780:internal-dpl-clock]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259780:internal-dpl-clock]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259780:internal-dpl-clock]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259780:internal-dpl-clock]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259782:internal-dpl-aod-spawner]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259782:internal-dpl-aod-spawner]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259782:internal-dpl-aod-spawner]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259783:internal-dpl-aod-index-builder]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259783:internal-dpl-aod-index-builder]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259784:eventselection-run3]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259784:eventselection-run3]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259784:eventselection-run3]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259785:fwd-track-to-collision-association]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259785:fwd-track-to-collision-association]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259785:fwd-track-to-collision-association]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259786:pid-tpc-service]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259786:pid-tpc-service]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259786:pid-tpc-service]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259787:ft0-corrected-table]: [13:28:22][STATE] RUNNING ---> READY
+[259787:ft0-corrected-table]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259787:ft0-corrected-table]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259787:ft0-corrected-table]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259788:propagation-service]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259788:propagation-service]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259788:propagation-service]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259789:v0mlscoresconverter]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259789:v0mlscoresconverter]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259789:v0mlscoresconverter]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259790:tof-signal]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259790:tof-signal]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259791:track-selection]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259791:track-selection]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259791:track-selection]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259792:ambiguous-track-propagation]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259792:ambiguous-track-propagation]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259792:ambiguous-track-propagation]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259793:tof-event-time]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259793:tof-event-time]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259793:tof-event-time]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259794:mult-cent-table]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259794:mult-cent-table]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259794:mult-cent-table]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259795:tof-pid-full]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259795:tof-pid-full]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259795:tof-pid-full]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259796:tof-pid-beta]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259796:tof-pid-beta]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259797:mc-collision-extra]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259797:mc-collision-extra]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259798:strangederivedbuilder]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259798:strangederivedbuilder]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259798:strangederivedbuilder]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259800:findable-study]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259800:findable-study]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259800:findable-study]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259801:strderived-gen-q-a]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259801:strderived-gen-q-a]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259802:internal-dpl-aod-writer]: [13:28:22][STATE] RUNNING ---> READY
+[259802:internal-dpl-aod-writer]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259802:internal-dpl-aod-writer]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259802:internal-dpl-aod-writer]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:28:22][STATE] READY ---> RESETTING TASK
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259804:internal-dpl-injected-dummy-sink]: [13:28:22][STATE] RESETTING TASK ---> DEVICE READY
+[259804:internal-dpl-injected-dummy-sink]: [13:28:22][STATE] DEVICE READY ---> RESETTING DEVICE
+[259780:internal-dpl-clock]: [13:28:22][STATE] IDLE ---> EXITING
+[259780:internal-dpl-clock]: [13:28:22][STATE] Exiting FairMQ state machine
+[259796:tof-pid-beta]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259804:internal-dpl-injected-dummy-sink]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259783:internal-dpl-aod-index-builder]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259797:mc-collision-extra]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259796:tof-pid-beta]: [13:28:22][STATE] IDLE ---> EXITING
+[259804:internal-dpl-injected-dummy-sink]: [13:28:22][STATE] IDLE ---> EXITING
+[259783:internal-dpl-aod-index-builder]: [13:28:22][STATE] IDLE ---> EXITING
+[259797:mc-collision-extra]: [13:28:22][STATE] IDLE ---> EXITING
+[259789:v0mlscoresconverter]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259789:v0mlscoresconverter]: [13:28:22][STATE] IDLE ---> EXITING
+[259804:internal-dpl-injected-dummy-sink]: [13:28:22][STATE] Exiting FairMQ state machine
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:28:22][STATE] IDLE ---> EXITING
+[259796:tof-pid-beta]: [13:28:22][STATE] Exiting FairMQ state machine
+[259787:ft0-corrected-table]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259797:mc-collision-extra]: [13:28:22][STATE] Exiting FairMQ state machine
+[259783:internal-dpl-aod-index-builder]: [13:28:22][STATE] Exiting FairMQ state machine
+[259795:tof-pid-full]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259791:track-selection]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259787:ft0-corrected-table]: [13:28:22][STATE] IDLE ---> EXITING
+[259789:v0mlscoresconverter]: [13:28:22][STATE] Exiting FairMQ state machine
+[259791:track-selection]: [13:28:22][STATE] IDLE ---> EXITING
+[259795:tof-pid-full]: [13:28:22][STATE] IDLE ---> EXITING
+[259801:strderived-gen-q-a]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259803:internal-dpl-aod-global-analysis-file-sink]: [13:28:22][STATE] Exiting FairMQ state machine
+[259801:strderived-gen-q-a]: [13:28:22][STATE] IDLE ---> EXITING
+[259785:fwd-track-to-collision-association]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259800:findable-study]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259785:fwd-track-to-collision-association]: [13:28:22][STATE] IDLE ---> EXITING
+[259787:ft0-corrected-table]: [13:28:22][STATE] Exiting FairMQ state machine
+[259791:track-selection]: [13:28:22][STATE] Exiting FairMQ state machine
+[259800:findable-study]: [13:28:22][STATE] IDLE ---> EXITING
+[259795:tof-pid-full]: [13:28:22][STATE] Exiting FairMQ state machine
+[259790:tof-signal]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259785:fwd-track-to-collision-association]: [13:28:22][STATE] Exiting FairMQ state machine
+[259790:tof-signal]: [13:28:22][STATE] IDLE ---> EXITING
+[259792:ambiguous-track-propagation]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259792:ambiguous-track-propagation]: [13:28:22][STATE] IDLE ---> EXITING
+[259800:findable-study]: [13:28:22][STATE] Exiting FairMQ state machine
+[259790:tof-signal]: [13:28:22][STATE] Exiting FairMQ state machine
+[259801:strderived-gen-q-a]: [13:28:22][STATE] Exiting FairMQ state machine
+[259792:ambiguous-track-propagation]: [13:28:22][STATE] Exiting FairMQ state machine
+[259786:pid-tpc-service]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259786:pid-tpc-service]: [13:28:22][STATE] IDLE ---> EXITING
+[259799:strangenesstofpid]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259799:strangenesstofpid]: [13:28:22][STATE] IDLE ---> EXITING
+[259802:internal-dpl-aod-writer]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259802:internal-dpl-aod-writer]: [13:28:22][STATE] IDLE ---> EXITING
+[259786:pid-tpc-service]: [13:28:22][STATE] Exiting FairMQ state machine
+[259784:eventselection-run3]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259784:eventselection-run3]: [13:28:22][STATE] IDLE ---> EXITING
+[259793:tof-event-time]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259793:tof-event-time]: [13:28:22][STATE] IDLE ---> EXITING
+[259802:internal-dpl-aod-writer]: [13:28:22][STATE] Exiting FairMQ state machine
+[259799:strangenesstofpid]: [13:28:22][STATE] Exiting FairMQ state machine
+[259794:mult-cent-table]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259793:tof-event-time]: [13:28:22][STATE] Exiting FairMQ state machine
+[259794:mult-cent-table]: [13:28:22][STATE] IDLE ---> EXITING
+[259784:eventselection-run3]: [13:28:22][STATE] Exiting FairMQ state machine
+[259794:mult-cent-table]: [13:28:22][STATE] Exiting FairMQ state machine
+[259798:strangederivedbuilder]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259782:internal-dpl-aod-spawner]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259798:strangederivedbuilder]: [13:28:22][STATE] IDLE ---> EXITING
+[259782:internal-dpl-aod-spawner]: [13:28:22][STATE] IDLE ---> EXITING
+[259798:strangederivedbuilder]: [13:28:22][STATE] Exiting FairMQ state machine
+[259788:propagation-service]: [13:28:22][STATE] RESETTING DEVICE ---> IDLE
+[259788:propagation-service]: [13:28:22][STATE] IDLE ---> EXITING
+[259788:propagation-service]: [13:28:22][STATE] Exiting FairMQ state machine
+[259782:internal-dpl-aod-spawner]: [13:28:22][STATE] Exiting FairMQ state machine
+[INFO] Forceful exit requested.
+[259781:internal-dpl-aod-reader]: *** Program crashed (Aborted)
+[259781:internal-dpl-aod-reader]: Backtrace by DPL:
+[ERROR] websocket_server_callback: Error while reading from websocketconnection reset by peer
+[INFO] ## Processes completed. Run summary:
+[INFO] ### Devices started: 25
+[INFO]  - Device internal-dpl-clock: pid 259780 (exit 0)
+[INFO]  - Device internal-dpl-aod-reader: pid 259781 (exit 0)
+[INFO]  - Device internal-dpl-aod-spawner: pid 259782 (exit 0)
+[INFO]  - Device internal-dpl-aod-index-builder: pid 259783 (exit 0)
+[INFO]  - Device eventselection-run3: pid 259784 (exit 0)
+[INFO]  - Device fwd-track-to-collision-association: pid 259785 (exit 0)
+[INFO]  - Device pid-tpc-service: pid 259786 (exit 0)
+[INFO]  - Device ft0-corrected-table: pid 259787 (exit 0)
+[INFO]  - Device propagation-service: pid 259788 (exit 0)
+[INFO]  - Device v0mlscoresconverter: pid 259789 (exit 0)
+[INFO]  - Device tof-signal: pid 259790 (exit 0)
+[INFO]  - Device track-selection: pid 259791 (exit 0)
+[INFO]  - Device ambiguous-track-propagation: pid 259792 (exit 0)
+[INFO]  - Device tof-event-time: pid 259793 (exit 0)
+[INFO]  - Device mult-cent-table: pid 259794 (exit 0)
+[INFO]  - Device tof-pid-full: pid 259795 (exit 0)
+[INFO]  - Device tof-pid-beta: pid 259796 (exit 0)
+[INFO]  - Device mc-collision-extra: pid 259797 (exit 0)
+[INFO]  - Device strangederivedbuilder: pid 259798 (exit 0)
+[INFO]  - Device strangenesstofpid: pid 259799 (exit 0)
+[INFO]  - Device findable-study: pid 259800 (exit 0)
+[INFO]  - Device strderived-gen-q-a: pid 259801 (exit 0)
+[INFO]  - Device internal-dpl-aod-writer: pid 259802 (exit 0)
+[INFO]  - Device internal-dpl-aod-global-analysis-file-sink: pid 259803 (exit 0)
+[INFO]  - Device internal-dpl-injected-dummy-sink: pid 259804 (exit 0)
+[INFO] ## Analysis Run Summary ##
+[INFO] ### Files read stats ###
+[INFO] lfn=alien:///alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Test_10/AO2D_10.root,size=202442163,total_df=4,read_df=4,read_bytes=282630887,read_calls=331,io_time=649.9,wait_time=0.0,level=0,se=ALICE::ZA_CHPC::EOS,open_time=6.2
+[INFO] lfn=alien:///alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Test_10/AO2D_11.root,size=207152105,total_df=4,read_df=4,read_bytes=291095403,read_calls=331,io_time=115.2,wait_time=0.0,level=0,se=ALICE::KISTI_GSDC::EOS,open_time=5.5
+[INFO] lfn=alien:///alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Test_10/AO2D_12.root,size=209414149,total_df=4,read_df=4,read_bytes=299781060,read_calls=279,io_time=100.1,wait_time=0.0,level=0,se=ALICE::KISTI_GSDC::EOS,open_time=1.7
+[INFO] lfn=alien:///alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Test_10/AO2D_13.root,size=213202041,total_df=4,read_df=4,read_bytes=300168967,read_calls=312,io_time=64.5,wait_time=0.0,level=0,se=ALICE::CCIN2P3::SE,open_time=0.4
+[INFO] ### Files opened stats ###
+[INFO] Last file opened: lfn=alien:///alice/cern.ch/user/g/gsetouel/ITSTPCMatching/Localpp_PhotonEnriched/Test_10/AO2D_14.root,size=208894909,se=ALICE::ZA_CHPC::EOS,open_time=7.2
+[INFO] Dumping used configuration in dpl-config.json
