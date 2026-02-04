@@ -29,6 +29,7 @@ cp micro.sh ../GenProduction/${OutputDir}/.
 cp NumberOfProcesses ../GenProduction/${OutputDir}/.
 cp stopall.sh ../GenProduction/${OutputDir}/.
 cp configs.sh ../GenProduction/${OutputDir}/.
+cp deletefiles.sh ../GenProduction/${OutputDir}/.
 
 # Go to working directory
 cd ${OutputDir}/
@@ -41,7 +42,7 @@ echo "Number of batches: $NBATCHES"
 
 for ((i=0; i<NBATCHES; i++));do
   echo "Batch run: $i"
-  ./micro.sh $i $CPU_LIMIT $MEM_LIMIT $WORKFLOWFILE %> log_${i}.txt &
+  ./micro.sh $i $CPU_LIMIT $MEM_LIMIT $WORKFLOWFILE $Subdirectory %> log_${i}.txt &
 
   while [ $(ls subJobLock_* | wc -l) -gt $nprocesses ]; do
     sleep 2s;
@@ -79,6 +80,7 @@ find */ -maxdepth 1 -type f -name AO2D.root -print0 | while IFS= read -r -d '' f
   ((i++))
 done
 
+#-----------
 # Delete irrelevant files to save disk
 while IFS= read -r pattern; do
   find */ -maxdepth 2 -type f -name "$pattern" -delete 2>/dev/null
@@ -87,6 +89,7 @@ done < FilesBeforeITSTPCMatchingToDelete.txt
 while IFS= read -r pattern; do
   find */ -maxdepth 2 -type f -name "$pattern" -delete 2>/dev/null
 done < FilesAfterITSTPCMatchingToDelete.txt
+
 
 # Kill all zombie processes
 bash stopall.sh

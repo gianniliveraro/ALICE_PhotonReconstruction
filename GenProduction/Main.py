@@ -16,12 +16,13 @@ import subprocess
 import time 
 
 # Change this to your desired output directory
-OutputDir = "Localpp_MinBias"
+OutputDir = "Localpp_MinBias2"
+fRunReference= True  # Set to False to skip reference run and just execute the tests. Do it if you already have the reference data. 
 
 # ------------------ PARAMETER SPACE ------------------
 Test_params = {
-    "cutMatchingChi2": [30, 100, 1000],
-    "askMinTPCRow": [15, 25, 35, 50, 100],
+    "cutMatchingChi2": [1, 10, 30, 100, 1000],
+    "askMinTPCRow": [5, 15, 25, 35, 50, 100, 150],
 }
 
 # ------------------ JSON MODIFICATION ------------------
@@ -69,10 +70,13 @@ def apply_cuts_to_json(json_path: Path, combination: dict):
     with open(json_path, "w") as f:
         json.dump(json_dict, f, indent=4)
 
-# ------------------ REFERENCE RUN ------------------
-print("Running reference simulation...")
+# ------------------ MAIN SCRIPT ------------------
+# Start timer
 t0 = time.time()
-subprocess.run(["./runbatch.sh", OutputDir, "Reference"])
+# ------------------ REFERENCE RUN ------------------
+if fRunReference:
+    print("Running reference simulation...")
+    subprocess.run(["./runbatch.sh", OutputDir, "Reference"])
 
 # ------------------ TESTING LOOP ------------------
 print("DONE! {} tests will be run.".format(len(list(product(*Test_params.values())))))
