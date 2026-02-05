@@ -262,7 +262,10 @@
                     "-1"
                 ],
                 [
-                    "-1"
+                    "1"
+                ],
+                [
+                    "1"
                 ],
                 [
                     "-1"
@@ -304,10 +307,7 @@
                     "-1"
                 ],
                 [
-                    "-1"
-                ],
-                [
-                    "-1"
+                    "1"
                 ],
                 [
                     "-1"
@@ -316,7 +316,7 @@
         },
         "deduplicationAlgorithm": "1",
         "useV0BufferForCascades": "false",
-        "mc_findableMode": "0",
+        "mc_findableMode": "1",
         "refitWithMaterialCorrection": "false",
         "v0BuilderOpts": {
             "generatePhotonCandidates": "true",
@@ -328,12 +328,12 @@
             "dcav0dau": "3",
             "v0radius": "0.899999976",
             "maxDaughterEta": "1",
-            "mc_populateV0MCCoresSymmetric": "false",
-            "mc_populateV0MCCoresAsymmetric": "true",
+            "mc_populateV0MCCoresSymmetric": "true",
+            "mc_populateV0MCCoresAsymmetric": "false",
             "mc_treatPiToMuDecays": "true",
             "mc_rapidityWindow": "0.5",
             "mc_keepOnlyPhysicalPrimary": "false",
-            "mc_addGeneratedK0Short": "false",
+            "mc_addGeneratedK0Short": "true",
             "mc_addGeneratedLambda": "true",
             "mc_addGeneratedAntiLambda": "true",
             "mc_addGeneratedGamma": "true",
@@ -1226,6 +1226,868 @@
         "processTPCQVectors": "false",
         "processTPCQVectorsLF": "false",
         "processZDCSP": "false"
+    },
+    "strangenesstofpid": {
+        "calculationMethod": "1",
+        "calculateV0s": "1",
+        "calculateCascades": "1",
+        "reassociateTracks": "true",
+        "doBCshift": "true",
+        "rejectUndefinedTof": "true",
+        "calculateV0TOFPIDs": "-1",
+        "calculateV0TOFBetas": "-1",
+        "calculateV0TOFDebugs": "-1",
+        "calculateCascTOFPIDs": "-1",
+        "d_bz": "-999",
+        "tofPosition": "377.93399",
+        "doQA": "false",
+        "doNSigmas": "true",
+        "doQANSigma": "false",
+        "v0Calibration": {
+            "qaDCADau": "0.5",
+            "qaCosPA": "0.999000013",
+            "qaMassWindow": "0.00499999989",
+            "qaTPCNSigma": "5"
+        },
+        "cascadeCalibration": {
+            "qaV0DCADau": "0.5",
+            "qaCascDCADau": "0.5",
+            "qaV0CosPA": "0.995000005",
+            "qaCascCosPA": "0.995000005",
+            "qaMassWindow": "0.00499999989",
+            "qaTPCNSigma": "5"
+        },
+        "ccdb": {
+            "ccdb-url": "http:\/\/alice-ccdb.cern.ch",
+            "grpPath": "GLO\/GRP\/GRP",
+            "grpmagPath": "GLO\/Config\/GRPMagField",
+            "lutPath": "GLO\/Param\/MatLUT",
+            "nSigmaPath": "Users\/d\/ddobrigk\/stratofeloss",
+            "mVtxPath": "GLO\/Calib\/MeanVertex"
+        },
+        "useCustomRunNumber": "0",
+        "manualRunNumber": "544122",
+        "axisPosition": {
+            "values": [
+                "400",
+                "-400",
+                "400"
+            ]
+        },
+        "axisEta": {
+            "values": [
+                "20",
+                "-1",
+                "1"
+            ]
+        },
+        "axisDeltaTime": {
+            "values": [
+                "2000",
+                "-1000",
+                "1000"
+            ]
+        },
+        "axisDeltaTimeVsPrimaryCalculation": {
+            "values": [
+                "500",
+                "-500",
+                "500"
+            ]
+        },
+        "axisTime": {
+            "values": [
+                "400",
+                "10000",
+                "50000"
+            ]
+        },
+        "axisNSigma": {
+            "values": [
+                "200",
+                "-10",
+                "10"
+            ]
+        },
+        "axisRatioMethods": {
+            "values": [
+                "400",
+                "0.8999999761581421",
+                "1.899999976158142"
+            ]
+        },
+        "axisSnp": {
+            "values": [
+                "220",
+                "-1.100000023841858",
+                "1.100000023841858"
+            ]
+        },
+        "axisP": {
+            "values": [
+                "0",
+                "0",
+                "0.10000000149011612",
+                "0.20000000298023224",
+                "0.30000001192092896",
+                "0.4000000059604645",
+                "0.5",
+                "0.6000000238418579",
+                "0.699999988079071",
+                "0.800000011920929",
+                "0.8999999761581421",
+                "1",
+                "1.100000023841858",
+                "1.2000000476837158",
+                "1.2999999523162842",
+                "1.399999976158142",
+                "1.5",
+                "1.600000023841858",
+                "1.7000000476837158",
+                "1.7999999523162842",
+                "1.899999976158142",
+                "2",
+                "2.200000047683716",
+                "2.4000000953674316",
+                "2.5999999046325684",
+                "2.799999952316284",
+                "3",
+                "3.200000047683716",
+                "3.4000000953674316",
+                "3.5999999046325684",
+                "3.799999952316284",
+                "4",
+                "4.400000095367432",
+                "4.800000190734863",
+                "5.199999809265137",
+                "5.599999904632568",
+                "6",
+                "6.5",
+                "7",
+                "7.5",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "17",
+                "19",
+                "21",
+                "23",
+                "25",
+                "30",
+                "35",
+                "40",
+                "50"
+            ]
+        },
+        "axisSmallP": {
+            "values": [
+                "0",
+                "0",
+                "0.10000000149011612",
+                "0.20000000298023224",
+                "0.30000001192092896",
+                "0.4000000059604645",
+                "0.5",
+                "0.6000000238418579",
+                "0.699999988079071",
+                "0.800000011920929",
+                "0.8999999761581421",
+                "1",
+                "1.100000023841858",
+                "1.2000000476837158",
+                "1.2999999523162842",
+                "1.399999976158142",
+                "1.5"
+            ]
+        },
+        "axisBCshift": {
+            "values": [
+                "130",
+                "-3006569.541579235",
+                "237032.45348549983"
+            ]
+        },
+        "axisTimeLong": {
+            "values": [
+                "3000",
+                "-1500000",
+                "1500000"
+            ]
+        },
+        "processStandardData": "true",
+        "processDerivedData": "false"
+    },
+        "findable-study": {
+        "pdgCode": "22",
+        "skipITSonly": "false",
+        "axisPt": {
+            "values": [
+                "0",
+                "0",
+                "0.10000000149011612",
+                "0.20000000298023224",
+                "0.30000001192092896",
+                "0.4000000059604645",
+                "0.5",
+                "0.6000000238418579",
+                "0.699999988079071",
+                "0.800000011920929",
+                "0.8999999761581421",
+                "1",
+                "1.100000023841858",
+                "1.2000000476837158",
+                "1.2999999523162842",
+                "1.399999976158142",
+                "1.5",
+                "1.600000023841858",
+                "1.7000000476837158",
+                "1.7999999523162842",
+                "1.899999976158142",
+                "2",
+                "2.200000047683716",
+                "2.4000000953674316",
+                "2.5999999046325684",
+                "2.799999952316284",
+                "3",
+                "3.200000047683716",
+                "3.4000000953674316",
+                "3.5999999046325684",
+                "3.799999952316284",
+                "4",
+                "4.400000095367432",
+                "4.800000190734863",
+                "5.199999809265137",
+                "5.599999904632568",
+                "6",
+                "6.5",
+                "7",
+                "7.5",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "17",
+                "19",
+                "21",
+                "23",
+                "25",
+                "30",
+                "35",
+                "40",
+                "50"
+            ]
+        },
+        "axisCentrality": {
+            "values": [
+                "0",
+                "0",
+                "5",
+                "10",
+                "20",
+                "30",
+                "40",
+                "50",
+                "60",
+                "70",
+                "80",
+                "90",
+                "100",
+                "110"
+            ]
+        },
+        "v0Selections": {
+            "rapidityCut": "0.5",
+            "daughterEtaCut": "0.800000012",
+            "v0cospa": "0.80000031",
+            "dcav0dau": "3.5",
+            "dcanegtopv": "7.00000002e-10",
+            "dcapostopv": "7.00000002e-10",
+            "v0radius": "3.00000048",
+            "v0radiusMax": "115",
+            "minTPCrows": "30",
+            "minITSclusters": "-1",
+            "skipTPConly": "false",
+            "requirePosITSonly": "false",
+            "requireNegITSonly": "false",
+            "TpcPidNsigmaCut": "3",
+            "TofPidNsigmaCutLaPr": "1000000",
+            "TofPidNsigmaCutLaPi": "1000000",
+            "TofPidNsigmaCutK0Pi": "1000000",
+            "maxDeltaTimeProton": "1e+09",
+            "maxDeltaTimePion": "1e+09",
+            "lifetimeCutK0Short": "1e+09",
+            "lifetimeCutLambda": "1e+09",
+            "armPodCut": "5"
+        },
+        "Photonv0TypeSel": "7",
+        "PhotonMinDCADauToPv": "0",
+        "PhotonMaxDCAV0Dau": "1.5",
+        "PhotonMinTPCCrossedRows": "30",
+        "PhotonMinTPCNSigmas": "-5",
+        "PhotonMaxTPCNSigmas": "5",
+        "PhotonMinRadius": "3",
+        "PhotonMaxRadius": "115",
+        "PhotonMaxZ": "240",
+        "PhotonMaxQt": "0.0500000007",
+        "PhotonMinV0cospa": "0.980000019",
+        "PhotonMaxMass": "0.0500000007",
+        "PhotonMaxDauEta": "0.800000012",
+        "PhotonLineCutZ0": "7",
+        "processEvents": "true",
+        "processDebugCrossCheck": "false",
+        "processDebugCrossCheckMC": "false",
+        "processV0s": "true"
+    },
+    "strderived-gen-q-a": {
+        "doPPAnalysis": "true",
+        "requireSel8": "true",
+        "requireTriggerTVX": "true",
+        "rejectITSROFBorder": "true",
+        "rejectTFBorder": "true",
+        "requireIsVertexITSTPC": "false",
+        "requireIsGoodZvtxFT0VsPV": "true",
+        "requireIsVertexTOFmatched": "false",
+        "requireIsVertexTRDmatched": "false",
+        "rejectSameBunchPileup": "true",
+        "requireNoCollInTimeRangeStd": "false",
+        "requireNoCollInTimeRangeStrict": "false",
+        "requireNoCollInTimeRangeNarrow": "false",
+        "requireNoCollInROFStd": "false",
+        "requireNoCollInROFStrict": "false",
+        "requireINEL0": "true",
+        "requireINEL1": "false",
+        "maxZVtxPosition": "10",
+        "useFT0CbasedOccupancy": "false",
+        "minOccupancy": "-1",
+        "maxOccupancy": "-1",
+        "v0TypeSelection": "1",
+        "rapidityCut": "0.5",
+        "daughterEtaCut": "0.800000012",
+        "v0cospa": "0.970000029",
+        "dcav0dau": "1",
+        "dcanegtopv": "0.0500000007",
+        "dcapostopv": "0.0500000007",
+        "v0radiusMin": "1.20000005",
+        "v0radiusMax": "100000",
+        "minTPCrows": "70",
+        "minITSclusters": "-1",
+        "axisPosZ": {
+            "values": [
+                "100",
+                "-50",
+                "50"
+            ]
+        },
+        "axisCentrality": {
+            "values": [
+                "0",
+                "0",
+                "5",
+                "10",
+                "20",
+                "30",
+                "40",
+                "50",
+                "60",
+                "70",
+                "80",
+                "90",
+                "100",
+                "110"
+            ]
+        },
+        "axisBool": {
+            "values": [
+                "2",
+                "0",
+                "2"
+            ]
+        },
+        "axisFt0cOccupancyInTimeRange": {
+            "values": [
+                "50",
+                "0",
+                "80000"
+            ]
+        },
+        "axisTrackOccupancyInTimeRange": {
+            "values": [
+                "50",
+                "0",
+                "5000"
+            ]
+        },
+        "axisMultFT0C": {
+            "values": [
+                "1000",
+                "0",
+                "100000"
+            ]
+        },
+        "axisMultNTracksPVeta1": {
+            "values": [
+                "200",
+                "0",
+                "6000"
+            ]
+        },
+        "axisMultPVTotalContributors": {
+            "values": [
+                "200",
+                "0",
+                "6000"
+            ]
+        },
+        "axisMultAllTracksTPCOnly": {
+            "values": [
+                "200",
+                "0",
+                "6000"
+            ]
+        },
+        "axisMultAllTracksITSTPC": {
+            "values": [
+                "200",
+                "0",
+                "6000"
+            ]
+        },
+        "axisNch": {
+            "values": [
+                "500",
+                "0",
+                "5000"
+            ]
+        },
+        "axisNumV0sPerColl": {
+            "values": [
+                "50000",
+                "-0.5",
+                "49999.5"
+            ]
+        },
+        "axisPt": {
+            "values": [
+                "0",
+                "0",
+                "0.10000000149011612",
+                "0.20000000298023224",
+                "0.30000001192092896",
+                "0.40000000596046448",
+                "0.5",
+                "0.60000002384185791",
+                "0.69999998807907104",
+                "0.80000001192092896",
+                "0.89999997615814209",
+                "1",
+                "1.1000000238418579",
+                "1.200000047683716",
+                "1.2999999523162842",
+                "1.3999999761581421",
+                "1.5",
+                "1.6000000238418579",
+                "1.700000047683716",
+                "1.7999999523162842",
+                "1.8999999761581421",
+                "2",
+                "2.2000000476837158",
+                "2.4000000953674321",
+                "2.5999999046325684",
+                "2.7999999523162842",
+                "3",
+                "3.2000000476837158",
+                "3.4000000953674321",
+                "3.5999999046325684",
+                "3.7999999523162842",
+                "4",
+                "4.4000000953674316",
+                "4.8000001907348633",
+                "5.1999998092651367",
+                "5.5999999046325684",
+                "6",
+                "6.5",
+                "7",
+                "7.5",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "17",
+                "19",
+                "21",
+                "23",
+                "25",
+                "30",
+                "35",
+                "40",
+                "50"
+            ]
+        },
+        "axisPt2": {
+            "values": [
+                "0",
+                "-50",
+                "-40",
+                "-35",
+                "-30",
+                "-25",
+                "-23",
+                "-21",
+                "-19",
+                "-17",
+                "-15",
+                "-14",
+                "-13",
+                "-12",
+                "-11",
+                "-10",
+                "-9",
+                "-8",
+                "-7.5",
+                "-7",
+                "-6.5",
+                "-6",
+                "-5.5999999046325684",
+                "-5.1999998092651367",
+                "-4.8000001907348633",
+                "-4.4000000953674316",
+                "-4",
+                "-3.7999999523162842",
+                "-3.5999999046325684",
+                "-3.4000000953674321",
+                "-3.2000000476837158",
+                "-3",
+                "-2.7999999523162842",
+                "-2.5999999046325684",
+                "-2.4000000953674321",
+                "-2.2000000476837158",
+                "-2",
+                "-1.8999999761581421",
+                "-1.7999999523162842",
+                "-1.700000047683716",
+                "-1.6000000238418579",
+                "-1.5",
+                "-1.3999999761581421",
+                "-1.2999999523162842",
+                "-1.200000047683716",
+                "-1.1000000238418579",
+                "-1",
+                "-0.89999997615814209",
+                "-0.80000001192092896",
+                "-0.69999998807907104",
+                "-0.60000002384185791",
+                "-0.5",
+                "-0.40000000596046448",
+                "-0.30000001192092896",
+                "-0.20000000298023224",
+                "-0.10000000149011612",
+                "0",
+                "0.10000000149011612",
+                "0.20000000298023224",
+                "0.30000001192092896",
+                "0.40000000596046448",
+                "0.5",
+                "0.60000002384185791",
+                "0.69999998807907104",
+                "0.80000001192092896",
+                "0.89999997615814209",
+                "1",
+                "1.1000000238418579",
+                "1.200000047683716",
+                "1.2999999523162842",
+                "1.3999999761581421",
+                "1.5",
+                "1.6000000238418579",
+                "1.700000047683716",
+                "1.7999999523162842",
+                "1.8999999761581421",
+                "2",
+                "2.2000000476837158",
+                "2.4000000953674321",
+                "2.5999999046325684",
+                "2.7999999523162842",
+                "3",
+                "3.2000000476837158",
+                "3.4000000953674321",
+                "3.5999999046325684",
+                "3.7999999523162842",
+                "4",
+                "4.4000000953674316",
+                "4.8000001907348633",
+                "5.1999998092651367",
+                "5.5999999046325684",
+                "6",
+                "6.5",
+                "7",
+                "7.5",
+                "8",
+                "9",
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "17",
+                "19",
+                "21",
+                "23",
+                "25",
+                "30",
+                "35",
+                "40",
+                "50"
+            ]
+        },
+        "axisAlpha": {
+            "values": [
+                "220",
+                "-1.1000000238418579",
+                "1.1000000238418579"
+            ]
+        },
+        "axisQtarm": {
+            "values": [
+                "220",
+                "0",
+                "0.5"
+            ]
+        },
+        "axisCosPA": {
+            "values": [
+                "240",
+                "0",
+                "1.200000047683716"
+            ]
+        },
+        "axisPA": {
+            "values": [
+                "200",
+                "0",
+                "0.40000000596046448"
+            ]
+        },
+        "axisDCAdau": {
+            "values": [
+                "50",
+                "0",
+                "5"
+            ]
+        },
+        "axisEta": {
+            "values": [
+                "100",
+                "-3",
+                "3"
+            ]
+        },
+        "axisPhi": {
+            "values": [
+                "100",
+                "0",
+                "6.2831853071795862"
+            ]
+        },
+        "axisMassGamma": {
+            "values": [
+                "400",
+                "0",
+                "0.5"
+            ]
+        },
+        "axisMassLambda": {
+            "values": [
+                "400",
+                "1",
+                "1.200000047683716"
+            ]
+        },
+        "axisMassK0Short": {
+            "values": [
+                "400",
+                "0.40000000596046448",
+                "0.60000002384185791"
+            ]
+        },
+        "axisV0Type": {
+            "values": [
+                "5",
+                "0",
+                "5"
+            ]
+        },
+        "axisStraCollisionId": {
+            "values": [
+                "4000",
+                "0",
+                "40000"
+            ]
+        },
+        "axisGlobalIndex": {
+            "values": [
+                "4000",
+                "0",
+                "40000"
+            ]
+        },
+        "axisNCls": {
+            "values": [
+                "8",
+                "-0.5",
+                "7.5"
+            ]
+        },
+        "axisTPCrows": {
+            "values": [
+                "160",
+                "0",
+                "160"
+            ]
+        },
+        "axisChi2PerNcl": {
+            "values": [
+                "100",
+                "0",
+                "40"
+            ]
+        },
+        "axisTPCNSigma": {
+            "values": [
+                "100",
+                "-50",
+                "50"
+            ]
+        },
+        "axisTPCSignal": {
+            "values": [
+                "400",
+                "-100",
+                "300"
+            ]
+        },
+        "axisTOFNSigma": {
+            "values": [
+                "100",
+                "-50",
+                "50"
+            ]
+        },
+        "axisTOFDeltaT": {
+            "values": [
+                "200",
+                "-1000",
+                "1000"
+            ]
+        },
+        "axisPtResolution": {
+            "values": [
+                "100",
+                "-1",
+                "1"
+            ]
+        },
+        "axisPDGCode": {
+            "values": [
+                "10001",
+                "-5000.5",
+                "5000.5"
+            ]
+        },
+        "axisV0Radius": {
+            "values": [
+                "400",
+                "0",
+                "200"
+            ]
+        },
+        "axisCascRadius": {
+            "values": [
+                "500",
+                "0",
+                "50"
+            ]
+        },
+        "axisDCAToPV": {
+            "values": [
+                "500",
+                "-50",
+                "50"
+            ]
+        },
+        "axisDCAXYCascToPV": {
+            "values": [
+                "1000",
+                "0",
+                "10"
+            ]
+        },
+        "axisDCAZCascToPV": {
+            "values": [
+                "500",
+                "-10",
+                "10"
+            ]
+        },
+        "axisDCAV0ToPV": {
+            "values": [
+                "1000",
+                "-10",
+                "10"
+            ]
+        },
+        "axisDCAV0Dau": {
+            "values": [
+                "1000",
+                "0",
+                "10"
+            ]
+        },
+        "axisDCACascDau": {
+            "values": [
+                "1000",
+                "0",
+                "10"
+            ]
+        },
+        "axisOmegaMass": {
+            "values": [
+                "400",
+                "1.6000000238418579",
+                "1.7999999523162842"
+            ]
+        },
+        "axisXiMass": {
+            "values": [
+                "400",
+                "1.200000047683716",
+                "1.3999999761581421"
+            ]
+        },
+        "axisTrackProperties": {
+            "values": [
+                "32",
+                "-0.5",
+                "31.5"
+            ]
+        },
+        "processDerivedV0s": "false",
+        "processMCDerivedV0s": "true",
+        "processDerivedCascades": "false",
+        "processMCDerivedCascades": "false",
+        "processGenerated": "false"
     },
     "internal-dpl-aod-writer": "",
     "internal-dpl-aod-global-analysis-file-sink": "",

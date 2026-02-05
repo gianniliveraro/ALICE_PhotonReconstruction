@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Dataset directory
-datasetName="Localpp_MinBias"
+datasetName="Localpp_MinBias2"
 
 # Base directory where AO2Ds are stored
 base_dir="../../OutputData/${datasetName}"
