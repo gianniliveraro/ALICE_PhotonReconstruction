@@ -1422,7 +1422,7 @@
         "processStandardData": "true",
         "processDerivedData": "false"
     },
-    "findable-study": {
+        "findable-study": {
         "pdgCode": "22",
         "skipITSonly": "false",
         "axisPt": {
@@ -1504,69 +1504,6 @@
                 "110"
             ]
         },
-        "axisV0Radius": {
-            "values": [
-                "240",
-                "0",
-                "250"
-            ]
-        },
-        "axisV0PairRadius": {
-            "values": [
-                "200",
-                "0",
-                "20"
-            ]
-        },
-        "axisDCAtoPV": {
-            "values": [
-                "500",
-                "0",
-                "50"
-            ]
-        },
-        "axisDCAdau": {
-            "values": [
-                "50",
-                "0",
-                "5"
-            ]
-        },
-        "axisCosPA": {
-            "values": [
-                "200",
-                "0.5",
-                "1"
-            ]
-        },
-        "axisPA": {
-            "values": [
-                "100",
-                "0",
-                "1"
-            ]
-        },
-        "axisEta": {
-            "values": [
-                "250",
-                "-0.80000001192092896",
-                "0.80000001192092896"
-            ]
-        },
-        "axisPhi": {
-            "values": [
-                "200",
-                "0",
-                "6.2831854820251465"
-            ]
-        },
-        "axisZ": {
-            "values": [
-                "120",
-                "-120",
-                "120"
-            ]
-        },
         "v0Selections": {
             "rapidityCut": "0.5",
             "daughterEtaCut": "0.800000012",
@@ -1608,8 +1545,7 @@
         "processEvents": "true",
         "processDebugCrossCheck": "false",
         "processDebugCrossCheckMC": "false",
-        "processV0s": "true",
-        "processTrackTypes": "true"
+        "processV0s": "true"
     },
     "strderived-gen-q-a": {
         "doPPAnalysis": "true",

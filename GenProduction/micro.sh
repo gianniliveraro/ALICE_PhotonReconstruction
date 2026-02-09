@@ -1,5 +1,6 @@
 #!/bin/bash
 
+SEED=$1 # seed will be based on the batch number 
 CPU_LIMIT=$2
 MEM_LIMIT=$3
 WORKFLOWFILE=$4
@@ -18,7 +19,7 @@ cd ${1}
 echo "We are at batch `pwd`"
 
 startdate=$(date)
-source runSimulation.sh $CPU_LIMIT $MEM_LIMIT $WORKFLOWFILE $Subdirectory
+source runSimulation.sh $CPU_LIMIT $MEM_LIMIT $WORKFLOWFILE $Subdirectory $SEED
 
 COUNTER=0
 until [ -f tf1/AO2D.root ]
@@ -27,7 +28,7 @@ do
     echo "Processing started: ${startdate}, currently ${currentdate}..."
     sleep 5
     let COUNTER=COUNTER+5
-    if [ "$COUNTER" -gt "400" ]; then
+    if [ "$COUNTER" -gt "4000" ]; then
       echo "This is taking too long and should be finished by now, breaking"
       break
       rm -rf tf*

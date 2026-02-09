@@ -16,7 +16,7 @@ import subprocess
 import time 
 
 # Change this to your desired output directory
-OutputDir = "Localpp_MinBias2"
+OutputDir = "Localpp_MinBias3"
 fRunReference= True  # Set to False to skip reference run and just execute the tests. Do it if you already have the reference data. 
 
 # ------------------ PARAMETER SPACE ------------------
